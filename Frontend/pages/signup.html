@@ -7,7 +7,7 @@
         <title>Textribe</title>
     </head>
     <body>
-        <!-- <nav class="navbar">
+         <nav class="navbar">
             <div class="logo-container">
                 <a href="../index.html" class="logo-text">Textribe</a>
             </div>
@@ -28,55 +28,28 @@
                 <h1>Register</h1>
                 <form method="post">
                     <div class="txt-field">
+                        <input type="text" name="fullname" id="fullname" required>
+                        <span></span>
+                        <label> Full Name</label>
+                    </div>
+                    <div class="txt-field">
                         <input type="text" name="username" id="username" required>
                         <span></span>
-                        <label> username</label>
+                        <label> Username</label>
                     </div> 
-              
                     <div class="txt-field">
                         <input type="password" name="password" id="password" required>
                         <span></span>
                         <label>Password</label>
                     </div> 
                     <div class="pass">Forget Password</div>
-                    <input type="submit" value="Register">
+                    <input type="submit" value="Register" id="submit">
                     <div class="signup-link">
                         Already a member? <a href="login.html"> Login</a>
                     </div>
                 </form>
             </div>
-    </div> -->
-
-  <h1>User Authentication</h1>
-
-  <div id="register">
-    <h2>Register</h2>
-    <form id="register-form">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username">
-      <br>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password">
-      <br>
-      <button type="submit">Register</button>
-    </form>
-  </div>
-
-  <div id="login">
-    <h2>Login</h2>
-    <form id="login-form">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username">
-      <br>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password">
-      <br>
-      <button type="submit" id="submit">Login</button>
-    </form>
-  </div>
-
-
-
+    </div>
 
     <script src="../script.js"></script>
     </body>
