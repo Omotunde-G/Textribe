@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const db = require('../db/index');
 const saltRounds = Number(process.env.saltRounds);
-const secretKey = "Top Secret";
+const secretKey = process.env.secretKey;
 require('dotenv').config()
 
 
@@ -18,7 +18,8 @@ const userExists = async (username) => {
   };
 // Registration
 const registerUser = async (req, res) => {
-  const {username, password } = req.body;
+  const {fullname, username, password } = req.body;
+  console.log(req.body);
 
   const doesUserExist = await userExists(username);
   if (doesUserExist) {
@@ -27,10 +28,9 @@ const registerUser = async (req, res) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, saltRounds); 
-
-    const insertQuery = "INSERT INTO users (username, password) VALUES ($1, $2)";
-    await db.query(insertQuery, [username , hashedPassword]);
-
+    const insertQuery = "INSERT INTO users (fullname, username, password) VALUES ($1, $2, $3)";
+    const result = await db.query(insertQuery, [fullname, username , hashedPassword]);
+    console.log(result);
 
     const token = jwt.sign({ username }, secretKey, {
       expiresIn: 60 * 60,
