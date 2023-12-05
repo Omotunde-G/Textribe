@@ -30,27 +30,40 @@
                     <div class="txt-field">
                         <input type="text" name="fullname" id="fullname" required>
                         <span></span>
-                        <label> Full Name</label>
+                        <label>Full Name</label>
                     </div>
                     <div class="txt-field">
                         <input type="text" name="username" id="username" required>
                         <span></span>
-                        <label> Username</label>
+                        <label>Username</label>
                     </div> 
                     <div class="txt-field">
                         <input type="password" name="password" id="password" required>
                         <span></span>
                         <label>Password</label>
-                    </div> 
-                    <div class="pass">Forget Password</div>
+                    </div class="check"> 
+                <div>
+                    <label id="radio-field">Select Role:</label>
+                    <div class="radio-options">
+                        <input type="radio" name="role" id="userRole" value="user" required checked>
+                        <span></span>
+                        <label for="userRole">User</label><br>
+                        
+                        <input type="radio" id="adminRole" name="role" value="admin">
+                        <span></span>
+                        <label for="adminRole">Admin</label><br>
+                    </div>
+                </div>
+                        <div class="pass">Forget Password</div>
                     <input type="submit" value="Register" id="submit">
                     <div class="signup-link">
                         Already a member? <a href="login.html"> Login</a>
                     </div>
                 </form>
             </div>
-    </div>
+        </div>
+        
 
-    <script src="../script.js"></script>
+    <script src="../script.js"> </script>
     </body>
     </html>

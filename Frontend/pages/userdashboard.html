@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="../styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Textribe</title>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo"><a href="login.html"> Textribe</a></div>
+        <ul class="menu">
+            <li>
+                <a href="#">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="works.html">
+                    <i class="fas fa-star"></i>
+                        <span>Works</span>
+                </a>
+            </li>
+            <li>
+                <a href="setting.html">
+                    <i class="fas fa-cog"></i>
+                        <span>Setting</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="#" onclick="logoutUser()">
+                    <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <span>Hello 
+                <h2 id="usernameDisplay"> </h2> </span>
+            </div>
+            <div class="user--info">
+                <div class="search--box">
+            </div>
+            <img src="../images/user-icon-on-transparent-background-free-png.webp" alt="">
+            </div>
+        </div>
+           <!-- card -->
+    <div class="card--container">
+        <h3 class="main--title">Work in Progress</h3>
+        <div class="card--wrapper">
+            <div class="payment--card light-blue">
+                <div class="card--header">
+                    <div class="amount">
+                        <span class="title">
+                            Light From a Place of Darkness 
+                        </span>
+                        <hr class="seperator">
+                        <span class="work-type">
+                          Once upon a time there lived a boy naamed ali alli was a bad biy he was very stubborn.
+                        </span>
+                        </div> 
+                    </div>
+                </div>
+                <div class="payment--card light-purple">
+                    <div class="card--header">
+                        <div class="amount">
+                            <span class="title">
+                                Light From a Place of Darkness 
+                            </span>
+                            <hr class="seperator">
+                            <span class="work-type">
+                              Once upon a time there lived a boy naamed ali alli was a bad biy he was very stubborn.
+                            </span>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="payment--card light-green">
+                        <div class="card--header">
+                            <div class="amount">
+                                <span class="title">
+                                    Light From a Place of Darkness 
+                                </span>
+                                <hr class="seperator">
+                                <span class="work-type">
+                                  Once upon a time there lived a boy naamed ali alli was a bad biy he was very stubborn.
+                                </span>
+                                </div> 
+                            </div>
+                        </div>
+
+                        <div class="payment--card light-red">
+                            <div class="card--header">
+                                <div class="amount">
+                                    <span class="title">
+                                        Light From a Place of Darkness 
+                                    </span>
+                                    <hr class="seperator">
+                                    <span class="work-type">
+                                      Once upon a time there lived a boy naamed ali alli was a bad biy he was very stubborn.
+                                    </span>
+                                    </div> 
+                                </div>
+                            </div>
+            
+    
+            </div>
+        </div>
+        <div class="tabular--wrapper">
+            <h3 class="main--title">Analytics</h3>
+            <div class="table--container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    2023-05-01
+                                </td>
+                                <td>Light From a Place of Darkness </td>
+                                <td>Friction</td>
+                                <td>Article</td>
+                                <td>Not Started</td>
+                                <!-- <td><button>Edit</button></td> -->
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="dropbtn">Action</button>
+                                        <div class="dropdown-content">
+                                            <a href="#" class="delete">Delete</a>
+                                            <a href="#" class="edit">Edit</a>
+                                            <a href="#" class="publish">Publish</a>
+                                        </div>
+                                    </div>
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    2023-05-01
+                                </td>
+                                <td>The Lost Poet</td>
+                                <td>Drama</td>
+                                <td>Novel</td>
+                                <td>Completed</td>
+                                <!-- <td><button>Edit</button></td> -->
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="dropbtn">Action</button>
+                                        <div class="dropdown-content">
+                                            <a href="#" class="delete">Delete</a>
+                                            <a href="#" class="edit">Edit</a>
+                                            <a href="#" class="publish">Publish</a>
+                                        </div>
+                                    </div>
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    2023-05-01
+                                </td>
+                                <td>Unshaken</td>
+                                <td>Suspense</td>
+                                <td>Novel</td>
+                                <td>In Progress</td>
+                                <!-- <td><button>Action</button></td> -->
+                                <td>
+                                <div class="dropdown">
+                                    <button class="dropbtn">Action</button>
+                                    <div class="dropdown-content">
+                                        <a href="#" class="delete">Delete</a>
+                                        <a href="#" class="edit">Edit</a>
+                                        <a href="#" class="publish">Publish</a>
+                                    </div>
+                                </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">Total Completed: 1</td>
+                                <td colspan="2"> Total Still in Progress: 1</td>
+                                <td colspan="2"> Not Started: 1</td>
+                            </tr>
+                        </tfoot>
+                   
+                </table>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+     <script src="../script.js"></script>
+</body>
+</html>

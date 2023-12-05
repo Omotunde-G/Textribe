@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="../styles/setting.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Textribe</title>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo"><a href="login.html"> Textribe</a></div>
+        <ul class="menu">
+            <li>
+                <a href="./userdashboard.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="works.html">
+                    <i class="fas fa-star"></i>
+                        <span>Works</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-cog"></i>
+                        <span>Setting</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="#" onclick="logoutUser()">
+                    <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                </a>
+            </li>
+            </li>
+        </ul>
+    </div>
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <span>Hello 
+                <h2 id="usernameDisplay"> </h2> </span>
+            </div>
+            <div class="user--info">
+                <div class="search--box">
+            </div>
+            <img src="../images/user-icon-on-transparent-background-free-png.webp" alt="">
+            </div>
+        </div>
+           <!-- card -->
+    <div class="card--container">
+        <div class="edit-profile">  <h3 class="main--title">Profile Setting</h3></div>
+        <div class="profile">
+            <h1>Edit Profile</h1>
+            <form action="#">
+                <label for="Username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="New Username">
+                <br>
+    
+                <label for="bio">Bio:</label>
+                <textarea id="bio" name="bio" rows="3" placeholder="bio"></textarea>
+                <br>
+    
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" placeholder="Earth">
+                <br>
+                <label for="password">Current Password:</label>
+                <input type="password" id="password" name="password">
+                <br>
+                
+                <label for="newpassword">New Password:</label>
+                <input type="password" id="newpassword" name="newpassword">
+                <br>
+                
+
+    
+                <button type="submit">Update Profile</button>
+            </form>
+        </div>
+            
+            </div>
+        </div>
+
+
+
+
+    <script src="../script.js"></script>
+</body>
+</html>

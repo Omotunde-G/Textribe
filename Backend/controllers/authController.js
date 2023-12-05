@@ -18,7 +18,7 @@ const userExists = async (username) => {
   };
 // Registration
 const registerUser = async (req, res) => {
-  const {fullname, username, password } = req.body;
+  const {fullname, username, password, } = req.body;
   console.log(req.body);
 
   const doesUserExist = await userExists(username);
@@ -67,7 +67,7 @@ const loginUser = async (req, res) => {
       expiresIn: 60 * 60,
     });
 
-    res.json({ message: 'Login successful', token });
+    res.json({ message: 'Login successful', token, username });
 } catch (error) {
     console.error('Error registering user:', error);
     res.status(500).json({ message: 'Error registering user' });

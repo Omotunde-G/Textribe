@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+             
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+
+}
+body{
+    display: flex;
+}
+.sidebar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 110px;
+    height: 100vh;
+    padding: 0 1.7rem;
+    color: #fff;
+    overflow: hidden;
+    transform: all 0.5s linear;
+    background: rgb(156, 88, 156); /**  rgba(113, 99, 186, 225) */
+    transition: width 0.5s linear;
+}
+.sidebar:hover{
+    width: 300px;
+    transition: width 0.5s;
+}
+.logo{
+    height: 80px;
+    padding: 16px;
+}
+.logo a{
+    padding: 0;
+    margin-left: -33px;
+    font-size: 24px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+.menu{
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+.menu li{
+    padding: 1rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+}
+.menu li:hover, .active{
+    background: #e0e0e058
+}
+.menu a {
+    color: white;
+    font-size: 17px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.menu a span{
+    overflow: hidden;
+}
+.menu a i{
+    font-size: 1.2rem;
+}
+.logout{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+/* main body */
+.main--content{
+    position: relative;
+    background: #ebe9e9;
+    width: 100%;
+    padding: 1rem;
+}
+.header--wrapper img{
+    width: 80px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.header--wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 2rem;
+    margin-bottom: 1rem;
+}
+.header--title{
+    color:   rgb(156, 88, 156); /*rgba(113, 99, 186, 225)*/
+}
+.user--info{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* *** card container *** */
+.card--container{
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+}
+.card--wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.work{
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-profile{
+    display: flex;
+    justify-content: space-between;
+}
+.main--title{
+    color: rgba(113, 99, 186, 225);
+    padding-bottom: 10px;
+    font-size: 25px;
+}
+.profile-edit{
+  font-size: 20px;
+  color: red;
+  text-decoration: none;
+}
+.new-project{
+    color: green;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+.new-project:hover{
+    transform: translateY(-5px);  
+}
+
+.payment--card{
+    background: rgb(229, 223, 223);
+    border-radius: 10px;
+    padding: 1.2rem;
+    width: 290px;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.5s ease-in-out;
+}
+.payment--card:hover{
+    transform: translateY(-5px);
+}
+.card--header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.amount{
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    font-size: 20px;
+    font-weight: 600;
+}
+.seperator{
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 2px 0;
+    width: 100%;
+    padding: 0;
+}
+
+.work-type{
+    font-size: 18px;
+    font-family: "Poppins", 'Courier New', Courier, monospace;
+    font-weight: 200;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    max-height: 4.3em;
+}
+.icon{
+    color: white;
+    padding: 1rem;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    background: red;
+}
+.card--detail{
+    font-size: 18px;
+    color: #777777;
+    letter-spacing: 2px;
+    font-family: "Courier New", 'Courier New', Courier, monospace;
+}
+/* color css */
+.light-red{
+    background: rgb(251, 233, 233);
+}
+.light-purple{
+    background: rgb(254, 226, 254);
+}
+.light-green{
+    background: rgb(226, 254, 246);
+}
+.light-blue{
+    background: rgb(226, 228, 254);
+}
+.dark-red{
+    background: red;
+}
+.dark-purple{
+    background: purple;
+}
+.dark-green{
+    background: green;
+}
+.dark-blue{
+    background: blue;
+}

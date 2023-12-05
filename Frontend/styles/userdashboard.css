@@ -1,0 +1,217 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    color: rgb(156, 88, 156);
+    font-family: 'Times New Roman', Times, serif;
+  
+}
+  /* Navbar Styles */
+  .navbar{
+    width: 100%;
+    padding: 0 3%;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    border-bottom: 1px solid #ccc;
+}
+.logo-container{
+    width: max-content;
+    display: flex;
+    align-items: center;
+}
+.logo-text{
+    color: rgb(103, 33, 103);
+    font-size: 3rem;
+    width: 100%;
+    text-decoration: none;  
+}
+
+.nav-links{
+    display: flex;
+    gap: 1em;
+}
+.nav-links-container{
+    position: relative;
+    margin: auto;
+}
+.nav-link{
+    position: relative;
+    display: inline-block;
+    padding: 10px 10px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.5s;
+    letter-spacing: 3px;
+}
+.nav-link:hover{
+    cursor: pointer;
+    border: 1px solid rgb(103, 33, 103);
+    border-radius: 4px;
+}
+
+.nav-btns{
+    display: flex;
+    width: max-content;
+    align-items: center;
+    gap: 5%;
+
+}
+.nav-btn{
+    padding: 12px;
+    border: none;
+    background-color:rgb(156, 88, 156);
+    color: #fff;
+    font-size: 15px;
+    border-radius: 40px;
+}
+.nav-btn:hover{
+    cursor: pointer;
+    border: 1px solid rgb(103, 33, 103);
+    box-shadow: 1px 1px 1px 1px rgb(103, 33, 103);
+    transition: .5s;
+
+    
+}
+  .profileimage {
+    background-color: transparent;
+    border: none;
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+  }
+  .profileimage:hover {
+    cursor: pointer;
+    box-shadow: 0 0 2px #fae6c7, 0 0 5px #fae6c7, 0 0 10px #fae6c7,
+      0 0 10px #fae6c7;
+  }
+  .profile {
+    height: 85dvh;
+    display: flex;
+  }
+  .profile-nav {
+    width: 30%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2%;
+    /* background-color: #302c1b; */
+  }
+  .userprofileimage {
+    background-color: transparent;
+    border: none;
+    border-radius: 50px;
+    width: 50%;
+    margin-bottom: 5%;
+  }
+  .profile-info {
+    background-color: rgb(225, 223, 223);
+    width: 70%;
+    height: 100%;
+    overflow: scroll;
+  }
+  
+  .menu {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    justify-content: space-between;
+  }
+  .menu-btn {
+    background-color: transparent;
+    color: rgb(103, 33, 103) ;
+    width: max-content;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    background: none;
+    position: relative;
+    padding-bottom: 5px;
+  }
+
+  #logout-btn {
+    color:  #ff2f00;
+  }
+  .profile-info {
+    color: #1c1c1c;
+    padding: 5%;
+  }
+  /* Input field styles */
+  .form-control {
+    position: relative;
+    margin: 20px 0 20px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+  }
+  
+  .form-control input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px #fff solid;
+    flex-grow: 1;
+    font-size: 18px;
+    color: #fff;
+  }
+  
+  .form-control input:focus {
+    outline: 0;
+    border-bottom-color: #1c1c1c;
+  }
+  
+  .signup-el {
+    font-size: 15px !important;
+  }
+  .submit-btn {
+    position: relative;
+    cursor: pointer;
+    margin: 0% auto;
+    width: max-content;
+    padding: 2% 0;
+  }
+  
+  .submit-btn a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+    letter-spacing: 4px;
+  }
+  .submit-btn a:hover {
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #000;
+    background-color: #1c1c1c;
+    cursor: pointer;
+  }
+  /* Signin and Login Form styling */
+  .sign-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+ 
+  
+
+
+  
+  
+  
