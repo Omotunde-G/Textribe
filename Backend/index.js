@@ -15,9 +15,16 @@ app.get('/', (req, res) =>{
 
 //routes 
 const authRoutes = require ('./routes/auths');
+const userRoutes = require ('./routes/users');
+const storiesRoutes = require ('./routes/stories')
+
 
 //use the route
 app.use('/auth', authRoutes)
+app.use('/users', userRoutes)
+app.use('/stories', storiesRoutes);
+
+
 
 app.listen(3002, ()=>{
     console.log('server is running on port 3002')

@@ -3,28 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/homepage.css">
     <title>Textribe</title>
 </head>
 <body>
      <nav class="navbar">
         <div class="logo-container">
-            <a href="../index.html" class="logo-text">Textribe</a>
+            <a href="homepage.html" class="logo-text">Textribe</a>
         </div>
     
         <div class="nav-links">
-            <div class="nav-link-container">
-                <a href="login.html" class="nav-link">Write</a>
-            </div>
-            <div class="nav-link-container">
-                <a href="signup.html" class="nav-link">Stories</a>
+            <div class="nav-link-container" id="profi" onclick="profile()">
+                <a href="userdashboard.html" class="nav-link">Profile</a>
             </div>
           <div class="nav-btns">
-            <button class="nav-btn" id="loginbtn"> Get Started</button>
+            <button class="logout nav-btn" onclick="logoutUser()"> <span>Logout</span></button>
           </div>
-    </nav>
+          <!-- // *** the hello user should apper on the nav bar ***// -->
+        </nav> 
+
+    <!-- <span>Hello
+    <h2 id="usernameDisplay"></h2>  </span> -->
     <main>
-        <h2>this is the homepage</h2>
-    </main>
+    <div class="hero">
+     <h1> Textribe Originals</h1>
+     <p> Check out the latest and greatest stories hand-picked by our team</p></div>
+    
+ 
+
+    <div class="container">
+   <h2>Featured Stories</h2>
+   <div class="container" id="bookContainer">
+    <!-- books will go here -->
+   </div>
+    </div>
+    <div class="modal" id="modal">
+        <div class="modal-content" id="modalContent">
+        </div>
+        <span class="close" id="closeBtn">&times;</span>
+        <button class="editButton" id="editBtn">Contribute</button>
+        <div id="textareaContainer"></div>
+        <button class="editSubmit">submit</button>
+        <button class="editSave">save</button>
+        <button class="exit">Exit</button>
+    </div>
+   
+
+</main>
+    <script src="../scripts/homepage.js">
+        
+    </script>
     </body>
     </html>
