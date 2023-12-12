@@ -1,53 +1,209 @@
 
-  function fetchUserStories() {
-    fetch('http://localhost:3002/story/user-stories', {
-      method: 'GET',
-      // Add headers if required (e.g., for authentication)
-    })
-      .then(response => response.json())
-      .then(data => {
-        // Process fetched stories and update the UI
-        const cardContainers = document.querySelectorAll('.card--wrapper');
 
-        // Example: Loop through the fetched stories and populate the card containers
-        data.forEach((story, index) => {
-          const cardIndex = index % cardContainers.length;
-          const cardWrapper = cardContainers[cardIndex];
 
-          const paymentCard = document.createElement('div');
-          paymentCard.classList.add('payment--card', `light-${cardIndex}`);
+document.addEventListener('DOMContentLoaded', async () => {
+   
+  
+  async function fetchStoriesByUsers() {
+    try {
+      const response = await fetch(`http://localhost:3002/stories/all`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch stories');
+      }
+      const stories = await response.json();
+      displayStories(stories.stories);
+    } catch (error) {
+      console.error('Error fetching stories:', error);
+    }
+  }
+  
+  function displayStories(stories) {
+   if(!Array.isArray(stories)){
+    console.error('Invalid data format- Expect an array')
+   }
+    const tableBody = document.querySelector('.table--container tbody');
+    tableBody.innerHTML = '';
+    stories.forEach(story => {
+      const row = document.createElement('tr');
+      row.innerHTML = ` 
+        <td>${story.created_at}</td>
+        <td>${story.title}</td>
+        <td>${story.content}</td>
+        <td>${story.author}</td>
+        <td></td> <!-- Fill this column with status data -->
+        <td>
+          <div class="dropdown">
+            <button class="dropbtn">Action</button>
+            <div class="dropdown-content">
+              <a href="#" class="delete">Delete</a>
+              <a href="#" class="edit">Edit</a>
+              <a href="#" class="publish">Publish</a>
+              <a href="#" class="publish">Publish For Collaborative</a>
+            </div>
+          </div>
+        </td>`;
+      tableBody.appendChild(row);
+    });
 
-          const cardHeader = document.createElement('div');
-          cardHeader.classList.add('card--header');
-
-          const amount = document.createElement('div');
-          amount.classList.add('amount');
-
-          const title = document.createElement('span');
-          title.classList.add('title');
-          title.textContent = story.title;
-
-          const separator = document.createElement('hr');
-          separator.classList.add('seperator');
-
-          const workType = document.createElement('span');
-          workType.classList.add('work-type');
-          workType.textContent = story.content;
-
-          amount.appendChild(title);
-          amount.appendChild(separator);
-          amount.appendChild(workType);
-
-          cardHeader.appendChild(amount);
-          paymentCard.appendChild(cardHeader);
-
-          cardWrapper.appendChild(paymentCard);
-        });
-      })
-      .catch(error => console.error('Error:', error));
+    const totalCompleted = document.querySelector('tfoot tr td:nth-child(1)');
+    totalCompleted.textContent = `Total Stories: ${stories.lenght} `;
   }
 
-  // Call function to fetch user stories on page load
-  window.addEventListener('load', fetchUserStories);
+  fetchStoriesByUsers();
+});
 
+document.addEventListener('DOMContentLoaded', () => {
+  const signupForm = document.querySelector('form');
+  const loginForm = document.getElementById('loginform');
+  const logoutButton = document.querySelector('.logout');
+ 
+
+ 
+  // login 
+  async function loginUser(e) {
+    e.preventDefault();
+  //   window.location = "userdashboard.html";
+
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+  
+
+    const reqData = JSON.stringify({ username, password });
+
+    try {
+        const response = await fetch('http://localhost:3002/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: reqData,
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            const { token, username: loggedInUsername } = data;
+
+            localStorage.setItem('token', token);
+            localStorage.setItem('loggedInUsername', loggedInUsername)
+
+            // Display logged-in username in the UI (usernameDisplay is an element)
+            const usernameDisplay = document.getElementById('usernameDisplay');
+
+            // Redirect to the user dashboard
+            window.location = "userdashboard.html";
+        } else {
+            const errorData = await response.json()
+            console.error('Error:', errorData.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+  const params = new URLSearchParams(window.location.search);
+  const loggedInUsername = params.get('username');
+  
+  // Set the username in the HTML
+  const usernameDisplay = document.getElementById('usernameDisplay');
+  if (usernameDisplay) {
+      usernameDisplay.textContent = loggedInUsername || 'Guest';
+  }
+  function displayLoggedInUsername(){
+    const loggedInUsername = localStorage.getItem('loggedInUsername');
+    const usernameDisplayElement = document.querySelectorAll('#usernameDisplay');
+
+    usernameDisplayElement.forEach(element =>{
+      element.textContent =loggedInUsername || 'Guest';
+    })
+  }
+
+// Function to fetch stories by the logged-in user
+async function fetchStoriesByUser(author) {
+  const loggedInUsername = localStorage.getItem('loggedInUsername');
+  try {
+    const response = await fetch(`http://localhost:3002/stories/${loggedInUsername}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch stories');
+    }
+    const stories = await response.json();
+    displayStories(stories.stories);
+    return stories; 
+  } catch (error) {
+    console.error('Error fetching stories:', error);
+  }
+}
+
+// Function to display stories in the card
+function displayStories(stories) {
+  console.log(stories)
+  const cardTitle = document.querySelector('.payment--card.light-blue .title');
+  const workType = document.querySelector('.payment--card.light-blue .work-type');
+
+  if (!Array.isArray(stories) || stories.length === 0) {
+    console.error('Invalid data format or empty stories array');
+    return;
+  }
+
+  // Display only the first story's title and content in the card
+  const firstStory = stories[0];
+  cardTitle.textContent = firstStory.title;
+  workType.textContent = firstStory.content;
+
+  // Log stories in the console
+  console.log('Received stories:', stories);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const loggedInUsername = localStorage.getItem('loggedInUsername');
+  if (loggedInUsername) {
+    const stories = fetchStoriesByUser(loggedInUsername);
+    console.log('Fetched stories:', stories); // Logging the fetched stories
+  } else {
+    console.error('No logged-in user found');
+  }
+});
+
+fetchStoriesByUser();
+displayStories();
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const loggedInUsername = localStorage.getItem('loggedInUsername');
+  
+  if (loggedInUsername) {
+    fetchStoriesByUser(loggedInUsername);
+  } else {
+    console.error('No logged-in user found');
+  }
+
+});
+
+
+
+
+  function logoutUser() {
+    console.log('log out function called')
+      localStorage.removeItem('token');
+      window.location.href = './login.html';
+  }
+ 
+  displayLoggedInUsername();
+  // checkLoginStatus();
+
+
+  if (signupForm) {
+      signupForm.addEventListener('submit', registerUser);
+  }
+
+  if (loginForm) {
+      loginForm.addEventListener('submit', loginUser);
+  }
+
+  if (logoutButton) {
+      logoutButton.addEventListener('click', logoutUser);
+  }
+
+
+});
 

@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       textarea.value = contentText;
      
-      textarea.style.width = '100%'; // Set width to 400px
-      textarea.style.height = '250px'; // Set height to 200px
+      textarea.style.width = '100%'; 
+      textarea.style.height = '250px'; 
   
       textareaContainer.innerHTML = ''; 
       textareaContainer.appendChild(textarea);
@@ -80,5 +80,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Invalid data format received:', data);
         // Handle invalid data
       }
+    }
+    const logoutButton =  document.querySelector('.logout')
+    function logoutUser() {
+      localStorage.removeItem('token');
+      window.location.href = './login.html'
+    }
+    if(logoutButton) {
+      logoutButton.addEventListener('click', logoutUser)
     }
   });

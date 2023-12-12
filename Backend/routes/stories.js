@@ -6,7 +6,9 @@ router.post('/create', storiesController.createStory);
 router.get('/all', storiesController.fetchAllStories)
 router.delete('/:storyId', storiesController.deteleStory);
 router.patch('/:storyId', storiesController.editStoryById);
-router.get('/:storyId', storiesController.fetchStoryById)
+router.get('/:author', storiesController.fetchStoriesByAuthor)
+// router.get('/:storyId', storiesController.fetchStoryById)
+
 // // router.put('/accept-collaboration/:collaborationId', storiesController.acceptCollaborationAndUpdateStory);
 // // router.post('/reject-collaboration', storiesController.rejectCollaboration);
 

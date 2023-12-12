@@ -11,16 +11,23 @@ const createStory = async (req, res) => {
           res.status(500).json({ message: 'Error creating story' });
         }
       };
+
+      //an experiment//
+
   const fetchAllStories =async (req, res) =>{
     try {
-        const result = await db.query ('SELECT title, author,content , story_id FROM stories');
+        const result = await db.query ('SELECT title, author,content , story_id, created_at FROM stories');
         res.status(201).json({stories: result.rows});
     } catch (error) {
         console.error('Error fetching stories:', error);
         res.status(500).json({ message: 'Error Fetching Stories'})
         
     }
-  }     
+  }   
+
+
+
+
 const deteleStory =  async (req, res) =>{
     try {
         const { storyId } = req.params; 
@@ -54,26 +61,49 @@ const editStoryById = async (req, res) => {
     }
 };
 
-const fetchStoryById = async (req, res) => {
+
+
+const fetchStoriesByAuthor = async (req, res) => {
     try {
-        const { storyId } = req.params;
+        const { author } = req.params;
+        const result = await db.query(
+            'SELECT title, author, created_at, story_id, content FROM stories WHERE author = $1',
+            [author]
+        );
 
-        const result = await db.query('SELECT * FROM stories WHERE story_id = $1', [storyId]);
-
-        if (result.rows.length === 1) {
-            res.status(200).json(result.rows[0]); // Returning the story data
+        if (result.rows.length >= 1) {
+            res.status(200).json({ stories: result.rows });
         } else {
-            res.status(404).json({ message: 'Story not found' });
+            res.status(404).json({ message: 'No stories found for the author' });
         }
     } catch (error) {
-        console.error('Error fetching story by ID:', error);
-        res.status(500).json({ message: 'Error fetching story by ID' });
+        console.error('Error fetching stories by author:', error);
+        res.status(500).json({ message: 'Error fetching stories' });
     }
 };
 
 
+// const fetchStoryById = async (req, res) => {
+//     try {
+//         const { storyId } = req.params;
 
-  module.exports= {createStory, fetchAllStories, deteleStory, editStoryById, fetchStoryById}
+//         const result = await db.query('SELECT * FROM stories WHERE story_id = $1', [storyId]);
+
+//         if (result.rows.length === 1) {
+//             res.status(200).json(result.rows[0]);
+//         } else {
+//             res.status(404).json({ message: 'Story not found' });
+//         }
+//     } catch (error) {
+//         console.error('Error fetching story by ID:', error);
+//         res.status(500).json({ message: 'Error fetching story by ID' });
+//     }
+// };
+
+
+
+
+  module.exports= {createStory, fetchAllStories, deteleStory, editStoryById, fetchStoriesByAuthor}
 
 // const fetchStoryById = async (req, res) => {
 //     try {

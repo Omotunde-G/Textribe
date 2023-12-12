@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
   
         const userRole = document.getElementById('userRole');
-        const adminRole = document.getElementById('adminRole');
+   
   
-        const role = userRole.checked ? userRole.value : adminRole.value;
+        const role = userRole;
         const reqData = JSON.stringify({ fullname, username, password, role });
   
         try {
