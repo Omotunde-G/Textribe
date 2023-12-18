@@ -1,9 +1,5 @@
-
-
-
 document.addEventListener('DOMContentLoaded', async () => {
-   
-  
+    
   async function fetchStoriesByUsers() {
     try {
       const response = await fetch(`http://localhost:3002/stories/all`);
@@ -19,14 +15,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   function displayStories(stories) {
    if(!Array.isArray(stories)){
-    console.error('Invalid data format- Expect an array')
+    console.error('Invalid data format- Expect an array');
+    return;
    }
     const tableBody = document.querySelector('.table--container tbody');
     tableBody.innerHTML = '';
+    const dateFormatter = new Intl.DateTimeFormat('en-US', {day: 'numeric', month: 'short', year : 'numeric'})
+
     stories.forEach(story => {
       const row = document.createElement('tr');
+      const createdAt = new Date(story.created_at);
+      const formattedDate = dateFormatter.format(createdAt);
       row.innerHTML = ` 
-        <td>${story.created_at}</td>
+        <td>${formattedDate}</td>
         <td>${story.title}</td>
         <td>${story.content}</td>
         <td>${story.author}</td>
@@ -82,14 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (response.ok) {
             const data = await response.json();
-            const { token, username: loggedInUsername } = data;
+            const { token, username: loggedInUsername , user_id } = data;
+            
 
             localStorage.setItem('token', token);
             localStorage.setItem('loggedInUsername', loggedInUsername)
-
-            // Display logged-in username in the UI (usernameDisplay is an element)
-            const usernameDisplay = document.getElementById('usernameDisplay');
-
+            localStorage.setItem('user_id', user_id)
             // Redirect to the user dashboard
             window.location = "userdashboard.html";
         } else {
