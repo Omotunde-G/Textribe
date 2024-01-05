@@ -85,8 +85,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         numberOfStories,
         username: loggedInUsername
     };
-    console.log(userId);
-
     try {
         let response;
         const userProfile = await fetchUserProfile(loggedInUsername);
@@ -109,32 +107,34 @@ document.addEventListener('DOMContentLoaded', async () => {
                 },
                 body: JSON.stringify(userData),
             });
-        }
-        console.log(userData)
-
+                }
         if (response.ok) {
             const updatedProfile = await fetchUserProfile(loggedInUsername);
             displayUserProfile(updatedProfile);
+          
         } else {
             console.error('Error updating user profile');
         }
     } catch (error) {
-        console.error('Error updating user profile:', error);
     }
 });
 
 async function fetchUserProfile(username) {
     try {
-        const response = await fetch(`http://localhost:3002/users/updateProfile/${username}`);
+        const response = await fetch(`http://localhost:3002/users/userProfile/${username}`);
         if (response.ok) {
             const userProfile = await response.json();
-            return userProfile[0];
+            displayUserProfile(userProfile[0])   
         }
     } catch (error) {
-        console.error('Error fetching user profile:', error);
-    }
-}
 
+    }
+    if (fetchUserProfile) {
+        alert('profile updated')
+    }else{
+        alert('profile not updated')
+    }
+} 
 function displayUserProfile(userData) {
     const FullnameElem = document.getElementById('fullname');
     const BioElem = document.getElementById('bio');

@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const userData = await response.json();
                 console.log(userData)
                 displayUserProfile(userData[0])
+                
             } 
         } catch (error) {
             console.error('Error fetching user profile:', error);

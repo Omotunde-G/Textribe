@@ -1,8 +1,3 @@
-// const token = localStorage.getItem("token")
-// if(token){
-//     window.location = "homepage.html"
-//     }
-
 document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.querySelector('form');
     const loginForm = document.getElementById('loginform');

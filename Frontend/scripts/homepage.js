@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const editBtn = document.getElementById('editBtn');
   const exitBtn = document.getElementById('exitBtn');
   const modal = document.getElementById('modal');
+  const saveBtn = document.getElementById('saveBtn');
   const textareaContainer = document.getElementById('textareaContainer');
   let editorInstance = null;
 
@@ -12,6 +13,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
   });
+
+ 
 
   // Display story content in modal
   function displayStoryContent(story) {
@@ -31,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
+
   // Event listener for "Exit" button
   exitBtn.addEventListener('click', () => {
     if (editorInstance) {
@@ -38,7 +42,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       editorInstance = null;
     }
     modal.style.display = 'none';
+
   });
+ 
 
   try {
     const response = await fetch('http://localhost:3002/stories/all');

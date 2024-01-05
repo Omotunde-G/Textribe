@@ -109,6 +109,24 @@ body{
     align-items: center;
     gap: 1rem;
 }
+/* details */
+.details{
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+.card{
+     background: rgb(229, 223, 223);
+     border-radius: 10px;
+     padding: 1.2rem;
+     width: 290px;
+     height: 190px;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     transition: all 0.5s ease-in-out;
+ }
 
 /* *** card container *** */
 .card--container{
@@ -213,6 +231,17 @@ body{
     letter-spacing: 2px;
     font-family: "Courier New", 'Courier New', Courier, monospace;
 }
+#editor {
+    color: green;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+    display: block;
+    clear: both; /* Clears elements on both sides */
+    margin-top: 20px; /* Adjust the top margin as needed */
+    width: 100%;
+}
+
 /* color css */
 .light-red{
     background: rgb(251, 233, 233);

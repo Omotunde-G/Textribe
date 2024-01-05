@@ -13,6 +13,18 @@ const fetchUser = async (req, res ) => {
     };
   
 }
+const fetchUserProfiles = async (req, res) =>{
+    try {
+        const query = 'SELECT * FROM user_profile';
+        const result = await db.query(query);
+
+        res.json(result.rows);
+    } catch (error) {
+        console.error('Error fetching users profiles', error)
+        res.status(500).json({message: 'error fetching users profile'})
+        
+    };
+}
 
 const fetchUserById = async (req, res) => {
     try {
@@ -96,23 +108,35 @@ const UserProfile = async (req, res) => {
     }
 };
 
-        const UpdateUserProfile = async (req, res) => {
-            try {
-                const {user_id} = req.params;
-                const {bio, username, fullname, location, numberOfStories} = req.body;
-                const result = await db.query('UPDATE user_profile SET bio= $2,  username = $3, fullname= $4, location = $5, number_of_stories = $6 WHERE user_id = $1' , [user_id, bio, username, fullname,location, numberOfStories])
-                if (result.rowCount === 1) {
-                    res.status(200).json({message: "Profile Updated"})
-                } else {
-                    res.status(404).json({ message: 'Error updating Profile'})
-                }
-            } catch (error) {
-                console.error('Error Updating profile', error)
-                res.status(500).json({message : "error updating profile"})
-        
-                
-            }
-         };
+const UpdateUserProfile = async (req, res) => {
+    try {
+        const { user_id } = req.params;
+        const { bio, username, fullname, location, numberOfStories } = req.body;
+
+        const existingProfileData = await db.query('SELECT * FROM user_profile WHERE user_id = $1', [user_id]);
+        const currentData = existingProfileData.rows[0]; 
+
+        const updatedData = {
+            bio: bio !== undefined && bio !== '' ? bio : currentData.bio,
+            username: username !== undefined && username !== '' ? username : currentData.username,
+            fullname: fullname !== undefined && fullname !== '' ? fullname : currentData.fullname,
+            location: location !== undefined && location !== '' ? location : currentData.location,
+            number_of_stories: numberOfStories !== undefined && numberOfStories !== '' ? numberOfStories : currentData.number_of_stories
+        };
+
+        const result = await db.query('UPDATE user_profile SET bio = $1, username = $2, fullname = $3, location = $4, number_of_stories = $5 WHERE user_id = $6', [updatedData.bio, updatedData.username, updatedData.fullname, updatedData.location, updatedData.number_of_stories, user_id]);
+
+        if (result.rowCount === 1) {
+            res.status(200).json({ message: 'Profile Updated' });
+        } else {
+            res.status(404).json({ message: 'Error updating Profile' });
+        }
+    } catch (error) {
+        console.error('Error Updating profile', error);
+        res.status(500).json({ message: 'Error updating profile' });
+    }
+};
+
         
 
-module.exports = {fetchUser , UserProfile, UpdateUserProfile, fetchUserById, fetchUserByUsername, createUserProfileByUsername }
+module.exports = {fetchUser , UserProfile, UpdateUserProfile, fetchUserById, fetchUserByUsername, createUserProfileByUsername , fetchUserProfiles}

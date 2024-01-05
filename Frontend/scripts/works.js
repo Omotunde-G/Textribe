@@ -64,19 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         element.textContent =loggedInUsername || 'Guest';
       })
     }
-  
-    function checkLoginStatus(){
-      const loggedInUsername = localStorage.getItem('loggedInUsername');
-      const currentPage = window.location.pathname.slice('/').pop();
-  
-      if(!loggedInUsername) {
-        window.location.href = `./login.html`;
-     
-      } else if (loggedInUsername && currentPage !== 'homepage.html'){
-        window.location.href = `./homepage.html?username=${loggedInUsername}`;
-      }
-    }
-  
+    
     function logoutUser() {
       console.log('log out function called')
         localStorage.removeItem('token');
@@ -84,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
    
     displayLoggedInUsername();
-    // checkLoginStatus();
+
   
   
     if (signupForm) {
@@ -162,10 +150,15 @@ async function fetchStoriesByUser(author) {
   });
 
     const newProjectLink = document.getElementById('newproject');
-
+    newProjectLink.addEventListener('click', function(event) {
+        const button = document.createElement('button');
+        
+        document.body.appendChild(button)
+    })
+   
     newProjectLink.addEventListener('click', function(event) {
         event.preventDefault();
-        console.log('clicked')
+       
 
         // Open the Froala Editor when the "New Project" link is clicked
         const editor = new FroalaEditor('#editor', {
@@ -175,36 +168,29 @@ async function fetchStoriesByUser(author) {
                     buttonsVisible: 3
                 },
                 moreParagraph: {
-                    buttons: ['alignLeft', 'alignCenter', 'formatOLSimple', 'formatUL', 'paragraphFormat', 'paragraphStyle', 'lineHeight'],
-                    buttonsVisible: 3
+                    buttons: ['alignLeft', 'alignCenter', 'formatOLSimple', 'formatUL', 'paragraphFormat', 'paragraphStyle', 'lineHeight', 'fullscreen'],
+                    buttonsVisible: 8
                 }
                
             },
             events: {
                 'initialized': function() {
-                    // Add a custom save button to the Froala Editor toolbar
-                    const saveButton = document.createElement('button');
-                    saveButton.setAttribute('id', 'saveButton');
-                    saveButton.classList.add('fr-command');
-                    saveButton.setAttribute('title', 'Save');
-                    saveButton.textContent = 'Save';
-                    const toolbar = this.toolbar;
-                    toolbar.getButtons().push(saveButton);
-                    toolbar.show();
+                    const froalaInstance = this;
 
-                    // Add a click event listener to the custom save button
-                    saveButton.addEventListener('click', function() {
-                        // Get the content from the editor
-                        const content = editor.html.get();
+            const saveButton = { 
+                title: 'Save',
+                icon: 'fa fa-save',
+                callback: function() {
+                    const content = froalaInstance.html.get();
+                    saveContentToDatabase(content); 
 
-                        // Perform an AJAX request to save the content to the database
-                        saveContentToDatabase(content); // Implement this function to save content to the database
-                    });
+   
                 }
-            }
-          
-        });
-    });
-    
-});
-
+            };
+            froalaInstance.toolbar.addButton('saveButton', saveButton);
+        }
+    }
+})
+    })
+})
+        
