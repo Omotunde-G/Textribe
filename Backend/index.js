@@ -26,6 +26,6 @@ app.use('/stories', storiesRoutes);
 
 
 
-app.listen(3002, ()=>{
-    console.log('server is running on port 3002')
+app.listen(3005, ()=>{
+    console.log('server is running on port 3005')
 })
