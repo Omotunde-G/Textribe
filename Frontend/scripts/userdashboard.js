@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
   async function fetchStoriesByUsers() {
     try {
-      const response = await fetch(`http://localhost:3002/stories/all`);
+      const response = await fetch(`http://localhost:3005/stories/all`);
       if (!response.ok) {
         throw new Error('Failed to fetch stories');
       }
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const reqData = JSON.stringify({ username, password });
 
     try {
-        const response = await fetch('http://localhost:3002/auth/login', {
+        const response = await fetch('http://localhost:3005/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function fetchStoriesByUser(author) {
   const loggedInUsername = localStorage.getItem('loggedInUsername');
   try {
-    const response = await fetch(`http://localhost:3002/stories/${loggedInUsername}`);
+    const response = await fetch(`http://localhost:3005/stories/${loggedInUsername}`);
     if (!response.ok) {
       throw new Error('Failed to fetch stories');
     }

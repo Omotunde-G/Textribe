@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
  
 
   try {
-    const response = await fetch('http://localhost:3002/stories/all');
+    const response = await fetch('http://localhost:3005/stories/all');
     if (response.ok) {
       const data = await response.json();
       if (data && data.stories && Array.isArray(data.stories)) {

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const reqData = JSON.stringify({ fullname, username, password, role });
     
         try {
-            const response = await fetch('http://localhost:3002/auth/register', {
+            const response = await fetch('http://localhost:3005/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const reqData = JSON.stringify({ username, password });
     
         try {
-            const response = await fetch('http://localhost:3002/auth/login', {
+            const response = await fetch('http://localhost:3005/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

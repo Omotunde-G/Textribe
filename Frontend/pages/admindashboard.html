@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="../styles/admindashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../styles/admindashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Textribe</title>
 </head>
+
 <body>
     <div class="sidebar">
         <div class="logo"><a href="login.html"> Textribe</a></div>
@@ -21,20 +25,20 @@
             <li>
                 <a href="#">
                     <i class="fas fa-user"></i>
-                        <span>Manage Users</span>
+                    <span>Manage Users</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fas fa-star"></i>
-                        <span>Analytics</span>
+                    <span>Analytics</span>
                 </a>
             </li>
-         
+
             <li class="logout">
                 <a href="#" onclick="logoutUser()">
                     <i class="fas fa-sign-out-alt"></i>
-                        <span>Logout</span>
+                    <span>Logout</span>
                 </a>
             </li>
         </ul>
@@ -42,46 +46,138 @@
     <div class="main--content">
         <div class="header--wrapper">
             <div class="header--title">
-             <h2>Hello Admin </h2>
+                <h2>Hello Admin </h2>
             </div>
             <h3>Welcome to the Admin Panel</h3>
             <div class="user--info">
                 <div class="search--box">
-            </div>
-            <img src="../images/user-icon-on-transparent-background-free-png.webp" alt="">
+                </div>
+                <img src="../images/user-icon-on-transparent-background-free-png.webp" alt="">
             </div>
         </div>
-       
+        <!-- stories -->
+        <div class="tabular--wrapper">
+            <h3 class="main--title">Stories</h3>
+            <div class="table--container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date Created</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Author</th>
+                            <th></th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <!-- <td><button>Edit</button></td> -->
+                            <td>
+                                <div class="dropdown">
+                                    <button class="dropbtn">Action</button>
+                                    <div class="dropdown-content">
+                                        <a href="#" class="delete">Delete</a>
+                                        <a href="#" class="edit">Edit</a>
+                                        <a href="#" class="publish">Publish</a>
+                                        <a href="#" class="publish">Publish For Collaborative </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <!-- <td><button>Edit</button></td> -->
+                            <td>
+                                <div class="dropdown">
+                                    <button class="dropbtn">Action</button>
+                                    <div class="dropdown-content">
+                                        <a href="#" class="delete">Delete</a>
+                                        <a href="#" class="edit">Edit</a>
+                                        <a href="#" class="publish">Publish</a>
+                                        <a href="#" class="publish">Publish For Collaborative </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <!-- <td><button>Action</button></td> -->
+                            <td>
+                                <div class="dropdown">
+                                    <button class="dropbtn">Action</button>
+                                    <div class="dropdown-content">
+                                        <a href="#" class="delete">Delete</a>
+                                        <a href="#" class="edit">Edit</a>
+                                        <a href="#" class="publish">Publish</a>
+                                        <a href="#" class="publish">Publish For Collaborative </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6"> </td>
+
+
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+
         <!-- card -->
         <div class="tabular--wrapper">
             <h3 class="main--title">Users</h3>
             <div class="table--container">
-              <table>
-                <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Username</th>
-                                <th>Action</th>
-                            </tr>
-                  <!-- Table header columns -->
-                </thead>
-                <tbody>
-                  <!-- Table body will be populated dynamically with user data -->
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td id="Total" colspan="2"></td>
-                  </tr>
-                </tfoot>
-              </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Username</th>
+                            <th>Action</th>
+                        </tr>
+                        <!-- Table header columns -->
+                    </thead>
+                    <tbody>
+                        <!-- Table body will be populated dynamically with user data -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td id="Total" colspan="2"></td>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
-          </div>
-          
+        </div>
+
     </div>
-</div>
+    </div>
     </div>
     <script src="../scripts/admindashboard.js"></script>
-    </body>
-    </html>
+</body>
+
+</html>

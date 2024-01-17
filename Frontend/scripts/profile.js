@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const reqData = JSON.stringify({ username, password });
   
       try {
-          const response = await fetch('http://localhost:3002/auth/login', {
+          const response = await fetch('http://localhost:3005/auth/login', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
         try {
          
-            const response = await fetch(`http://localhost:3002/users/userProfile/${loggedInUsername}`);
+            const response = await fetch(`http://localhost:3005/users/userProfile/${loggedInUsername}`);
             if (response.ok) {
                 const userData = await response.json();
                 console.log(userData)
