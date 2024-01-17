@@ -2,15 +2,18 @@ const db = require("../db/index")
 
 // creating a story
 const createStory = async (req, res) => {
-    console.log(req.body);
-        // try {
-        //   const { title, content, author } = req.body;
-        //   const result = await db.query('INSERT INTO stories (title, content, author) VALUES ($1, $2, $3) RETURNING *', [title, content, author]);
-        //   res.status(201).json({ message: 'Story created successfully', story: result.rows[0] });
-        // } catch (error) {
-        //   console.error('Error creating story:', error);
-        //   res.status(500).json({ message: 'Error creating story' });
-        // }
+    console.log('Request body:', req.body);
+        try {
+          const { title, content, author } = req.body;
+          if(!title || !author || !content){
+            return res.status(400).json({ message: 'Title, author, content are required'})
+          }
+          const result = await db.query('INSERT INTO stories (title, author, content) VALUES ($1, $2, $3) RETURNING *', [title, author, content]);
+          res.status(201).json({ message: 'Story created successfully', story: result.rows[0] });
+        } catch (error) {
+          console.error('Error creating story:', error);
+          res.status(500).json({ message: 'Error creating story' });
+        }
       };
 
       //an experiment//

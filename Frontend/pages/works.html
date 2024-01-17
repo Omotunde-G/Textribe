@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="../styles/works.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="../styles/works.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet'
+        type='text/css' />
 
     <title>Textribe</title>
 </head>
+
 <body>
     <div class="sidebar">
         <div class="logo"><a href="homepage.html"> Textribe</a></div>
@@ -22,25 +27,25 @@
             <li>
                 <a href="profile.html">
                     <i class="fas fa-user"></i>
-                        <span>Profile</span>
+                    <span>Profile</span>
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fas fa-star"></i>
-                        <span>Works</span>
+                    <span>Works</span>
                 </a>
             </li>
             <li>
                 <a href="setting.html">
                     <i class="fas fa-cog"></i>
-                        <span>Setting</span>
+                    <span>Setting</span>
                 </a>
             </li>
             <li class="logout">
                 <a href="#" onclick="logoutUser()">
                     <i class="fas fa-sign-out-alt"></i>
-                        <span>Logout</span>
+                    <span>Logout</span>
                 </a>
             </li>
         </ul>
@@ -48,139 +53,90 @@
     <div class="main--content">
         <div class="header--wrapper">
             <div class="header--title">
-                <span>Hello 
-                <h2 id="usernameDisplay"> </h2> </span>
+                <span>Hello
+                    <h2 id="usernameDisplay"> </h2>
+                </span>
             </div>
             <div class="user--info">
                 <div class="search--box">
-            </div>
-            <img src="../images/user-icon-on-transparent-background-free-png.webp" alt="">
+                </div>
+                <img src="../images/user-icon-on-transparent-background-free-png.webp" alt="">
             </div>
         </div>
-         <!-- statistics -->
-         <div class="details">
 
-            <div class="card--wrapper">
+        <!-- card -->
+        <div class="card--container">
 
-               
-                    <!-- two -->
-
-            <div class="card--wrapper">
-
-                <div class="card">
-                    <div class="card--header">
-                        <div class="amount">
-                            <h4>Works In Progress</h4>
-                            </div> <br>
-                            <span class="value"> 
-                            <h1> 11   </h1>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- three -->
-
-            <div class="card--wrapper">
-
-                <div class="card">
-                    <div class="card--header">
-                        <div class="amount">
-                            <h4>Collaboration</h4>
-                            </div> <br>
-                            <span class="value"> 
-                            <h1> 11   </h1>
-                            </span>
-                        </div>
-                    </div>
-            <div class="card">
-                <div class="card--header">
-                    <div class="amount">
-                      <h4>Published Stories</h4>
-                        </div> <br>
-                        <span class="value"> 
-                        <h1> 11   </h1>
-                        </span>
-                    </div>
-                  
-              
-          </div>
-      </div>
-      </div>
-
-         </div>
-         </div>
-         
-
-           <!-- card -->
-    <div class="card--container">
-
-         <div class="work">  <h3 class="main--title">Work in Progress</h3>
-            <a href="#" id="newproject" class="new-project">
-                New Project
-            </a>
+            <div class="work">
+                <h3 class="main--title">Work in Progress</h3>
+                <a href="#" id="newproject" class="new-project">
+                    New Project
+                </a>
             </div>
-        <div class="card--wrapper">
+           
+            <div class="card--wrapper">
 
-            <div class="payment--card light-blue">
-                <div class="card--header">
-                    <div class="amount">
-                        <span class="title">
-                      
-                        </span>
-                        <hr class="seperator">
-                        <span class="work-type">
-                        
-                        </span>
-                        </div> 
+                <div class="payment--card light-blue">
+                    <div class="card--header">
+                        <div class="amount">
+                            <span class="title">
+
+                            </span>
+                            <hr class="seperator">
+                            <span class="work-type">
+
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="payment--card light-purple">
                     <div class="card--header">
                         <div class="amount">
                             <span class="title">
-                               
+
                             </span>
                             <hr class="seperator">
                             <span class="work-type">
-                              
+
                             </span>
-                            </div> 
                         </div>
                     </div>
-                    <div class="payment--card light-green">
-                        <div class="card--header">
-                            <div class="amount">
-                                <span class="title">
-                                 
-                                </span>
-                                <hr class="seperator">
-                                <span class="work-type">
-                                 
-                                </span>
-                                </div> 
-                            </div>
-                        </div>
+                </div>
+                <div class="payment--card light-green">
+                    <div class="card--header">
+                        <div class="amount">
+                            <span class="title">
 
-                        <div class="payment--card light-red">
-                            <div class="card--header">
-                                <div class="amount">
-                                    <span class="title">
-                                    
-                                    </span>
-                                    <hr class="seperator">
-                                    <span class="work-type">
-                                    
-                                    </span>
-                                    </div> 
-                                </div>
-                            </div>
-            
-    
+                            </span>
+                            <hr class="seperator">
+                            <span class="work-type">
+
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment--card light-red">
+                    <div class="card--header">
+                        <div class="amount">
+                            <span class="title">
+
+                            </span>
+                            <hr class="seperator">
+                            <span class="work-type">
+
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
             <div id="editor">
-        
+
             </div>
         </div>
-   <div class="gap" style="padding: 20px;"></div>
+        <div class="gap" style="padding: 20px;"></div>
 
         <!-- here -->
         <div class="card--container">
@@ -190,70 +146,72 @@
                     <div class="card--header">
                         <div class="amount">
                             <span class="title">
-                               
+
                             </span>
                             <hr class="seperator">
                             <span class="work-type">
-                             
+
                             </span>
-                            </div> 
                         </div>
                     </div>
-                    <div class="payment--card light-purple">
-                        <div class="card--header">
-                            <div class="amount">
-                                <span class="title">
-                                
-                                </span>
-                                <hr class="seperator">
-                                <span class="work-type">
-                                
-                                </span>
-                                </div> 
-                            </div>
+                </div>
+                <div class="payment--card light-purple">
+                    <div class="card--header">
+                        <div class="amount">
+                            <span class="title">
+
+                            </span>
+                            <hr class="seperator">
+                            <span class="work-type">
+
+                            </span>
                         </div>
-                        <div class="payment--card light-green">
-                            <div class="card--header">
-                                <div class="amount">
-                                    <span class="title">
-                                    
-                                    </span>
-                                    <hr class="seperator">
-                                    <span class="work-type">
-                                    
-                                    </span>
-                                    </div> 
-                                </div>
-                            </div>
-    
-                            <div class="payment--card light-red">
-                                <div class="card--header">
-                                    <div class="amount">
-                                        <span class="title">
-                                         
-                                        </span>
-                                        <hr class="seperator">
-                                        <span class="work-type">
-                                       
-                                        </span>
-                                        </div> 
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+                <div class="payment--card light-green">
+                    <div class="card--header">
+                        <div class="amount">
+                            <span class="title">
+
+                            </span>
+                            <hr class="seperator">
+                            <span class="work-type">
+
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment--card light-red">
+                    <div class="card--header">
+                        <div class="amount">
+                            <span class="title">
+
+                            </span>
+                            <hr class="seperator">
+                            <span class="work-type">
+
+                            </span>
+                        </div>
+                    </div>
+                </div>
                 <!-- hehr -->
                 <div class="card--container">
-                   
+
                     <div class="card--wrapper">
-                     
-                
-                        </div>
+
+
                     </div>
-        
                 </div>
+
             </div>
-         
-        </div>     
-       
+        </div>
+
+    </div>
+
     <script src="../scripts/works.js"></script>
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>  	
-        </body>
-        </html>
+    <script type='text/javascript'
+        src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
+</body>
+
+</html>
