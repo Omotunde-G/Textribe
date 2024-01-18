@@ -18,8 +18,7 @@ const userExists = async (username) => {
   };
 // Registration
 const registerUser = async (req, res) => {
-  const {fullname, username, password } = req.body;
-  console.log(req.body);
+  const { fullname, username, password } = req.body;
 
   const doesUserExist = await userExists(username);
   if (doesUserExist) {
@@ -27,22 +26,28 @@ const registerUser = async (req, res) => {
   }
 
   try {
-    const hashedPassword = await bcrypt.hash(password, saltRounds); 
-    const insertQuery = "INSERT INTO users (fullname, username, password) VALUES ($1, $2, $3) RETURNING user_id";
-    const result = await db.query(insertQuery, [fullname, username , hashedPassword]);
-    
-    const user_id = result.rows[0].user_id;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    // Insert into 'users' table
+    const insertUserQuery = 'INSERT INTO users (fullname, username, password) VALUES ($1, $2, $3) RETURNING user_id';
+    const userResult = await db.query(insertUserQuery, [fullname, username, hashedPassword]);
+    const user_id = userResult.rows[0].user_id;
+
+    // Insert into 'user_profile' table
+    const insertUserProfileQuery = 'INSERT INTO user_profile (user_id, username, fullname) VALUES ($1, $2, $3)';
+    await db.query(insertUserProfileQuery, [user_id, username, fullname]);
 
     const token = jwt.sign({ username }, secretKey, {
       expiresIn: 60 * 60,
     });
 
-    res.status(201).json({ message: 'User registered successfully', token , user_id});
+    res.status(201).json({ message: 'User registered successfully', token, user_id });
   } catch (error) {
-    console.error('Error retrieving user:', error);
-     res.status(500).json({ message: 'Error retrieving user' });
+    console.error('Error registering user:', error);
+    res.status(500).json({ message: 'Error registering user' });
   }
 };
+
 
 // Login
 

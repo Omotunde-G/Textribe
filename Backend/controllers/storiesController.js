@@ -68,22 +68,25 @@ const editStoryById = async (req, res) => {
 
 
 const fetchStoriesByAuthor = async (req, res) => {
-    try {
-        const { author } = req.params;
-        const result = await db.query(
-            'SELECT title, author, created_at, story_id, content FROM stories WHERE author = $1',
-            [author]
-        );
-
-        if (result.rows.length >= 1) {
-            res.status(200).json({ stories: result.rows });
-        } else {
-            res.status(404).json({ message: 'No stories found for the author' });
+        try {
+            // Assuming you have a middleware that attaches user information to the request
+            const userId = req.user.id; // Adjust this based on how user information is stored in your application
+            console.log(userId);
+            const result = await db.query(
+                'SELECT story_id, title, content, timestamp FROM stories WHERE user_id = $1',
+                [userId]
+            );
+    
+            if (result.rows.length >= 1) {
+                res.status(200).json({ stories: result.rows });
+            } else {
+                res.status(404).json({ message: 'No stories found for the current user' });
+            }
+        } catch (error) {
+            console.error('Error fetching stories by current user:', error);
+            // Log the error more systematically, e.g., using a logging library
+            res.status(500).json({ message: 'Internal Server Error' });
         }
-    } catch (error) {
-        console.error('Error fetching stories by author:', error);
-        res.status(500).json({ message: 'Error fetching stories' });
-    }
 };
 
 

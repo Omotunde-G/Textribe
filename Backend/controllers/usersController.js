@@ -49,50 +49,8 @@ const fetchUserByUsername = async (req, res) => {
     }
 }
 
-const createUserProfileByUsername = async (req, res) => {
-    try {
-        const {user_id} = req.params;
-        const { username, bio, fullname, location, numberOfStories } = req.body;
 
-        if (user_id) {
-            // If 'user_id' is provided, use it directly
-            const result = await db.query('INSERT INTO user_profile (user_id, bio, fullname, location, number_of_stories) VALUES ($1, $2, $3, $4, $5) RETURNING *', [user_id, bio, fullname, location, numberOfStories]);
-            res.status(201).json({ message: 'Profile Created' });
-        } else if (username) {
-            // If 'username' is provided, fetch 'user_id' from the username
-            const user = await getUserIdFromUsername(username);
-            if (user && user.user_id) {
-                const result = await db.query('INSERT INTO user_profile (user_id, bio, fullname, location, number_of_stories) VALUES ($1, $2, $3, $4, $5) RETURNING *', [user.user_id, bio, fullname, location, numberOfStories]);
-                res.status(201).json({ message: 'Profile Created' });
-            } else {
-                res.status(404).json({ message: 'User not found' });
-            }
-        } else {
-            res.status(400).json({ message: 'Missing user_id or username' });
-        }
-    } catch (error) {
-        console.error('Error Creating Profile', error);
-        res.status(500).json({ message: 'Error Creating Profile' });
-    }
-};
 
-const getUserIdFromUsername = async (username) => {
-    try {
-        // Perform the database query to retrieve user_id based on username
-        // Replace this with your actual database query logic
-        const result = await db.query('SELECT user_id FROM users WHERE username = $1', [username]);
-
-        // Assuming the query result contains the user_id
-        if (result && result.rows.length > 0) {
-            return result.rows[0]; // Return the user object containing user_id
-        } else {
-            return null; // Return null if user with the given username doesn't exist
-        }
-    } catch (error) {
-        console.error('Error fetching user_id from username:', error);
-        throw error;
-    }
-};
 
 
 
@@ -108,35 +66,58 @@ const UserProfile = async (req, res) => {
     }
 };
 
-const UpdateUserProfile = async (req, res) => {
+
+const CreateOrUpdateUserProfile = async (req, res) => {
     try {
         const { user_id } = req.params;
         const { bio, username, fullname, location, numberOfStories } = req.body;
 
+        // Check if the user profile already exists
         const existingProfileData = await db.query('SELECT * FROM user_profile WHERE user_id = $1', [user_id]);
-        const currentData = existingProfileData.rows[0]; 
 
-        const updatedData = {
-            bio: bio !== undefined && bio !== '' ? bio : currentData.bio,
-            username: username !== undefined && username !== '' ? username : currentData.username,
-            fullname: fullname !== undefined && fullname !== '' ? fullname : currentData.fullname,
-            location: location !== undefined && location !== '' ? location : currentData.location,
-            number_of_stories: numberOfStories !== undefined && numberOfStories !== '' ? numberOfStories : currentData.number_of_stories
-        };
+        if (existingProfileData.rows.length === 0) {
+            // If the user profile doesn't exist, insert a new record
+            const insertResult = await db.query('INSERT INTO user_profile (user_id, bio, username, fullname, location, number_of_stories) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+                [user_id, bio, username, fullname, location, numberOfStories]);
 
-        const result = await db.query('UPDATE user_profile SET bio = $1, username = $2, fullname = $3, location = $4, number_of_stories = $5 WHERE user_id = $6', [updatedData.bio, updatedData.username, updatedData.fullname, updatedData.location, updatedData.number_of_stories, user_id]);
-
-        if (result.rowCount === 1) {
-            res.status(200).json({ message: 'Profile Updated' });
+            if (insertResult.rowCount === 1) {
+                res.status(201).json({ message: 'Profile Created' });
+            } else {
+                res.status(404).json({ message: 'Error creating Profile' });
+            }
         } else {
-            res.status(404).json({ message: 'Error updating Profile' });
+            // If the user profile exists, update it
+            const currentData = existingProfileData.rows[0];
+
+            const updatedData = {
+                bio: bio !== undefined && bio !== '' ? bio : currentData.bio,
+                username: username !== undefined && username !== '' ? username : currentData.username,
+                fullname: fullname !== undefined && fullname !== '' ? fullname : currentData.fullname,
+                location: location !== undefined && location !== '' ? location : currentData.location,
+                number_of_stories: numberOfStories !== undefined && numberOfStories !== '' ? numberOfStories : currentData.number_of_stories
+            };
+
+            const updateResult = await db.query(`
+                UPDATE user_profile
+                SET bio = $1, username = COALESCE($2, username), fullname = $3, location = $4, number_of_stories = $5
+                WHERE user_id = $6
+                RETURNING *
+            `, [updatedData.bio, updatedData.username, updatedData.fullname, updatedData.location, updatedData.number_of_stories, user_id]);
+
+            if (updateResult.rowCount === 1) {
+                res.status(200).json({ message: 'Profile Updated', data: updateResult.rows[0] });
+            } else {
+                res.status(404).json({ message: 'Error updating Profile' });
+            }
         }
     } catch (error) {
-        console.error('Error Updating profile', error);
-        res.status(500).json({ message: 'Error updating profile' });
+        console.error('Error Creating/Updating profile', error);
+        res.status(500).json({ message: 'Error Creating/Updating profile' });
     }
 };
 
+
+
         
 
-module.exports = {fetchUser , UserProfile, UpdateUserProfile, fetchUserById, fetchUserByUsername, createUserProfileByUsername , fetchUserProfiles}
+module.exports = {fetchUser , UserProfile, CreateOrUpdateUserProfile, fetchUserById, fetchUserByUsername,  fetchUserProfiles}

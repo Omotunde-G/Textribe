@@ -6,51 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const editorDiv = document.getElementById('editor');
 
 
-  // login 
-  async function loginUser(e) {
-    e.preventDefault();
-    //   window.location = "userdashboard.html";
-
-
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-
-    const reqData = JSON.stringify({ username, password });
-
-    try {
-      const response = await fetch('http://localhost:3005/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: reqData,
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        const { token, username: loggedInUsername, user_id } = data;
-
-        localStorage.setItem('token', token);
-        localStorage.setItem('loggedInUsername', loggedInUsername)
-        localStorage.setItem('user_id', user_id)
-
-        // Display logged-in username in the UI (usernameDisplay is an element)
-        const usernameDisplay = document.getElementById('usernameDisplay');
-
-        // Redirect to the user dashboard
-        window.location = "userdashboard.html";
-      } else {
-        const errorData = await response.json()
-        console.error('Error:', errorData.message);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-
   const params = new URLSearchParams(window.location.search);
   const loggedInUsername = params.get('username');
+
 
   // Set the username in the HTML
   const usernameDisplay = document.getElementById('usernameDisplay');
@@ -140,7 +98,11 @@ async function submitNewPost() {
       });
 
       if (response.ok) {
+        alert('Story Succesfully Posted');
           console.log('Story created successfully');
+          document.getElementById('title').value = '';
+          document.getElementById('author').value = '';
+          document.getElementById('story').value = '';
       } else {
           alert('failed')
           console.error('Failed to create story');
@@ -148,6 +110,7 @@ async function submitNewPost() {
   } catch (error) {
       console.error('Error submitting post:', error);
   }
+       
 }
 
 
