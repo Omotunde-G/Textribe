@@ -101,7 +101,7 @@ async function submitNewPost() {
   const data = { users_id, title, author, content: story, }
   console.log(data);
   try {
-      const response = await fetch(`http://localhost:3005/stories/create`, {
+      const response = await fetch(`https://textribe.onrender.com/stories/create`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ async function submitNewPost() {
   async function fetchStoriesByUser(author) {
     const loggedInUsername = localStorage.getItem('loggedInUsername');
     try {
-      const response = await fetch(`http://localhost:3005/stories/${loggedInUsername}`);
+      const response = await fetch(`https://textribe.onrender.com/stories/${loggedInUsername}`);
       if (!response.ok) {
         throw new Error('Failed to fetch stories');
       }

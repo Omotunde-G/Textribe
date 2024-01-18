@@ -8,7 +8,7 @@ async function loginUser(e) {
     const reqData = JSON.stringify({ username, password });
 
     try {
-        const response = await fetch('http://localhost:3005/auth/login', {
+        const response = await fetch('https://textribe.onrender.com/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         try {
             let response;
-            response = await fetch(`http://localhost:3005/users/updateProfile/${userId}`, {
+            response = await fetch(`https://textribe.onrender.com/users/updateProfile/${userId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
         try {
             let response;
-            response = await fetch(`http://localhost:3005/users/updateProfile/${userId}`, {
+            response = await fetch(`https://textribe.onrender.com/users/updateProfile/${userId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const reqData = JSON.stringify({ username, password });
   
       try {
-        const response = await fetch('http://localhost:3005/auth/login', {
+        const response = await fetch('https://textribe.onrender.com/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (loggedInUsername) {
       try {
-        const response = await fetch(`http://localhost:3005/users/userProfile/${loggedInUsername}`);
+        const response = await fetch(`https://textribe.onrender.com/users/userProfile/${loggedInUsername}`);
         console.log(loggedInUsername)
         if (response.ok) {
           const userData = await response.json();
