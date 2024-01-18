@@ -77,7 +77,7 @@ body{
 }
 /*main page*/
 .main{
-    background-image: url("./images/jess-bailey-l3N9Q27zULw-unsplash.jpg");
+    background-image: url("https://source.unsplash.com/l3N9Q27zULw");
     background-size: cover;
 }
 .hero{
@@ -238,4 +238,68 @@ body{
   .footer-right a:hover {
     color: #333; 
   }
-  
+  /* Mobile devices */
+@media only screen and (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .logo-container {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .nav-links-container {
+    margin: 10px auto;
+  }
+
+  .hero {
+    flex-direction: column;
+    padding: 80px;
+  }
+
+  .hero-right img {
+    margin-left: 0;
+  }
+
+  .hero-left {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .about {
+    flex-direction: column;
+  }
+
+  .about-left p {
+    max-width: 100%;
+  }
+
+  .sub img {
+    height: auto;
+  }
+
+  .footer {
+    padding: 20px;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Tablets */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .hero {
+    padding: 120px;
+  }
+}
+
+/* Desktops */
+@media only screen and (min-width: 1025px) {
+  /* Add specific styles for larger screens if needed */
+}

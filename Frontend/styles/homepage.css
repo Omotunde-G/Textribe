@@ -141,8 +141,9 @@ main{
   .story-card{
     border: 1px solid #ccc;
     width: 300px;
+    margin: 0 10px;
     padding: 20px;
-    height: 130px;
+    height: 160px;
     text-align: center;
     border-radius: 2px;
     margin-top: 15px;
@@ -290,3 +291,4 @@ main{
   .footer-right a:hover {
     color: #333; 
   }
+ 

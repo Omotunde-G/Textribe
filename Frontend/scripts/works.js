@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch('https://textribe.onrender.com/auth/login', {
+      const response = await fetch('http://localhost:3005/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const params = new URLSearchParams(window.location.search);
   const loggedInUsername = params.get('username');
+  
+
 
   // Set the username in the HTML
   const usernameDisplay = document.getElementById('usernameDisplay');
@@ -95,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function showNewPostForm() {
   // You can customize the form appearance as needed
   const formHtml = `
+  <div id="createstory" >
   <h2 style="color=#7163FF; margin-bottom: 10px; font-size: 1.5em";>Create New Post</h2>
   <form id="newPostForm" style="margin-bottom: 20px;">
       <label for="title" style="display: block; margin-bottom: 5px;">Title:</label>
@@ -107,10 +110,12 @@ function showNewPostForm() {
       <textarea id="story" rows="5" required style="border: 1px solid black; padding: 5px; width: 100%;"></textarea><br>
   
       <button type="button" id="submitPost" style="background-color:  rgb(156, 88, 156); color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Create Post</button>
+      <button type="button" id="cancelPost" style="background-color:  rgb(156, 88, 156); color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Cancel </button>
   </form>
+  </div>
   
   `;
-
+ 
   // Add the form to the page
   editorDiv.innerHTML = formHtml;
 
@@ -118,9 +123,13 @@ function showNewPostForm() {
   document.getElementById('submitPost').addEventListener('click', () => {
       // Handle the submission of the new post form
       submitNewPost();
+});
+const CancelPost = document.getElementById('cancelPost')
+CancelPost.addEventListener('click', () =>{
+  
+  createstory.style.display = 'none';
+})
 
-     
-  });
 }
 
 // Function to handle the submission of the new post form
@@ -129,7 +138,12 @@ async function submitNewPost() {
   const author = document.getElementById('author').value;
   const story = document.getElementById('story').value;
 
-  const data = { title, author, content: story }
+  
+
+  const users_id = localStorage.getItem('userId');
+
+  const data = { users_id, title, author, content: story, }
+  console.log(data);
   try {
       const response = await fetch(`https://textribe.onrender.com/stories/create`, {
           method: 'POST',
@@ -140,7 +154,11 @@ async function submitNewPost() {
       });
 
       if (response.ok) {
+        alert('Story Succesfully Posted');
           console.log('Story created successfully');
+          document.getElementById('title').value = '';
+          document.getElementById('author').value = '';
+          document.getElementById('story').value = '';
       } else {
           alert('failed')
           console.error('Failed to create story');
@@ -148,6 +166,7 @@ async function submitNewPost() {
   } catch (error) {
       console.error('Error submitting post:', error);
   }
+       
 }
 
 

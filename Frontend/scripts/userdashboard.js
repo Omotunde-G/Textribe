@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', async () => {
   // Function to fetch stories by the logged-in user
-  async function fetchStoriesByUser(author) {
-    const loggedInUsername = localStorage.getItem('loggedInUsername');
+  
+  async function fetchStoriesByUser() {
+     
+  console.log(localStorage.getItem('userId'))
+  const user_id = localStorage.getItem('userId')
+
     try {
-      const response = await fetch(`https://textribe.onrender.com/stories/${loggedInUsername}`);
+      const response = await fetch(`http://localhost:3005/stories/${loggedInUsername}`);
       if (!response.ok) {
         throw new Error('Failed to fetch stories');
       }
@@ -15,24 +19,51 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // Function to display stories in the card
   function displayStories(stories) {
-    const cardTitle = document.querySelector('.payment--card.light-blue .title');
-    const workType = document.querySelector('.payment--card.light-blue .work-type');
+    const storiesTableBody = document.getElementById('storiesTableBody');
 
     if (!Array.isArray(stories) || stories.length === 0) {
-      console.error('Invalid data format or empty stories array');
-      return;
+        console.error('Invalid data format or empty stories array');
+        return;
     }
 
-    // Display only the first story's title and content in the card
-    const firstStory = stories[0];
-    cardTitle.textContent = firstStory.title;
-    workType.textContent = firstStory.content;
+    // Clear existing rows
+    storiesTableBody.innerHTML = '';
+
+    // Iterate through each story and create a table row for it
+    stories.forEach(story => {
+        const row = document.createElement('tr');
+
+        const dateCell = document.createElement('td');
+        dateCell.textContent = new Date(story.created_at).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+        
+        row.appendChild(dateCell);
+
+        const titleCell = document.createElement('td');
+        titleCell.textContent = story.title;
+        row.appendChild(titleCell);
+
+        const storyCell = document.createElement('td');
+        storyCell.textContent = story.content;
+        row.appendChild(storyCell);
+        const emptyCell = document.createElement('td');
+        row.appendChild(emptyCell);
+
+        const statusCell = document.createElement('td');
+        statusCell.textContent = "Published";
+        row.appendChild(statusCell);
+
+        storiesTableBody.appendChild(row);
+    });
 
     // Log stories in the console
     console.log('Received stories:', stories);
-  }
+}
+
 
   // Fetch and display stories on page load
   const loggedInUsername = localStorage.getItem('loggedInUsername');

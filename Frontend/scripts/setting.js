@@ -41,7 +41,7 @@ function displayLoggedInUsername() {
     const usernameDisplayElement = document.querySelectorAll('#usernameDisplay');
 
     usernameDisplayElement.forEach(element => {
-        element.textContent = loggedInUsername  || 'Guest';
+        element.textContent = loggedInUsername || 'Guest';
     })
 }
 
@@ -64,18 +64,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         logoutButton.addEventListener('click', logoutUser);
     }
 
- // test 
- userProfileForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const userId = localStorage.getItem('userId'); 
+    // test 
+    userProfileForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    const fullname = document.getElementById('userfullname').value;
-    const bio = document.getElementById('bio').value;
-    const location = document.getElementById('location').value;
-    const numberOfStories = document.getElementById('numberOfStories').value;
+        const userId = localStorage.getItem('userId');
+        const fullnameInput = document.getElementById('userfullname');
+        const bioInput = document.getElementById('bio');
+        const locationInput = document.getElementById('location');
+        const numberOfStoriesInput = document.getElementById('numberOfStories');
+        const usernameInput = document.getElementById('username')
 
-    const loggedInUsername = localStorage.getItem('loggedInUsername');
-      
+        const fullname = fullnameInput.value;
+        const bio = bioInput.value;
+        const location = locationInput.value;
+        const numberOfStories = numberOfStoriesInput.value;
+        const username = usernameInput.value;
+
+        const loggedInUsername = localStorage.getItem('loggedInUsername');
 
     const userData = {
         user_id : userId,
@@ -91,7 +97,7 @@ document.addEventListener('DOMContentLoaded', async () => {
          
         if (!userProfile) {
             // If user profile doesn't exist, create a new one
-            response = await fetch(`https://textribe.onrender.com/users/updateProfile/${userId}`, {
+            response = await fetch(`http://localhost:3005/users/updateProfile/${userId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -100,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         } else {
             // If user profile exists, update it using PUT request
-            response = await fetch(`https://textribe.onrender.com/users/updateProfile/${userId}`, {
+            response = await fetch(`http://localhost:3005/users/updateProfile/${userId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -121,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function fetchUserProfile(username) {
     try {
-        const response = await fetch(`https://textribe.onrender.com/users/userProfile/${username}`);
+        const response = await fetch(`http://localhost:3005/users/userProfile/${username}`);
         if (response.ok) {
             const userProfile = await response.json();
             displayUserProfile(userProfile[0])   
