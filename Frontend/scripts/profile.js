@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const reqData = JSON.stringify({ username, password });
   
       try {
-        const response = await fetch('http://localhost:3005/auth/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: reqData,
-        });
+          const response = await fetch('http://localhost:3005/auth/login', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: reqData,
+          });
   
         if (response.ok) {
           const data = await response.json();
@@ -65,28 +65,27 @@ document.addEventListener('DOMContentLoaded', () => {
   
   document.addEventListener('DOMContentLoaded', async () => {
     const loggedInUsername = localStorage.getItem('loggedInUsername');
-    
-    if (loggedInUsername) {
-      try {
-        const response = await fetch(`http://localhost:3005/users/userProfile/${loggedInUsername}`);
-        console.log(loggedInUsername)
-        if (response.ok) {
-          const userData = await response.json();
-          console.log(userData);
-          displayUserProfile(userData[0]);
-        } else {
-          console.error('Error fetching user profile:', response.status);
+   
+    if(loggedInUsername) {
+      
+        try {
+         
+            const response = await fetch(`http://localhost:3005/users/userProfile/${loggedInUsername}`);
+            if (response.ok) {
+                const userData = await response.json();
+                console.log(userData)
+                displayUserProfile(userData[0])
+                
+            } 
+        } catch (error) {
+            console.error('Error fetching user profile:', error);
         }
-      } catch (error) {
-        console.error('Error fetching user profile:', error);
-      }
-    }
-  
-  });
- 
-  function displayUserProfile(userData) {
-    const fullnameElem = document.getElementById('fullname');
-    const bioElem = document.getElementById('bio');
+     }
+        
+});
+function displayUserProfile(userData){
+    const FullnameElem = document.getElementById('fullname');
+    const BioElem = document.getElementById('bio')
     const locationElem = document.getElementById('location');
     const numOfStoriesElem = document.getElementById('number_of_stories');
     const usernameElem = document.getElementById('usernameDisplay'); 

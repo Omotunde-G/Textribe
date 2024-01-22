@@ -88,11 +88,9 @@ body {
 }
 
 /*main page*/
-.main {
-  background-image: url('images/jess-bailey-l3N9Q27zULw-unsplash.jpg');
-  background-size: cover;
-  margin: 0 auto;
-  max-width: 100%;
+.main{
+    background-image: url("./images/jess-bailey-l3N9Q27zULw-unsplash.jpg");
+    background-size: cover;
 }
 
 .hero {
@@ -312,49 +310,8 @@ body {
     margin-top: 4px;
     font-size: 16px;
   }
-
-  .about-left {
-    padding-right: 0;
+  
+  .footer-right a:hover {
+    color: #333; 
   }
-
-
-  .about h2 {
-    font-size: 28px;
-  }
-
-  .sub img {
-    height: 400px;
-  }
-
-  .about p {
-    font-size: 14px;
-  }
-
-  .hero {
-    flex-direction: column;
-    padding: 40px;
-    height: auto;
-  }
-
-  .hero-right,
-  .hero-left {
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .hero-right img {
-    margin-left: 0;
-  }
-
-  .left-main {
-    text-align: center;
-  }
-
-  .footer {
-    height: 200px;
-  }
-
-  #dontshow {
-    display: none;
-  }
-}
+  

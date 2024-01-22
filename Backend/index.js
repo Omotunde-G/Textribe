@@ -2,9 +2,8 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan')
 const cors = require("cors")
-const corsOptions = {origin:["http://127.0.0.1:5503"],methods:["GET","POST","PUT","PATCH","DELETE"]}
 // Middleware
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(morgan('tiny'))
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
@@ -20,9 +19,9 @@ const storiesRoutes = require ('./routes/stories')
 
 
 //use the route
-app.use('/auth', authRoutes)
-app.use('/users', userRoutes)
-app.use('/stories', storiesRoutes);
+app.use('/auth', cors(), authRoutes)
+app.use('/users',cors(), userRoutes)
+app.use('/stories',cors(), storiesRoutes);
 
 
 
