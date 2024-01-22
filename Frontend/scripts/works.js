@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const signupForm = document.querySelector('form');
   const loginForm = document.getElementById('loginform');
@@ -96,12 +98,12 @@ async function submitNewPost() {
 
   
 
-  const users_id = localStorage.getItem('userId');
-
-  const data = { users_id, title, author, content: story, }
+  const user_id = localStorage.getItem('userId');
+   console.log(user_id)
+  const data = { user_id, title, author, content: story, }
   console.log(data);
   try {
-      const response = await fetch(`http://localhost:3005/stories/create`, {
+      const response = await fetch(`http://localhost:3005/stories/create/${user_id}`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

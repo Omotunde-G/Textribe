@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.querySelector('form');
     const loginForm = document.getElementById('loginform');
     const logoutButton = document.querySelector('.logout');
+
     async function registerUser(e) {
         e.preventDefault();
     
@@ -118,7 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
    
     displayLoggedInUsername();
     // checkLoginStatus();
-  
+    const mobileMenuIcon = document.getElementById('mobile-menu-icon')
+    const navLinks = document.getElementById('nav-links')
+
+    mobileMenuIcon.addEventListener('click', () =>{
+        navLinks.classList.toggle('show')
+    } )
   
     if (signupForm) {
         signupForm.addEventListener('submit', registerUser);

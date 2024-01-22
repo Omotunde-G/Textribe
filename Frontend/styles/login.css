@@ -191,3 +191,50 @@ input[type="submit"]:hover {
 .signup-link a:hover{
     text-decoration: underline;
 }
+
+@media screen and (max-width: 768px) {
+.nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; 
+    left: 0;
+    width: 100%;
+    background-color: #333; 
+    z-index: 1;
+}
+
+.nav-links.show {
+    display: flex;
+}
+
+.nav-link-container {
+    padding: 10px;
+    text-align: center;
+}
+
+.nav-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-btn {
+    margin-top: 10px;
+}
+.logo-container a{
+  font-size: 40px;
+}
+
+.mobile-menu-icon {
+    display: block;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(156, 88, 156);
+    margin: 5px 0;
+}
+}
