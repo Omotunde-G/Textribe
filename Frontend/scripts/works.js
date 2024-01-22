@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const signupForm = document.querySelector('form');
   const loginForm = document.getElementById('loginform');
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch('https://textribe.onrender.comauth/login', {
+      const response = await fetch('http://localhost:3005/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -138,14 +140,9 @@ async function submitNewPost() {
   const author = document.getElementById('author').value;
   const story = document.getElementById('story').value;
 
-  
-
-  const users_id = localStorage.getItem('userId');
-
-  const data = { users_id, title, author, content: story, }
-  console.log(data);
+  const data = { title, author, content: story }
   try {
-      const response = await fetch(`https://textribe.onrender.com/stories/create`, {
+      const response = await fetch(`http://localhost:3005/stories/create`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

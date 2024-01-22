@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const user_id = localStorage.getItem('userId')
 
     try {
-      const response = await fetch(`https://textribe.onrender.comstories/${loggedInUsername}`);
+      const response = await fetch(`http://localhost:3005/stories/${loggedInUsername}`);
       if (!response.ok) {
         throw new Error('Failed to fetch stories');
       }
