@@ -297,7 +297,26 @@ body {
     display: block;
     cursor: pointer;
   }
+  .hero {
+    flex-direction: column;
+    padding: 40px;
+    height: auto;
+}
 
+.hero-right {
+    width: 100%;
+    margin-left: 0;
+}
+
+.hero-right img {
+    margin-left: 0;
+}
+
+.hero-left {
+    width: 100%;
+    font-size: 18px;
+    margin-left: 0;
+}
 
   .section {
     text-align: center;
@@ -314,4 +333,4 @@ body {
   .footer-right a:hover {
     color: #333; 
   }
-  
+}
