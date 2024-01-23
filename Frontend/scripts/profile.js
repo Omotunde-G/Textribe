@@ -92,12 +92,11 @@ function displayUserProfile(userData){
     const loggedInUsername = localStorage.getItem('loggedInUsername');
 
   
-    fullnameElem.innerHTML = userData.fullname || 'No Data';
-    bioElem.innerHTML = userData.bio || 'No Data';
+    FullnameElem.innerHTML = userData.fullname || 'No Data';
+    BioElem.innerHTML = userData.bio || 'No Data';
     locationElem.textContent = `Lives in ${userData.location || 'Unknown Location'}`;
     numOfStoriesElem.textContent = `${userData.number_of_stories || 0} Stories Written`;
     usernameElem.textContent = loggedInUsername || 'Guest';
-    
-  }
-  
+ }
+ 
   

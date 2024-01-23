@@ -4,34 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-    .container{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    
-  </style>
+  <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .hero {
+            background-color: turquoise;
+            padding: 20px;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 1.2em;
+        }
+        .abstract-pattern {
+            background-color: lightturquoise;
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-image: radial-gradient(circle, turquoise, lightturquoise);
+        }
+    </style>
 </head>
 <body>
-  <h1> Pop up Form </h1>
- <div class="container">
-  <h2>Let us write a story</h2>
-  <button id="story"> Create Story</button>
- </div>
+    <div class="hero">
+        <h1>Find digital writing templates easier</h1>
+        <p>Speed up your work by using our digital writing templates</p>
+    </div>
+    <div class="abstract-pattern"></div>
+</body>
+</html>
 
-
-  <div class="popup">
- <form action="#" method="post">
-  <label for="author">Author</label>
-  <input type="text" name="author" id="author">
-  <label for="title">Title</label>
-  <input type="text" name="title" id="title">
-  <label for="content">Story</label>
-  <textarea name="content" id="content" cols="30" rows="10"></textarea>
- </form>
-
-  </div>
 </body>
 </html>

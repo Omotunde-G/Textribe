@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
   const signupForm = document.querySelector('form');
   const loginForm = document.getElementById('loginform');
@@ -134,15 +132,19 @@ CancelPost.addEventListener('click', () =>{
 
 }
 
+
+
 // Function to handle the submission of the new post form
 async function submitNewPost() {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const story = document.getElementById('story').value;
+  const user_id = localStorage.getItem('user_id')
 
-  const data = { title, author, content: story }
+  const data = { user_id, title, author, content: story }
+  const useridentity = localStorage.userId
   try {
-      const response = await fetch(`http://localhost:3005/stories/create`, {
+      const response = await fetch(`http://localhost:3005/stories/create/${useridentity}`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

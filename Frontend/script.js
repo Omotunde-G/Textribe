@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const reqData = JSON.stringify({ fullname, username, password, role });
     
         try {
-            const response = await fetch('https://textribe.onrender.com/auth/register', {
+            const response = await fetch('http://localhost:3005/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const reqData = JSON.stringify({ username, password });
     
         try {
-            const response = await fetch('https://textribe.onrender.com/auth/login', {
+            const response = await fetch('http://localhost:3005/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -119,13 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
    
     displayLoggedInUsername();
     // checkLoginStatus();
-    const mobileMenuIcon = document.getElementById('mobile-menu-icon')
-    const navLinks = document.getElementById('nav-links')
-
-    mobileMenuIcon.addEventListener('click', () =>{
-        navLinks.classList.toggle('show')
-    } )
-  
+   
     if (signupForm) {
         signupForm.addEventListener('submit', registerUser);
     }

@@ -136,20 +136,34 @@ async function fetchUserProfile(username) {
 
     }
     if (fetchUserProfile) {
-        alert('profile updated')
+        
+        alert('profile Updated')
+        
     }else{
         alert('profile not updated')
     }
 } 
+// Function to display user profile data
 function displayUserProfile(userData) {
-    const FullnameElem = document.getElementById('fullname');
+    const FullnameElem = document.getElementById('userfullname');
     const BioElem = document.getElementById('bio');
-    const locationElem = document.getElementById('location');
-    const numOfStories = document.getElementById('number_of_stories');
+    const LocationElem = document.getElementById('location');
+    const NumOfStoriesElem = document.getElementById('numberOfStories');
 
+    // Set input values with user profile data
     FullnameElem.value = userData.fullname || '';
     BioElem.value = userData.bio || '';
-    locationElem.value = userData.location || '';
-    numOfStories.value = userData.number_of_stories || '';
+    LocationElem.value = userData.location || '';
+    NumOfStoriesElem.value = userData.numberOfStories || '';
+
+    // Reset input values to empty if the profile has been updated
+    if (userData.updated) {
+        FullnameElem.value = '';
+        BioElem.value = '';
+        LocationElem.value = '';
+        NumOfStoriesElem.value = '';
+        alert('Profile updated successfully!');
+    }
 }
+
 })
