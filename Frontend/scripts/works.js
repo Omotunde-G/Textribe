@@ -3,9 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginform');
   const logoutButton = document.querySelector('.logout');
   const newProjectButton = document.getElementById('newproject');
-  const editorDiv = document.getElementById('editor');
+  const cardContainer = document.getElementById('card--container') 
+  const createStory = document.getElementById('createstory')
+  const CancelPost = document.getElementById('cancelPost')
+  const saveStory = document.getElementById('savestory')
 
-
+   createStory.style.display='none'
+   newProjectButton.addEventListener('click',() =>{
+   createStory.style.display = 'block'
+   })
+   CancelPost.addEventListener('click', ()=>{
+    createStory.style.display = 'none'
+   })
+   
   // login 
   async function loginUser(e) {
     e.preventDefault();
@@ -90,41 +100,21 @@ document.addEventListener('DOMContentLoaded', () => {
     logoutButton.addEventListener('click', logoutUser);
   }
 
-  newProjectButton.addEventListener('click', () => {
-    showNewPostForm();
-});
+  newProjectButton.addEventListener('click', () =>{
+   })
 // Function to show the new post form
 function showNewPostForm() {
-  // You can customize the form appearance as needed
-  const formHtml = `
-  <div id="createstory" >
-  <h2 style="color=#7163FF; margin-bottom: 10px; font-size: 1.5em";>Create New Post</h2>
-  <form id="newPostForm" style="margin-bottom: 20px;">
-      <label for="title" style="display: block; margin-bottom: 5px;">Title:</label>
-      <input type="text" id="title" required style="border: 1px solid black; padding: 5px; width: 100%;"><br>
-  
-      <label for="author" style="display: block; margin-top: 10px; margin-bottom: 5px;">Author:</label>
-      <input type="text" id="author" required style="border: 1px solid black; padding: 5px; width: 100%;"><br>
-  
-      <label for="story" style="display: block; margin-top: 10px; margin-bottom: 5px;">Story:</label>
-      <textarea id="story" rows="5" required style="border: 1px solid black; padding: 5px; width: 100%;"></textarea><br>
-  
-      <button type="button" id="submitPost" style="background-color:  rgb(156, 88, 156); color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Create Post</button>
-      <button type="button" id="cancelPost" style="background-color:  rgb(156, 88, 156); color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Cancel </button>
-  </form>
-  </div>
-  
-  `;
+   formHtml.appendChild('createStory')
  
   // Add the form to the page
-  editorDiv.innerHTML = formHtml;
+cardContainer.innerHTML += formHtml;
 
   // Event listener for the "Create Post" button
   document.getElementById('submitPost').addEventListener('click', () => {
       // Handle the submission of the new post form
       submitNewPost();
 });
-const CancelPost = document.getElementById('cancelPost')
+
 CancelPost.addEventListener('click', () =>{
   
   createstory.style.display = 'none';

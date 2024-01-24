@@ -90,7 +90,7 @@ function displayStories(data) {
     });
   } else {
     console.error('Invalid data format received:', data);
-    // Handle invalid data
+
   }
 }
 

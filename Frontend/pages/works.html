@@ -33,7 +33,7 @@
             <li>
                 <a href="#">
                     <i class="fas fa-star"></i>
-                    <span>Stories</span>
+                    <span>Create Stories</span>
                 </a>
             </li>
             <li>
@@ -65,7 +65,7 @@
         </div>
 
         <!-- card -->
-        <div class="card--container">
+        <div class="card--container" id="card--container">
 
             <div class="work">
                 <h3 class="main--title">Unleash Your Creativity</h3>
@@ -92,9 +92,28 @@
 
 
             </div>
-            <div id="editor">
+            <div id="createstory" >
+                <h2 style="color: #7163FF; margin-top: 10px; margin-bottom: 10px; font-size: 1.5em";>Create New Post</h2>
+                <form id="newPostForm" style="margin-bottom: 20px;">
+                    <label for="title" style="display: block; margin-bottom: 5px;">Title:</label>
+                    <input type="text" id="title" required style="border: 1px solid black; padding: 5px; width: 100%;"><br>
+                
+                    <label for="author" style="display: block; margin-top: 10px; margin-bottom: 5px;">Author:</label>
+                    <input type="text" id="author" required style="border: 1px solid black; padding: 5px; width: 100%;"><br>
+                
+                    <label for="story" style="display: block; margin-top: 10px; margin-bottom: 5px;">Story:</label>
+                    <textarea  id="story" rows="5" required style="border: 1px solid black; padding: 5px; width: 100%;"></textarea><br>
+                
+                    <button type="button" id="submitPost" style="background-color:  rgb(156, 88, 156); color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Create Post</button>
+                    <button type="button" id="savestory" style="background-color:  rgb(156, 88, 156); color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Save Story </button>
+                    <button type="button" id="cancelPost" style="background-color:  rgb(156, 88, 156); color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Cancel </button>
+                </form>
+                </div>
 
-            </div>
+  
+            <!-- <div class="editor" id="editor">
+
+            </div> -->
         </div>
         <div class="gap" style="padding: 20px;"></div>
 

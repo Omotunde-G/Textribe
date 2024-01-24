@@ -53,14 +53,61 @@ document.addEventListener('DOMContentLoaded', async () => {
       const storyCell = document.createElement('td');
       storyCell.textContent = truncateText(story.content, 15);
       row.appendChild(storyCell);
-      const emptyCell = document.createElement('td');
-      row.appendChild(emptyCell);
-
       const statusCell = document.createElement('td');
-      statusCell.textContent = "Published";
+      statusCell.textContent = 'Published'
       row.appendChild(statusCell);
 
+const buttonCell = document.createElement('td');
+
+const dropdownContainer = document.createElement('div');
+dropdownContainer.classList.add('dropdown');
+
+const dropdownButton = document.createElement('button');
+dropdownButton.classList.add('dropbtn');
+dropdownButton.textContent = 'Actions';
+
+// Create the dropdown content
+const dropdownContent = document.createElement('div');
+dropdownContent.classList.add('dropdown-content');
+
+const editOption = document.createElement('a');
+editOption.textContent = 'Edit';
+editOption.addEventListener('click', () => {
+  
+    // console.log('Edit clicked for story with ID:', story.story_id);
+});
+
+const deleteOption = document.createElement('a');
+deleteOption.textContent = 'Delete';
+deleteOption.addEventListener('click', () => {
+    // Handle delete action here
+    console.log('Delete clicked for story with ID:', story.story_id);
+});
+const viewOption = document.createElement('a');
+viewOption.textContent = 'View Story';
+viewOption.addEventListener('click', () => {
+});
+
+dropdownContent.appendChild(editOption);
+dropdownContent.appendChild(deleteOption);
+dropdownContent.appendChild(viewOption);
+
+
+dropdownContainer.appendChild(dropdownButton);
+dropdownContainer.appendChild(dropdownContent);
+
+
+buttonCell.appendChild(dropdownContainer);
+
+
+row.appendChild(buttonCell);
+
+// ...
+
+
       storiesTableBody.appendChild(row);
+
+      
     });
 
     // Log stories in the console
