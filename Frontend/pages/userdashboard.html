@@ -10,16 +10,20 @@
 </head>
 <body>
     <div class="sidebar">
-        <div class="logo"><a href="homepage.html"> Textribe</a></div>
+        <div class="logo"><a href="homepage.html"> Textribe</a>
+          
+        </div>
         <ul class="menu">
+            <li>   <a href="homepage.html" class="logomini">
+                <i class="fas fa-home"></i></a></li>
             <li>
-                <a href="#">
+                <a href="./userdashboard.html">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="profile.html" >
+                <a href="profile.html">
                     <i class="fas fa-user"></i>
                         <span>Profile</span>
                 </a>
@@ -27,7 +31,7 @@
             <li>
                 <a href="works.html">
                     <i class="fas fa-star"></i>
-                    <span>Stories</span>
+                    <span>Create Stories</span>   
                 </a>
             </li>
             <li>
@@ -37,7 +41,7 @@
                 </a>
             </li>
             <li class="logout">
-                <a href="#" onclick="logoutUser() ">
+                <a href="#" onclick="logoutUser()">
                     <i class="fas fa-sign-out-alt"></i>
                         <span>Logout</span>
                 </a>
@@ -59,22 +63,47 @@
            <!-- card -->
            <div class="card--container">
             <h3 class="main--title">Stories Published</h3>
-           
             <div class="tabular--wrapper">
                 <h3 class="main--title">Stories</h3>
+                <div class="table--container">
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date Created</th>
+                                    <th>Title</th>
+                                    <th>Story</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="storiesTableBody">
+                                <!-- Story rows will be dynamically added here -->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="5"> </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                  
+                </div>
+            </div>
+            
+       <div class="other">
+            <h3 class="main--title">Pending Contributions</h3>
                 <div class="table--container">
                     <table>
                         <thead>
                             <tr>
                                 <th>Date Created</th>
                                 <th>Title</th>
-                                <th>Story</th>
-                                <th></th>
+                                <th>Contributions</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="storiesTableBody">
-                            <!-- Story rows will be dynamically added here -->
                         </tbody>
                         <tfoot>
                             <tr>
@@ -83,10 +112,34 @@
                         </tfoot>
                     </table>
                 </div>
-            </div>
-        </div>
-        
-
+    
+            <h3 class="main--title">Work in Progress</h3>
+            
+                 <div class="table--container">
+                     <table>
+                         <thead>
+                             <tr>
+                                 <th>Date Created</th>
+                                 <th>Title</th>
+                                 <th>Story</th>
+                                 <th>Status</th>
+                                 <th>Action</th>
+                             </tr>
+                         </thead>
+                         <tbody id="storiesTableBody">
+                             <!-- Story rows will be dynamically added here  -->
+                         </tbody>
+                         <tfoot>
+                             <tr>
+                                 <td colspan="6"> </td>
+                             </tr>
+                         </tfoot>
+                     </table>
+                 </div>
+            
+        </div> 
+    </div>
+    </div>
     </div>
 
 

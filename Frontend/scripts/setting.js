@@ -140,20 +140,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     } catch (error) {}
     if (fetchUserProfile) {
-      alert("profile updated");
-    } else {
-      alert("profile not updated");
+        alert('profile updated')
+    }else{
+        alert('profile not updated')
     }
-  }
-  function displayUserProfile(userData) {
-    const FullnameElem = document.getElementById("fullname");
-    const BioElem = document.getElementById("bio");
-    const locationElem = document.getElementById("location");
-    const numOfStories = document.getElementById("number_of_stories");
+} 
+function displayUserProfile(userData) {
+    const FullnameElem = document.getElementById('fullname');
+    const BioElem = document.getElementById('bio');
+    const locationElem = document.getElementById('location');
+    const numOfStories = document.getElementById('number_of_stories');
 
-    FullnameElem.value = userData.fullname || "";
-    BioElem.value = userData.bio || "";
-    locationElem.value = userData.location || "";
-    numOfStories.value = userData.number_of_stories || "";
-  }
-});
+    FullnameElem.value = userData.fullname || '';
+    BioElem.value = userData.bio || '';
+    locationElem.value = userData.location || '';
+    numOfStories.value = userData.number_of_stories || '';
+}
+})

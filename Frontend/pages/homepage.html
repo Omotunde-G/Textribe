@@ -16,22 +16,29 @@
             <a href="homepage.html" class="logo-text">Textribe</a>
         </div>
     
-        <div class="nav-links">
+        <div class="nav-links" id="nav-links">
             <div class="nav-link-container" id="profi" onclick="profile()">
                 <a href="userdashboard.html" class="nav-link">Profile</a>
             </div>
           <div class="nav-btns">
             <button class="logout nav-btn" onclick="logoutUser()"> <span>Logout</span></button>
           </div>
-          <!-- // *** the hello user should apper on the nav bar ***// -->
+        </div>
+          <div class="mobile-menu-icon" id="mobile-menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+  
         </nav> 
 
-    <!-- <span>Hello
-    <h2 id="usernameDisplay"></h2>  </span> -->
+       
+
     <main>
     <div class="hero">
      <h1> Textribe Originals</h1>
-     <p> Check out the latest and greatest stories hand-picked by our team</p></div>
+     <p> Check out the latest and greatest stories hand-picked by our team</p>
+    </div>
     
  
 
@@ -41,8 +48,11 @@
     <!-- books will go here -->
    </div>
     </div>
+    <div class="card-container" id="card-container">   
+        </div>
     <div class="modal" id="modal">
-        <div class="modal-content" id="modalContent">
+    <div class="modal-content" id="modalContent">
+        
         </div>
         <span class="close" id="closeBtn">&times;</span>
         <button class="editButton" id="editBtn">Contribute</button>
@@ -59,29 +69,38 @@
 
 <footer class="footer">
     <div class="footer-left">
-       <p>Join us on TexTribe to revolutionize collaborative storytelling, <br> providing a seamless and engaging space for writers from all <br> over the  globe to co-create captivating narratives.</p>
-       <p> Reach us at <a href="#"> INSTAGRAM, X, FACEBOOK</a> </p>
+        <p id="dontshow">Join us on TexTribe to revolutionize collaborative storytelling, <br> providing a seamless and engaging
+            space for writers from all <br> over the globe to co-create captivating narratives.</p>
+        <p> Reach us at <a href="#"> INSTAGRAM, X, FACEBOOK</a> </p>
         <p> &copy; 2023, Textribe, All Right Reserved</p>
     </div>
 
     <div class="footer-center">
         <h3>NEWSLETTER</h3>
-        <form class="footer-form">  
+        <form class="footer-form">
             <input type="email" placeholder="Enter Your Email" required> <br>
             <button type="submit">Subscribe</button>
         </form>
     </div>
-   <div class="footer-right">
-            <h3>Legal</h3>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Subscribe</a>
+    <div class="footer-right">
+        <h3>Legal</h3>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Subscribe</a>
 
-          </div>
+    </div>
 </footer>
 
     <script src="../scripts/homepage.js">
         
     </script>
+      <script> 
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon')
+       const navLinks = document.getElementById('nav-links')
+   
+       mobileMenuIcon.addEventListener('click', () =>{
+           navLinks.classList.toggle('show')
+       } )
+       </script>
     </body>
     </html>

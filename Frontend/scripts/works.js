@@ -1,11 +1,14 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const signupForm = document.querySelector("form");
-  const loginForm = document.getElementById("loginform");
-  const logoutButton = document.querySelector(".logout");
-  const newProjectButton = document.getElementById("newproject");
-  const editorDiv = document.getElementById("editor");
 
-  // login
+
+document.addEventListener('DOMContentLoaded', () => {
+  const signupForm = document.querySelector('form');
+  const loginForm = document.getElementById('loginform');
+  const logoutButton = document.querySelector('.logout');
+  const newProjectButton = document.getElementById('newproject');
+  const editorDiv = document.getElementById('editor');
+
+
+  // login 
   async function loginUser(e) {
     e.preventDefault();
     //   window.location = "userdashboard.html";
@@ -84,13 +87,13 @@ document.addEventListener("DOMContentLoaded", () => {
     logoutButton.addEventListener("click", logoutUser);
   }
 
-  newProjectButton.addEventListener("click", () => {
+  newProjectButton.addEventListener('click', () => {
     showNewPostForm();
-  });
-  // Function to show the new post form
-  function showNewPostForm() {
-    // You can customize the form appearance as needed
-    const formHtml = `
+});
+// Function to show the new post form
+function showNewPostForm() {
+  // You can customize the form appearance as needed
+  const formHtml = `
   <div id="createstory" >
   <h2 style="color=#7163FF; margin-bottom: 10px; font-size: 1.5em";>Create New Post</h2>
   <form id="newPostForm" style="margin-bottom: 20px;">
@@ -109,33 +112,33 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
   
   `;
-
-    // Add the form to the page
-    editorDiv.innerHTML = formHtml;
+ 
+  // Add the form to the page
+  editorDiv.innerHTML = formHtml;
 
     // Event listener for the "Create Post" button
     document.getElementById("submitPost").addEventListener("click", () => {
       // Handle the submission of the new post form
       submitNewPost();
-    });
-    const CancelPost = document.getElementById("cancelPost");
-    CancelPost.addEventListener("click", () => {
-      createstory.style.display = "none";
-    });
-  }
+});
+const CancelPost = document.getElementById('cancelPost')
+CancelPost.addEventListener('click', () =>{
+  
+  createstory.style.display = 'none';
+})
 
-  // Function to handle the submission of the new post form
-  async function submitNewPost() {
-    const title = document.getElementById("title").value;
-    const author = document.getElementById("author").value;
-    const story = document.getElementById("story").value;
+}
 
-    const data = { title, author, content: story };
-    try {
-      const response = await fetch(
-        `https://textribe.onrender.com/stories/create`,
-        {
-          method: "POST",
+// Function to handle the submission of the new post form
+async function submitNewPost() {
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const story = document.getElementById('story').value;
+
+  const data = { title, author, content: story }
+  try {
+      const response = await fetch(`http://localhost:3005/stories/create`, {
+          method: 'POST',
           headers: {
             "Content-Type": "application/json",
           },

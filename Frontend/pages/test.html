@@ -1,37 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    .container{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    
-  </style>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        @media screen and (max-width: 600px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr { margin: 0 0 1rem 0; }
+            td {
+                border: none;
+                border-bottom: 1px solid black;
+                position: relative;
+                padding-left: 50%;
+            }
+            td:before {
+                position: absolute;
+                top: 0;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+            }
+            td:nth-of-type(1):before { content: "Column 1"; }
+            td:nth-of-type(2):before { content: "Column 2"; }
+            td:nth-of-type(3):before { content: "Column 3"; }
+        }
+    </style>
 </head>
 <body>
-  <h1> Pop up Form </h1>
- <div class="container">
-  <h2>Let us write a story</h2>
-  <button id="story"> Create Story</button>
- </div>
-
-
-  <div class="popup">
- <form action="#" method="post">
-  <label for="author">Author</label>
-  <input type="text" name="author" id="author">
-  <label for="title">Title</label>
-  <input type="text" name="title" id="title">
-  <label for="content">Story</label>
-  <textarea name="content" id="content" cols="30" rows="10"></textarea>
- </form>
-
-  </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus fugit quae nemo porro distinctio nulla tempore, necessitatibus odio iure doloribus provident, hic aut! Iure omnis itaque rem blanditiis natus at?</td>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
 </body>
 </html>

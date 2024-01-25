@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const modal = document.getElementById('modal');
   const saveBtn = document.getElementById('saveBtn');
   const textareaContainer = document.getElementById('textareaContainer');
+  const cardContainer = document.getElementById('card-container')
+  
   let editorInstance = null;
 
   // Close modal event listener
@@ -47,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
  
 
   try {
-    const response = await fetch('https://textribe.onrender.com/stories/all');
+    const response = await fetch('http://localhost:3005/stories/all');
     if (response.ok) {
       const data = await response.json();
       if (data && data.stories && Array.isArray(data.stories)) {
@@ -63,30 +65,35 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Handle the error - display a message or perform other actions
   }
 
-  // Function to display fetched stories as cards
-  function displayStories(data) {
-    if (Array.isArray(data)) {
-      data.forEach(story => {
-        const storyCard = document.createElement('div');
-        storyCard.classList.add('story-card');
-        storyCard.innerHTML = `
-          <h3>Title: ${story.title}</h3>
-          <h4>Author: ${story.author}</h4>
-          <button class="read-more">Read More</button>
-        `;
-        bookContainer.appendChild(storyCard);
 
-        // Read more button click event
-        const readMoreBtn = storyCard.querySelector('.read-more');
-        readMoreBtn.addEventListener('click', () =>
-          displayStoryContent(story)
-        );
-      });
-    } else {
-      console.error('Invalid data format received:', data);
-      // Handle invalid data
-    }
+ // Function to display fetched stories as cards
+function displayStories(data) {
+  if (Array.isArray(data)) {
+    data.forEach(story => {
+      const storyCard = document.createElement('div');
+      storyCard.classList.add('card');
+      storyCard.innerHTML = `
+        <img src="/Frontend/images/my-life-through-a-lens-bq31L0jQAjU-unsplash.jpeg" alt="Story Image">
+        <div class="card-content">
+          <h3>${story.title}</h3>
+          <p>Author: ${story.author}</p>
+          <a href="#" class="btn read-more">Read More</a>
+        </div>
+      `;
+      cardContainer.appendChild(storyCard);
+
+      // Read more button click event
+      const readMoreBtn = storyCard.querySelector('.read-more');
+      readMoreBtn.addEventListener('click', () =>
+        displayStoryContent(story)
+      );
+    });
+  } else {
+    console.error('Invalid data format received:', data);
+
   }
+}
+
 
   const logoutButton = document.querySelector('.logout');
   function logoutUser() {

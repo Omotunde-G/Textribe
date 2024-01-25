@@ -3,29 +3,22 @@ const db = require("../db/index")
 // creating a story
 const createStory = async (req, res) => {
     try {
-<<<<<<< HEAD
-        const { users_id, title, author, content } = req.body;
-=======
-        const { user_id, title, author, content } = req.body;
->>>>>>> main
+
+        const {  title, author, content } = req.body;
+          const {user_id} = req.params;
 
         // Check if required fields are present
         if (!title || !author || !content) {
             return res.status(400).json({ message: 'Title, author, content are required' });
         }
 
-<<<<<<< HEAD
         // Check if user_id is present in localStorage
-        if (!users_id) {
-            return res.status(400).json({ message: 'User ID not found in localStorage' });
-        }
 
-        const result = await db.query('INSERT INTO stories (title, author, content, users_id) VALUES ($1, $2, $3, $4) RETURNING *', [title, author, content, users_id]);
-=======
-    
+
+   
 
         const result = await db.query('INSERT INTO stories (title, author, content, user_id) VALUES ($1, $2, $3, $4) RETURNING *', [title, author, content, user_id]);
->>>>>>> main
+
 
 
         res.status(201).json({ message: 'Story created successfully', story: result.rows[0] });
@@ -36,7 +29,6 @@ const createStory = async (req, res) => {
 };
 
 
-      //an experiment//
 
   const fetchAllStories =async (req, res) =>{
     try {
@@ -89,16 +81,14 @@ const editStoryById = async (req, res) => {
 
 const fetchStoriesByAuthorId = async (req, res) => {
         try {
-<<<<<<< HEAD
-            const userId = parseInt(req.params.user_id);
-=======
+
             const userId = req.params.user_id;
->>>>>>> main
-2
+            console.log(userId)
             const result = await db.query(
                 'SELECT story_id, title, content, created_at FROM stories WHERE user_id = $1',
                 [userId]
             );
+            console.log(result)
     
             if (result.rows.length >= 1) {
                 res.status(200).json({ stories: result.rows });
