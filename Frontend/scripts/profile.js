@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 function displayUserProfile(userData) {
-  const FullnameElem = document.getElementById("fullname");
-  const BioElem = document.getElementById("bio");
+  const fullnameElem = document.getElementById("fullname");
+  const bioElem = document.getElementById("bio");
   const locationElem = document.getElementById("location");
   const numOfStoriesElem = document.getElementById("number_of_stories");
   const usernameElem = document.getElementById("usernameDisplay");
