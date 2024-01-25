@@ -102,7 +102,6 @@ buttonCell.appendChild(dropdownContainer);
 
 row.appendChild(buttonCell);
 
-// ...
 
 
       storiesTableBody.appendChild(row);
