@@ -1,30 +1,25 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const signupForm = document.querySelector("form");
+  const loginForm = document.getElementById("loginform");
+  const logoutButton = document.querySelector(".logout");
+  const newProjectButton = document.getElementById("newproject");
+  const editorDiv = document.getElementById("editor");
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  const signupForm = document.querySelector('form');
-  const loginForm = document.getElementById('loginform');
-  const logoutButton = document.querySelector('.logout');
-  const newProjectButton = document.getElementById('newproject');
-  const editorDiv = document.getElementById('editor');
-
-
-  // login 
+  // login
   async function loginUser(e) {
     e.preventDefault();
     //   window.location = "userdashboard.html";
 
-
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch('http://localhost:3005/auth/login', {
-        method: 'POST',
+      const response = await fetch("https://textribe.onrender.com/auth/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: reqData,
       });
@@ -33,72 +28,69 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
         const { token, username: loggedInUsername, user_id } = data;
 
-        localStorage.setItem('token', token);
-        localStorage.setItem('loggedInUsername', loggedInUsername)
-        localStorage.setItem('user_id', user_id)
+        localStorage.setItem("token", token);
+        localStorage.setItem("loggedInUsername", loggedInUsername);
+        localStorage.setItem("user_id", user_id);
 
         // Display logged-in username in the UI (usernameDisplay is an element)
-        const usernameDisplay = document.getElementById('usernameDisplay');
+        const usernameDisplay = document.getElementById("usernameDisplay");
 
         // Redirect to the user dashboard
         window.location = "userdashboard.html";
       } else {
-        const errorData = await response.json()
-        console.error('Error:', errorData.message);
+        const errorData = await response.json();
+        console.error("Error:", errorData.message);
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   }
 
   const params = new URLSearchParams(window.location.search);
-  const loggedInUsername = params.get('username');
-  
-
+  const loggedInUsername = params.get("username");
 
   // Set the username in the HTML
-  const usernameDisplay = document.getElementById('usernameDisplay');
+  const usernameDisplay = document.getElementById("usernameDisplay");
   if (usernameDisplay) {
-    usernameDisplay.textContent = loggedInUsername || 'Guest';
+    usernameDisplay.textContent = loggedInUsername || "Guest";
   }
   function displayLoggedInUsername() {
-    const loggedInUsername = localStorage.getItem('loggedInUsername');
-    const usernameDisplayElement = document.querySelectorAll('#usernameDisplay');
+    const loggedInUsername = localStorage.getItem("loggedInUsername");
+    const usernameDisplayElement =
+      document.querySelectorAll("#usernameDisplay");
 
-    usernameDisplayElement.forEach(element => {
-      element.textContent = loggedInUsername || 'Guest';
-    })
+    usernameDisplayElement.forEach((element) => {
+      element.textContent = loggedInUsername || "Guest";
+    });
   }
 
   function logoutUser() {
-    console.log('log out function called')
-    localStorage.removeItem('token');
-    window.location.href = './login.html';
+    console.log("log out function called");
+    localStorage.removeItem("token");
+    window.location.href = "./login.html";
   }
 
   displayLoggedInUsername();
 
-
-
   if (signupForm) {
-    signupForm.addEventListener('submit', registerUser);
+    signupForm.addEventListener("submit", registerUser);
   }
 
   if (loginForm) {
-    loginForm.addEventListener('submit', loginUser);
+    loginForm.addEventListener("submit", loginUser);
   }
 
   if (logoutButton) {
-    logoutButton.addEventListener('click', logoutUser);
+    logoutButton.addEventListener("click", logoutUser);
   }
 
-  newProjectButton.addEventListener('click', () => {
+  newProjectButton.addEventListener("click", () => {
     showNewPostForm();
-});
-// Function to show the new post form
-function showNewPostForm() {
-  // You can customize the form appearance as needed
-  const formHtml = `
+  });
+  // Function to show the new post form
+  function showNewPostForm() {
+    // You can customize the form appearance as needed
+    const formHtml = `
   <div id="createstory" >
   <h2 style="color=#7163FF; margin-bottom: 10px; font-size: 1.5em";>Create New Post</h2>
   <form id="newPostForm" style="margin-bottom: 20px;">
@@ -117,81 +109,85 @@ function showNewPostForm() {
   </div>
   
   `;
- 
-  // Add the form to the page
-  editorDiv.innerHTML = formHtml;
 
-  // Event listener for the "Create Post" button
-  document.getElementById('submitPost').addEventListener('click', () => {
+    // Add the form to the page
+    editorDiv.innerHTML = formHtml;
+
+    // Event listener for the "Create Post" button
+    document.getElementById("submitPost").addEventListener("click", () => {
       // Handle the submission of the new post form
       submitNewPost();
-});
-const CancelPost = document.getElementById('cancelPost')
-CancelPost.addEventListener('click', () =>{
-  
-  createstory.style.display = 'none';
-})
+    });
+    const CancelPost = document.getElementById("cancelPost");
+    CancelPost.addEventListener("click", () => {
+      createstory.style.display = "none";
+    });
+  }
 
-}
+  // Function to handle the submission of the new post form
+  async function submitNewPost() {
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const story = document.getElementById("story").value;
 
-// Function to handle the submission of the new post form
-async function submitNewPost() {
-  const title = document.getElementById('title').value;
-  const author = document.getElementById('author').value;
-  const story = document.getElementById('story').value;
-
-  const data = { title, author, content: story }
-  try {
-      const response = await fetch(`http://localhost:3005/stories/create`, {
-          method: 'POST',
+    const data = { title, author, content: story };
+    try {
+      const response = await fetch(
+        `https://textribe.onrender.com/stories/create`,
+        {
+          method: "POST",
           headers: {
-              'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(data),
-      });
+        }
+      );
 
       if (response.ok) {
-        alert('Story Succesfully Posted');
-          console.log('Story created successfully');
-          document.getElementById('title').value = '';
-          document.getElementById('author').value = '';
-          document.getElementById('story').value = '';
+        alert("Story Succesfully Posted");
+        console.log("Story created successfully");
+        document.getElementById("title").value = "";
+        document.getElementById("author").value = "";
+        document.getElementById("story").value = "";
       } else {
-          alert('failed')
-          console.error('Failed to create story');
+        alert("failed");
+        console.error("Failed to create story");
       }
-  } catch (error) {
-      console.error('Error submitting post:', error);
+    } catch (error) {
+      console.error("Error submitting post:", error);
+    }
   }
-       
-}
-
-
 
   // Function to fetch stories by the logged-in user
   async function fetchStoriesByUser(author) {
-    const loggedInUsername = localStorage.getItem('loggedInUsername');
+    const loggedInUsername = localStorage.getItem("loggedInUsername");
     try {
-      const response = await fetch(`https://textribe.onrender.com/stories/${loggedInUsername}`);
+      const response = await fetch(
+        `https://textribe.onrender.com/stories/${loggedInUsername}`
+      );
       if (!response.ok) {
-        throw new Error('Failed to fetch stories');
+        throw new Error("Failed to fetch stories");
       }
       const stories = await response.json();
       displayStories(stories.stories);
       return stories;
     } catch (error) {
-      console.error('Error fetching stories:', error);
+      console.error("Error fetching stories:", error);
     }
   }
 
   // Function to display stories in the card
   function displayStories(stories) {
-    console.log(stories)
-    const cardTitle = document.querySelector('.payment--card.light-blue .title');
-    const workType = document.querySelector('.payment--card.light-blue .work-type');
+    console.log(stories);
+    const cardTitle = document.querySelector(
+      ".payment--card.light-blue .title"
+    );
+    const workType = document.querySelector(
+      ".payment--card.light-blue .work-type"
+    );
 
     if (!Array.isArray(stories) || stories.length === 0) {
-      console.error('Invalid data format or empty stories array');
+      console.error("Invalid data format or empty stories array");
       return;
     }
 
@@ -201,32 +197,29 @@ async function submitNewPost() {
     workType.textContent = firstStory.content;
 
     // Log stories in the console
-    console.log('Received stories:', stories);
+    console.log("Received stories:", stories);
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const loggedInUsername = localStorage.getItem('loggedInUsername');
+  document.addEventListener("DOMContentLoaded", () => {
+    const loggedInUsername = localStorage.getItem("loggedInUsername");
     if (loggedInUsername) {
       const stories = fetchStoriesByUser(loggedInUsername);
-      console.log('Fetched stories:', stories); // Logging the fetched stories
+      console.log("Fetched stories:", stories); // Logging the fetched stories
     } else {
-      console.error('No logged-in user found');
+      console.error("No logged-in user found");
     }
   });
 
   fetchStoriesByUser();
   displayStories();
 
-  document.addEventListener('DOMContentLoaded', () => {
-
-    const loggedInUsername = localStorage.getItem('loggedInUsername');
+  document.addEventListener("DOMContentLoaded", () => {
+    const loggedInUsername = localStorage.getItem("loggedInUsername");
 
     if (loggedInUsername) {
       fetchStoriesByUser(loggedInUsername);
     } else {
-      console.error('No logged-in user found');
+      console.error("No logged-in user found");
     }
-
   });
-
-})
+});
