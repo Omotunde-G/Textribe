@@ -322,6 +322,9 @@ body {
     text-align: center;
 
   }
+  #dontshow{
+    display: none;
+  }
 
   .about {
     flex-direction: column;
