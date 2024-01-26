@@ -77,11 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
       element.textContent = loggedInUsername || 'Guest';
     })
   }
-
   function logoutUser() {
-    console.log('log out function called')
-    localStorage.removeItem('token');
-    window.location.href = './login.html';
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("loggedInUsername");
+    window.location.href = "./login.html";
   }
 
   displayLoggedInUsername();
