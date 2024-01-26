@@ -1,111 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link
       rel="shortcut icon"
-      href="./views/android-chrome-512x512.png"
+      href="../views/android-chrome-512x512.png"
       type="image/x-icon"
     />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
-    <link rel="stylesheet" href="../styles/homepage.css">
-    <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"
+    ></script>
+    <link rel="stylesheet" href="../styles/homepage.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"
+    ></script>
     <title>Textribe</title>
-</head>
-<body>
-     <nav class="navbar">
-        <div class="logo-container">
-            <a href="homepage.html" class="logo-text">Textribe</a>
-        </div>
-    
-        <div class="nav-links" id="nav-links">
-            <div class="nav-link-container" id="profi" onclick="profile()">
-                <a href="userdashboard.html" class="nav-link">Profile</a>
-            </div>
-          <div class="nav-btns">
-            <button class="logout nav-btn" onclick="logoutUser()"> <span>Logout</span></button>
-          </div>
-        </div>
-          <div class="mobile-menu-icon" id="mobile-menu-icon">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-  
-        </nav> 
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo-container">
+        <a href="homepage.html" class="logo-text">Textribe</a>
+      </div>
 
-       
+      <div class="nav-links" id="nav-links">
+        <div class="nav-link-container" id="profi" onclick="profile()">
+          <a href="userdashboard.html" class="nav-link">Profile</a>
+        </div>
+        <div class="nav-btns">
+          <button class="logout nav-btn" onclick="logoutUser()">
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu-icon" id="mobile-menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </nav>
 
     <main>
-    <div class="hero">
-     <h1> Textribe Originals</h1>
-     <p> Check out the latest and greatest stories hand-picked by our team</p>
-    </div>
-    
- 
+      <div class="hero">
+        <h1>Textribe Originals</h1>
+        <p>Check out the latest and greatest stories hand-picked by our team</p>
+      </div>
 
-    <div class="container">
-   <h2>Featured Stories</h2>
-   <div class="container" id="bookContainer">
-    <!-- books will go here -->
-   </div>
-    </div>
-    <div class="card-container" id="card-container">   
+      <div class="container">
+        <h2>Featured Stories</h2>
+        <div class="container" id="bookContainer">
+          <!-- books will go here -->
         </div>
-    <div class="modal" id="modal">
-    <div class="modal-content" id="modalContent">
-        
-        </div>
+      </div>
+      <div class="card-container" id="card-container"></div>
+      <div class="modal" id="modal">
+        <div class="modal-content" id="modalContent"></div>
         <span class="close" id="closeBtn">&times;</span>
         <button class="editButton" id="editBtn">Contribute</button>
         <div id="textareaContainer"></div>
         <button class="editSubmit">Submit</button>
-   
+
         <button class="saveBtn">Save</button>
-        <button class="exitBtn" id="exitBtn" onclick="closeEditor()">Exit</button>
-        <button class="clearBtn" id="clearBtn"> Clear</button>
-    </div>
-   
+        <button class="exitBtn" id="exitBtn" onclick="closeEditor()">
+          Exit
+        </button>
+        <button class="clearBtn" id="clearBtn">Clear</button>
+      </div>
+    </main>
 
-</main>
+    <footer class="footer">
+      <div class="footer-left">
+        <p id="dontshow">
+          Join us on TexTribe to revolutionize collaborative storytelling,
+          <br />
+          providing a seamless and engaging space for writers from all <br />
+          over the globe to co-create captivating narratives.
+        </p>
+        <p>Reach us at <a href="#"> INSTAGRAM, X, FACEBOOK</a></p>
+        <p>&copy; 2023, Textribe, All Right Reserved</p>
+      </div>
 
-<footer class="footer">
-    <div class="footer-left">
-        <p id="dontshow">Join us on TexTribe to revolutionize collaborative storytelling, <br> providing a seamless and engaging
-            space for writers from all <br> over the globe to co-create captivating narratives.</p>
-        <p> Reach us at <a href="#"> INSTAGRAM, X, FACEBOOK</a> </p>
-        <p> &copy; 2023, Textribe, All Right Reserved</p>
-    </div>
-
-    <div class="footer-center">
+      <div class="footer-center">
         <h3>NEWSLETTER</h3>
         <form class="footer-form">
-            <input type="email" placeholder="Enter Your Email" required> <br>
-            <button type="submit">Subscribe</button>
+          <input type="email" placeholder="Enter Your Email" required /> <br />
+          <button type="submit">Subscribe</button>
         </form>
-    </div>
-    <div class="footer-right">
+      </div>
+      <div class="footer-right">
         <h3>Legal</h3>
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
         <a href="#">Subscribe</a>
+      </div>
+    </footer>
 
-    </div>
-</footer>
+    <script src="../scripts/homepage.js"></script>
+    <script>
+      const mobileMenuIcon = document.getElementById("mobile-menu-icon");
+      const navLinks = document.getElementById("nav-links");
 
-    <script src="../scripts/homepage.js">
-        
+      mobileMenuIcon.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
     </script>
-      <script> 
-        const mobileMenuIcon = document.getElementById('mobile-menu-icon')
-       const navLinks = document.getElementById('nav-links')
-   
-       mobileMenuIcon.addEventListener('click', () =>{
-           navLinks.classList.toggle('show')
-       } )
-       </script>
-    </body>
-    </html>
+  </body>
+</html>

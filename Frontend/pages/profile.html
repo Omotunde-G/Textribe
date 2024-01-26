@@ -1,95 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="../styles/profile.css">
-     <link
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/profile.css" />
+    <link
       rel="shortcut icon"
-      href="./views/android-chrome-512x512.png"
+      href="../views/android-chrome-512x512.png"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <title>Textribe</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="sidebar">
-        <div class="logo"><a href="homepage.html"> Textribe</a>
-          
-        </div>
-        <ul class="menu">
-            <li>   <a href="homepage.html" class="logomini">
-                <i class="fas fa-home"></i></a></li>
-            <li>
-                <a href="./userdashboard.html">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-user"></i>
-                        <span>Profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="works.html">
-                    <i class="fas fa-star"></i>
-                    <span>Create Stories</span>   
-                </a>
-            </li>
-            <li>
-                <a href="setting.html">
-                    <i class="fas fa-cog"></i>
-                        <span>Setting</span>
-                </a>
-            </li>
-            <li class="logout">
-                <a href="#" onclick="logoutUser()">
-                    <i class="fas fa-sign-out-alt"></i>
-                        <span>Logout</span>
-                </a>
-            </li>
-        </ul>
+      <div class="logo"><a href="homepage.html"> Textribe</a></div>
+      <ul class="menu">
+        <li>
+          <a href="homepage.html" class="logomini">
+            <i class="fas fa-home"></i
+          ></a>
+        </li>
+        <li>
+          <a href="./userdashboard.html">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="works.html">
+            <i class="fas fa-star"></i>
+            <span>Create Stories</span>
+          </a>
+        </li>
+        <li>
+          <a href="setting.html">
+            <i class="fas fa-cog"></i>
+            <span>Setting</span>
+          </a>
+        </li>
+        <li class="logout">
+          <a href="#" onclick="logoutUser()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
     </div>
     <div class="main--content">
-        <div class="header--wrapper">
-            <div class="header--title">
-                <span>Hello 
-                <h2 id="usernameDisplay"> </h2> </span>
-            </div>
-            <div class="user--info">
-                <div class="search--box">
-            </div>
-            <img src="../images/user-icon-on-transparent-background-free-png.webp" alt="">
-            </div>
+      <div class="header--wrapper">
+        <div class="header--title">
+          <span
+            >Hello
+            <h2 id="usernameDisplay"></h2>
+          </span>
         </div>
-           <!-- card -->
-    <div class="card--container">
-        <div class="edit-profile">  <h3 class="main--title">Profile</h3>
-            <a href="setting.html" class="profile-edit">
-                Edit Profile
-            </a>
-            </div>
-       
-
-          <div class="profile">
-            <img src="../images/user-icon-on-transparent-background-free-png.webp" alt="profile Picture">
-            <h1 id="fullname"></h1>
-            <p id="bio"></p>
-            <p id="location"></p>
-            <p id="number_of_stories"> </p>
-          </div>
-            
-            </div>
+        <div class="user--info">
+          <div class="search--box"></div>
+          <img
+            src="../images/user-icon-on-transparent-background-free-png.webp"
+            alt=""
+          />
+        </div>
+      </div>
+      <!-- card -->
+      <div class="card--container">
+        <div class="edit-profile">
+          <h3 class="main--title">Profile</h3>
+          <a href="setting.html" class="profile-edit"> Edit Profile </a>
         </div>
 
+        <div class="profile">
+          <img
+            src="../images/user-icon-on-transparent-background-free-png.webp"
+            alt="profile Picture"
+          />
+          <h1 id="fullname"></h1>
+          <p id="bio"></p>
+          <p id="location"></p>
+          <p id="number_of_stories"></p>
+        </div>
+      </div>
+    </div>
 
-
-
-    
-        <script src="../scripts/profile.js"></script>
-</body>
+    <script src="../scripts/profile.js"></script>
+  </body>
 </html>

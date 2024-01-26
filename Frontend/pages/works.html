@@ -1,136 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/works.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/works.css" />
     <link
       rel="shortcut icon"
-      href="./views/android-chrome-512x512.png"
+      href="../views/android-chrome-512x512.png"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-        integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet'
-        type='text/css' />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
 
     <title>Textribe</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="sidebar">
-        <div class="logo"><a href="homepage.html"> Textribe</a>
-          
-        </div>
-        <ul class="menu">
-            <li>   <a href="homepage.html" class="logomini">
-                <i class="fas fa-home"></i></a></li>
-            <li>
-                <a href="./userdashboard.html">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="profile.html">
-                    <i class="fas fa-user"></i>
-                        <span>Profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="works.html">
-                    <i class="fas fa-star"></i>
-                    <span>Create Stories</span>   
-                </a>
-            </li>
-            <li>
-                <a href="setting.html">
-                    <i class="fas fa-cog"></i>
-                        <span>Setting</span>
-                </a>
-            </li>
-            <li class="logout">
-                <a href="#" onclick="logoutUser()">
-                    <i class="fas fa-sign-out-alt"></i>
-                        <span>Logout</span>
-                </a>
-            </li>
-        </ul>
+      <div class="logo"><a href="homepage.html"> Textribe</a></div>
+      <ul class="menu">
+        <li>
+          <a href="homepage.html" class="logomini">
+            <i class="fas fa-home"></i
+          ></a>
+        </li>
+        <li>
+          <a href="./userdashboard.html">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="works.html">
+            <i class="fas fa-star"></i>
+            <span>Create Stories</span>
+          </a>
+        </li>
+        <li>
+          <a href="setting.html">
+            <i class="fas fa-cog"></i>
+            <span>Setting</span>
+          </a>
+        </li>
+        <li class="logout">
+          <a href="#" onclick="logoutUser()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
     </div>
     <div class="main--content">
-        <div class="header--wrapper">
-            <div class="header--title">
-                <span>Hello
-                    <h2 id="usernameDisplay"> </h2>
-                </span>
-            </div>
-            <div class="user--info">
-                <div class="search--box">
-                </div>
-                <img src="../images/user-icon-on-transparent-background-free-png.webp" alt="">
-            </div>
+      <div class="header--wrapper">
+        <div class="header--title">
+          <span
+            >Hello
+            <h2 id="usernameDisplay"></h2>
+          </span>
+        </div>
+        <div class="user--info">
+          <div class="search--box"></div>
+          <img
+            src="../images/user-icon-on-transparent-background-free-png.webp"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <!-- card -->
+      <div class="card--container" id="card--container">
+        <div class="work">
+          <h3 class="main--title">Unleash Your Creativity</h3>
         </div>
 
-        <!-- card -->
-        <div class="card--container" id="card--container">
-
-            <div class="work">
-                <h3 class="main--title">Unleash Your Creativity</h3>
+        <div class="card--wrapper">
+          <div class="payment--card light-red">
+            <div class="card--header">
+              <div class="amount">
+                <span class="title"> </span>
+                <p>
+                  Unlock the door to your imagination, let your words dance
+                  freely on the pages. Creativity knows no bounds; embrace the
+                  journey of storytelling.
+                </p>
+                <hr class="seperator" />
+                <a href="#" id="newproject" class="new-project">
+                  Write a Story
+                </a>
+                <span class="work-type"> </span>
+              </div>
             </div>
-           
-            <div class="card--wrapper">
-                <div class="payment--card light-red">
-                    <div class="card--header">
-                        <div class="amount">
-                            <span class="title">
-                              
-                            </span>
-                            <p>Unlock the door to your imagination, let your words dance freely on the pages. Creativity knows no bounds; embrace the journey of storytelling.</p>
-                            <hr class="seperator">
-                            <a href="#" id="newproject" class="new-project">
-                              Write a Story
-                            </a>
-                            <span class="work-type">
+          </div>
+        </div>
+        <div id="createstory">
+          <h2
+            style="
+              color: #7163ff;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              font-size: 1.5em;
+            "
+            ;
+          >
+            Create New Post
+          </h2>
+          <form id="newPostForm" style="margin-bottom: 20px">
+            <label for="title" style="display: block; margin-bottom: 5px"
+              >Title:</label
+            >
+            <input
+              type="text"
+              id="title"
+              required
+              style="border: 1px solid black; padding: 5px; width: 100%"
+            /><br />
 
-                            </span>
-                        </div>
-                    </div>
-                </div>
+            <label
+              for="author"
+              style="display: block; margin-top: 10px; margin-bottom: 5px"
+              >Author:</label
+            >
+            <input
+              type="text"
+              id="author"
+              required
+              style="border: 1px solid black; padding: 5px; width: 100%"
+            /><br />
 
+            <label
+              for="story"
+              style="display: block; margin-top: 10px; margin-bottom: 5px"
+              >Story:</label
+            >
+            <textarea
+              id="story"
+              rows="5"
+              required
+              style="border: 1px solid black; padding: 5px; width: 100%"
+            ></textarea
+            ><br />
 
-            </div>
-            <div id="createstory" >
-                <h2 style="color: #7163FF; margin-top: 10px; margin-bottom: 10px; font-size: 1.5em";>Create New Post</h2>
-                <form id="newPostForm" style="margin-bottom: 20px;">
-                    <label for="title" style="display: block; margin-bottom: 5px;">Title:</label>
-                    <input type="text" id="title" required style="border: 1px solid black; padding: 5px; width: 100%;"><br>
-                
-                    <label for="author" style="display: block; margin-top: 10px; margin-bottom: 5px;">Author:</label>
-                    <input type="text" id="author" required style="border: 1px solid black; padding: 5px; width: 100%;"><br>
-                
-                    <label for="story" style="display: block; margin-top: 10px; margin-bottom: 5px;">Story:</label>
-                    <textarea  id="story" rows="5" required style="border: 1px solid black; padding: 5px; width: 100%;"></textarea><br>
-                
-                    <button type="button" id="submitPost" style="background-color:  rgb(156, 88, 156); color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Create Post</button>
-                    <button type="button" id="savestory" style="background-color:  rgb(156, 88, 156); color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Save Story </button>
-                    <button type="button" id="cancelPost" style="background-color:  rgb(156, 88, 156); color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Cancel </button>
-                </form>
-                </div>
+            <button
+              type="button"
+              id="submitPost"
+              style="
+                background-color: rgb(156, 88, 156);
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              Create Post
+            </button>
+            <button
+              type="button"
+              id="savestory"
+              style="
+                background-color: rgb(156, 88, 156);
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              Save Story
+            </button>
+            <button
+              type="button"
+              id="cancelPost"
+              style="
+                background-color: rgb(156, 88, 156);
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
 
-  
-            <!-- <div class="editor" id="editor">
+        <!-- <div class="editor" id="editor">
 
             </div> -->
-        </div>
-        <div class="gap" style="padding: 20px;"></div>
-
+      </div>
+      <div class="gap" style="padding: 20px"></div>
     </div>
 
     <script src="../scripts/works.js"></script>
-    <script type='text/javascript'
-        src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
-</body>
-
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"
+    ></script>
+  </body>
 </html>
