@@ -1,5 +1,6 @@
 const db = require("../db/index")
 
+
 // creating a story
 const createStory = async (req, res) => {
     try {

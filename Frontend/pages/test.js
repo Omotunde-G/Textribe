@@ -1,6 +1,7 @@
 function showNotification(message) {
-    const notificationContainer = document.getElementById('notificationContainer');
-    const notificationMessage = document.getElementById('notificationMessage');
+    const notificationContainer = document.createElement('div')
+    notificationContainer.innerHTML = `<img src="http://res.cloudinary.com/dbrhmbvkl/image/upload/v1706356379/main/uploads/ian-schneider-TamMbr4okv4-unsplash.jpeg.jpg" />`
+
   
     notificationMessage.innerText = message;
     notificationContainer.style.opacity = 1;
@@ -18,6 +19,6 @@ function showNotification(message) {
   
   function triggerNotification() {
     // Change the message to "Clicks" or any other desired message
-    showNotification('Clicks');
+    showNotification(notificationContainer);
   }
   
