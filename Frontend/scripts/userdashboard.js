@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       const response = await fetch(
-        `https://textribe.onrender.com/stories/${loggedInUsername}`
+        `https://textribe.onrender.com/stories/${user_id}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch stories");
@@ -52,8 +52,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       row.appendChild(titleCell);
 
       const storyCell = document.createElement("td");
-      storyCell.textContent = story.content;
+      const contentPreview = getFirst50Words(story.content);
+      storyCell.textContent = contentPreview;
       row.appendChild(storyCell);
+      
+      function getFirst50Words(text) {
+      
+          const words = text.split(/\s+/);
+          const preview = words.slice(0, 50).join(" ");
+      
+          return preview;
+      }
       const emptyCell = document.createElement("td");
       row.appendChild(emptyCell);
 
