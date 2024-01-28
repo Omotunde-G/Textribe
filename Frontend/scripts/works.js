@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const createStory = document.getElementById('createstory')
   const CancelPost = document.getElementById('cancelPost')
   const saveStory = document.getElementById('savestory')
+  const postStory = document.getElementById('submitpost')
 
    createStory.style.display='none'
    newProjectButton.addEventListener('click',() =>{
@@ -14,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
    })
    CancelPost.addEventListener('click', ()=>{
     createStory.style.display = 'none'
+   })
+   postStory.addEventListener('click', () =>{
+    submitNewPost()
    })
    
   // login 
