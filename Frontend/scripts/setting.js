@@ -8,7 +8,7 @@ async function loginUser(e) {
   const reqData = JSON.stringify({ username, password });
 
   try {
-    const response = await fetch("https://textribe.onrender.com/auth/login", {
+    const response = await fetch("http://localhost:3005/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (!userProfile) {
         // If user profile doesn't exist, create a new one
         response = await fetch(
-          `https://textribe.onrender.com/users/updateProfile/${userId}`,
+          `http://localhost:3005/users/updateProfile/${userId}`,
           {
             method: "PUT",
             headers: {
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       } else {
         // If user profile exists, update it using PUT request
         response = await fetch(
-          `https://textribe.onrender.com/users/updateProfile/${userId}`,
+          `http://localhost:3005/users/updateProfile/${userId}`,
           {
             method: "PUT",
             headers: {
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function fetchUserProfile(username) {
     try {
       const response = await fetch(
-        `https://textribe.onrender.com/users/userProfile/${username}`
+        `http://localhost:3005/users/userProfile/${username}`
       );
       if (response.ok) {
         const userProfile = await response.json();
@@ -140,20 +140,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     } catch (error) {}
     if (fetchUserProfile) {
-        alert('profile updated')
-    }else{
-        alert('profile not updated')
+      alert("profile updated");
+    } else {
+      alert("profile not updated");
     }
-} 
-function displayUserProfile(userData) {
-    const FullnameElem = document.getElementById('fullname');
-    const BioElem = document.getElementById('bio');
-    const locationElem = document.getElementById('location');
-    const numOfStories = document.getElementById('number_of_stories');
+  }
+  function displayUserProfile(userData) {
+    const FullnameElem = document.getElementById("fullname");
+    const BioElem = document.getElementById("bio");
+    const locationElem = document.getElementById("location");
+    const numOfStories = document.getElementById("number_of_stories");
 
-    FullnameElem.value = userData.fullname || '';
-    BioElem.value = userData.bio || '';
-    locationElem.value = userData.location || '';
-    numOfStories.value = userData.number_of_stories || '';
-}
-})
+    FullnameElem.value = userData.fullname || "";
+    BioElem.value = userData.bio || "";
+    locationElem.value = userData.location || "";
+    numOfStories.value = userData.number_of_stories || "";
+  }
+});

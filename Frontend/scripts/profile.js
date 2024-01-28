@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch("https://textribe.onrender.com/auth/login", {
+      const response = await fetch("http://localhost:3005/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,8 +69,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (loggedInUsername) {
     try {
-      const response = await fetch(
-        `https://textribe.onrender.com/users/userProfile/${loggedInUsername}`
+      const response =  await fetch(
+        `http://localhost:3005/users/userProfile/${loggedInUsername}`
       );
       if (response.ok) {
         const userData = await response.json();
@@ -90,13 +90,13 @@ function displayUserProfile(userData) {
   const usernameElem = document.getElementById("usernameDisplay");
   const loggedInUsername = localStorage.getItem("loggedInUsername");
 
-  
-    fullnameElem.innerHTML = userData.fullname || 'No Data';
-    bioElem.innerHTML = userData.bio || 'No Data';
-    locationElem.textContent = `Lives in ${userData.location || 'Unknown Location'}`;
-    numOfStoriesElem.textContent = `${userData.number_of_stories || 0} Stories Written`;
-    usernameElem.textContent = loggedInUsername || 'Guest';
-    
-  }
-  
-  
+  fullnameElem.innerHTML = userData.fullname || "No Data";
+  bioElem.innerHTML = userData.bio || "No Data";
+  locationElem.textContent = `Lives in ${
+    userData.location || "Unknown Location"
+  }`;
+  numOfStoriesElem.textContent = `${
+    userData.number_of_stories || 0
+  } Stories Written`;
+  usernameElem.textContent = loggedInUsername || "Guest";
+}

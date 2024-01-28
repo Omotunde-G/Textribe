@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const signupForm = document.querySelector("form");
   const loginForm = document.getElementById("loginform");
   const logoutButton = document.querySelector(".logout");
   const newProjectButton = document.getElementById("newproject");
@@ -16,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch("https://textribe.onrender.com/auth/login", {
+      const response = await fetch("http://localhost:3005/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,11 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   displayLoggedInUsername();
-
-  if (signupForm) {
-    signupForm.addEventListener("submit", registerUser);
-  }
-
   if (loginForm) {
     loginForm.addEventListener("submit", loginUser);
   }
@@ -110,8 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
   `;
 
-    // Add the form to the page
-    editorDiv.innerHTML = formHtml;
 
     // Event listener for the "Create Post" button
     document.getElementById("submitPost").addEventListener("click", () => {
@@ -132,16 +124,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const data = { title, author, content: story };
     try {
-      const response = await fetch(
-        `https://textribe.onrender.com/stories/create`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch(`http://localhost:3005/stories/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
       if (response.ok) {
         alert("Story Succesfully Posted");
@@ -157,69 +146,4 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error submitting post:", error);
     }
   }
-
-  // Function to fetch stories by the logged-in user
-  async function fetchStoriesByUser(author) {
-    const loggedInUsername = localStorage.getItem("loggedInUsername");
-    try {
-      const response = await fetch(
-        `https://textribe.onrender.com/stories/${loggedInUsername}`
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch stories");
-      }
-      const stories = await response.json();
-      displayStories(stories.stories);
-      return stories;
-    } catch (error) {
-      console.error("Error fetching stories:", error);
-    }
-  }
-
-  // Function to display stories in the card
-  function displayStories(stories) {
-    console.log(stories);
-    const cardTitle = document.querySelector(
-      ".payment--card.light-blue .title"
-    );
-    const workType = document.querySelector(
-      ".payment--card.light-blue .work-type"
-    );
-
-    if (!Array.isArray(stories) || stories.length === 0) {
-      console.error("Invalid data format or empty stories array");
-      return;
-    }
-
-    // Display only the first story's title and content in the card
-    const firstStory = stories[0];
-    cardTitle.textContent = firstStory.title;
-    workType.textContent = firstStory.content;
-
-    // Log stories in the console
-    console.log("Received stories:", stories);
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const loggedInUsername = localStorage.getItem("loggedInUsername");
-    if (loggedInUsername) {
-      const stories = fetchStoriesByUser(loggedInUsername);
-      console.log("Fetched stories:", stories); // Logging the fetched stories
-    } else {
-      console.error("No logged-in user found");
-    }
-  });
-
-  fetchStoriesByUser();
-  displayStories();
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const loggedInUsername = localStorage.getItem("loggedInUsername");
-
-    if (loggedInUsername) {
-      fetchStoriesByUser(loggedInUsername);
-    } else {
-      console.error("No logged-in user found");
-    }
-  });
-});
+})

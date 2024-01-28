@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       const response = await fetch(
-        `https://textribe.onrender.com/stories/${loggedInUsername}`
+        `http://localhost:3005/stories/${loggedInUsername}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch stories");
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch("https://textribe.onrender.com/auth/login", {
+      const response = await fetch("http://localhost:3005 /auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

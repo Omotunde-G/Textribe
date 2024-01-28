@@ -7,29 +7,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const fullname = document.getElementById("fullname").value;
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-    const email = document.getElementById("email");
     const userRole = document.getElementById("userRole");
 
     const role = userRole; // Assuming you're properly getting the role
-    const reqData = JSON.stringify({
-      fullname,
-      username,
-      email,
-      password,
-      role,
-    });
+    const reqData = JSON.stringify({ fullname, username, password, role });
 
     try {
-      const response = await fetch(
-        "https://textribe.onrender.com/auth/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: reqData,
-        }
-      );
+      const response = await fetch("http://localhost:3005/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: reqData,
+      });
 
       if (response.ok) {
         const data = await response.json();
