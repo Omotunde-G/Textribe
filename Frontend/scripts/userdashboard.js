@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3005/stories/${loggedInUsername}`
+        `http://localhost:3005/stories/${user_id}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch stories");
@@ -52,8 +52,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       row.appendChild(titleCell);
 
       const storyCell = document.createElement("td");
-      storyCell.textContent = story.content;
-      row.appendChild(storyCell);
+const contentPreview = getFirst50Words(story.content);
+storyCell.textContent = contentPreview;
+row.appendChild(storyCell);
+
+function getFirst50Words(text) {
+
+    const words = text.split(/\s+/);
+    const preview = words.slice(0, 50).join(" ");
+
+    return preview;
+}
+
       const emptyCell = document.createElement("td");
       row.appendChild(emptyCell);
 
@@ -115,7 +125,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch("http://localhost:3005 /auth/login", {
+      const response = await fetch("http://localhost:3005/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
