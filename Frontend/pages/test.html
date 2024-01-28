@@ -1,28 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!-- Your page content -->
+<div id="createstory">
+  <h2
+    style="
+      color: #7163ff;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 1.5em;
+    "
+    ;
+  >
+    Create New Post
+  </h2>
+  <form id="newPostForm" style="margin-bottom: 20px">
+    <label for="title" style="display: block; margin-bottom: 5px"
+      >Title:</label
+    >
+    <input
+      type="text"
+      id="title"
+      required
+      style="border: 1px solid black; padding: 5px; width: 100%"
+    /><br />
+    <br>
 
-<!-- Notification container -->
-<div class="notification-container" id="notificationContainer">
-    <div class="notification" id="notification">
-      <span class="notification-message" id="notificationMessage"></span>
-      <button class="close-btn" onclick="closeNotification()">&times;</button>
-    </div>
-  </div>
-  <img src="http://res.cloudinary.com/dbrhmbvkl/image/upload/v1706356379/main/uploads/ian-schneider-TamMbr4okv4-unsplash.jpeg.jpg" alt="" style="height: 300px; width: 300px;">
-  
-  <!-- Button to trigger notification -->
-  <button onclick="triggerNotification()">Show Notification</button>
-  
-  <!-- Include your other HTML content here -->
-  
-  <script src="test.js"></script>
-  
-</body>
-</html>
+      <label>Upload Story Cover</label> 
+      <input type="file" name="profile-file" /> 
+      <br>
+
+    <label
+      for="author"
+      style="display: block; margin-top: 10px; margin-bottom: 5px"
+      >Author:</label
+    >
+    <input
+      type="text"
+      id="author"
+      required
+      style="border: 1px solid black; padding: 5px; width: 100%"
+    /><br />
+
+    <label
+      for="story"
+      style="display: block; margin-top: 10px; margin-bottom: 5px"
+      >Story:</label
+    >
+    <textarea
+      id="story"
+      rows="5"
+      required
+      style="border: 1px solid black; padding: 5px; width: 100%"
+    ></textarea
+    ><br />
+
+    <button
+      type="button"
+      id="submitPost"
+      style="
+        background-color: rgb(156, 88, 156);
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      "
+    >
+      Create Post
+    </button>
+    <button
+      type="button"
+      id="savestory"
+      style="
+        background-color: rgb(156, 88, 156);
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      "
+    >
+      Save Story
+    </button>
+    <button
+      type="button"
+      id="cancelPost"
+      style="
+        background-color: rgb(156, 88, 156);
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      "
+    >
+      Cancel
+    </button>
+  </form>
+</div>

@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.querySelector('form');
     const loginForm = document.getElementById('loginform');
@@ -7,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const createStory = document.getElementById('createstory')
     const CancelPost = document.getElementById('cancelPost')
     const saveStory = document.getElementById('savestory')
+    const postStory = document.getElementById('submitpost')
+     
+
+
   
      createStory.style.display='none'
      newProjectButton.addEventListener('click',() =>{
@@ -15,6 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
      CancelPost.addEventListener('click', ()=>{
       createStory.style.display = 'none'
      })
+        // Event listener for the "Create Post" button
+   postStory.addEventListener('click', () => {
+    submitNewPost();
+    
+});
      
     // login 
     async function loginUser(e) {
@@ -86,11 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     displayLoggedInUsername();
   
-  
-  
-    if (signupForm) {
-      signupForm.addEventListener('submit', registerUser);
-    }
+
   
     if (loginForm) {
       loginForm.addEventListener('submit', loginUser);
@@ -109,11 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add the form to the page
   cardContainer.innerHTML += formHtml;
   
-    // Event listener for the "Create Post" button
-    document.getElementById('submitPost').addEventListener('click', () => {
-        // Handle the submission of the new post form
-        submitNewPost();
-  });
+ 
   
   CancelPost.addEventListener('click', () =>{
     
@@ -160,41 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
   
   
-    // Function to fetch stories by the logged-in user
-    async function fetchStoriesByUser(author) {
-      const loggedInUsername = localStorage.getItem('loggedInUsername');
-      try {
-        const response = await fetch(`http://localhost:3005/stories/${loggedInUsername}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch stories');
-        }
-        const stories = await response.json();
-        displayStories(stories.stories);
-        return stories;
-      } catch (error) {
-        console.error('Error fetching stories:', error);
-      }
-    }
   
-    // Function to display stories in the card
-    function displayStories(stories) {
-      console.log(stories)
-      const cardTitle = document.querySelector('.payment--card.light-blue .title');
-      const workType = document.querySelector('.payment--card.light-blue .work-type');
-  
-      if (!Array.isArray(stories) || stories.length === 0) {
-        console.error('Invalid data format or empty stories array');
-        return;
-      }
-  
-      // Display only the first story's title and content in the card
-      const firstStory = stories[0];
-      cardTitle.textContent = firstStory.title;
-      workType.textContent = firstStory.content;
-  
-      // Log stories in the console
-      console.log('Received stories:', stories);
-    }
+ 
   
     document.addEventListener('DOMContentLoaded', () => {
       const loggedInUsername = localStorage.getItem('loggedInUsername');
@@ -206,8 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   
-    fetchStoriesByUser();
-    displayStories();
   
     document.addEventListener('DOMContentLoaded', () => {
   
