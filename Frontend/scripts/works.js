@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const CancelPost = document.getElementById('cancelPost')
     const saveStory = document.getElementById('savestory')
     const postStory = document.getElementById('submitpost')
+    const popup = document.getElementById('popup');
+
+    function showPopup() {
+      popup.classList.toggle('show');
+  
+      setTimeout(() => {
+        popup.classList.remove('show')
+      }, 1000);
+    }
      
     const storyTextarea = document.getElementById('story');
     const editorOptions = {
@@ -25,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
      })
      CancelPost.addEventListener('click', ()=>{
       createStory.style.display = 'none'
+      froalaEditor.html.set('');
      })
         // Event listener for the "Create Post" button
    postStory.addEventListener('click', () => {
@@ -132,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   
   
-  // Function to handle the submission of the new post form
+//   Function to handle the submission of the new post form
   async function submitNewPost() {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
@@ -151,11 +161,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
   
         if (response.ok) {
-          alert('Story Succesfully Posted');
+        showPopup()
+
             console.log('Story created successfully');
             document.getElementById('title').value = '';
             document.getElementById('author').value = '';
             document.getElementById('story').value = '';
+          
         } else {
             alert('failed')
             console.error('Failed to create story');
@@ -166,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
          
   }
   
+
   
   
   

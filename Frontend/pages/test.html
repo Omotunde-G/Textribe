@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popup Example</title>
+  <style>
+    .popup {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(5px);
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+    }
+    
+    .container {
+      border-radius: 4px;
+      text-align: center;
+      width: 200px;
+      height: 200px;
+      background-color: rgb(195, 113, 195);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .container p {
+      color: white;
+      font-size: 25px;
+      font-weight: bolder;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    
+    .popup.show {
+      visibility: visible;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Testing</h1>
+  <p>Click this button to get a pop-up notification</p>
+  <button onclick="showPopup('You have successfully clicked the button')">Click me</button>
+
+  <div id="errorPopup" class="popup">
+    <div class="container">
+      <p id="popupMessage"></p>
+    </div>
+  </div>
+
+  <script>
+    function showPopup(message) {
+      const popup = document.getElementById('errorPopup');
+      const popupMessage = document.getElementById('popupMessage');
+
+      popupMessage.textContent = message;
+      popup.classList.add('show');
+
+      setTimeout(() => {
+        popup.classList.remove('show');
+      }, 3000); // Close popup after 3 seconds
+    }
+  </script>
+
+</body>
+</html>

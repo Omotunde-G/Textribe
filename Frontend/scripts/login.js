@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginform");
+  const popup = document.getElementById('popup');
 
+  function showPopup() {
+    popup.classList.toggle('show');
+
+    setTimeout(() => {
+      popup.classList.remove('show')
+    }, 1000);
+  }
   async function loginUser(e) {
     e.preventDefault();
 
@@ -30,10 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         window.location = "userdashboard.html";
       } else {
-        // Display a pop-up with an error message
-        alert("Incorrect username or password. Please try again.");
-
-    
+       showPopup()  
         passwordInput.value = '';
       }
     } catch (error) {

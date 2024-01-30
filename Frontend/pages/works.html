@@ -177,6 +177,7 @@
             <button
               type="button"
               id="submitpost"
+              onclick="showPopup()"
               style="
                 background-color: rgb(156, 88, 156);
                 color: white;
@@ -220,6 +221,11 @@
         </div>
       </div>
       <div class="gap" style="padding: 20px"></div>
+    </div>
+    <div id="errorPopup" class="popup">
+      <div class="container">
+        <p id="popupMessage"></p>
+      </div>
     </div>
 
     <script src="../scripts/works.js"></script>
