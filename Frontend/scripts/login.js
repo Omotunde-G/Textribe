@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+    const passwordInput = document.getElementById("password"); 
+
+    const password = passwordInput.value;
 
     const reqData = JSON.stringify({ username, password });
 
@@ -20,18 +22,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         const data = await response.json();
-        const { token, username: loggedInUsername, user_id } = data; // Retrieve userId from the response
+        const { token, username: loggedInUsername, user_id } = data;
 
-        // Save the token, username, and userId in local storage
         localStorage.setItem("token", token);
         localStorage.setItem("loggedInUsername", loggedInUsername);
-        localStorage.setItem("userId", user_id); // Store the user ID
+        localStorage.setItem("userId", user_id);
 
-        // Redirect to the user dashboard or profile page
         window.location = "userdashboard.html";
       } else {
-        const errorData = await response.json();
-        console.error("Error:", errorData.message);
+        // Display a pop-up with an error message
+        alert("Incorrect username or password. Please try again.");
+
+    
+        passwordInput.value = '';
       }
     } catch (error) {
       console.error("Error:", error);
