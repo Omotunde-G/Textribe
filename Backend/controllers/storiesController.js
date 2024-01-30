@@ -1,6 +1,5 @@
 const db = require("../db/index")
 
-
 // creating a story
 const createStory = async (req, res) => {
     try {
@@ -28,8 +27,6 @@ const createStory = async (req, res) => {
         res.status(500).json({ message: 'Error creating story' });
     }
 };
-
-
 
   const fetchAllStories =async (req, res) =>{
     try {
@@ -84,12 +81,10 @@ const fetchStoriesByAuthorId = async (req, res) => {
         try {
 
             const userId = req.params.user_id;
-            console.log(userId)
             const result = await db.query(
                 'SELECT story_id, title, content, created_at FROM stories WHERE user_id = $1',
                 [userId]
             );
-            console.log(result)
     
             if (result.rows.length >= 1) {
                 res.status(200).json({ stories: result.rows });
@@ -104,9 +99,25 @@ const fetchStoriesByAuthorId = async (req, res) => {
 };
 
 
+const getStoryById = async (req, res) => {
+    try {
+        const storyId = req.params.story_id;
+        const result = await db.query(
+            'SELECT story_id, title, content, author FROM stories WHERE story_id = $1', [storyId]
+        );
+        if (result.rows.length >= 1) {
+            res.status(200).json({ stories: result.rows });
+        } else {
+            res.status(404).json({ message: 'No stories found for the id' });
+        }
+    } catch (error) {
+        console.error('Error fetching stories by this id:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
 
 
 
 
 
-  module.exports= {createStory, fetchAllStories, deteleStory, editStoryById, fetchStoriesByAuthorId}
+  module.exports= { createStory, fetchAllStories, deteleStory, editStoryById, fetchStoriesByAuthorId, getStoryById }

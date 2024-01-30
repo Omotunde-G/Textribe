@@ -7,4 +7,6 @@ router.get('/all', storiesController.fetchAllStories)
 router.delete('/:storyId', storiesController.deteleStory);
 router.patch('/:storyId', storiesController.editStoryById);
 router.get('/:user_id', storiesController.fetchStoriesByAuthorId)
+router.get('/fetch/:story_id', storiesController.getStoryById)
+
 module.exports = router;
