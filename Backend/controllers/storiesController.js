@@ -44,8 +44,8 @@ const createStory = async (req, res) => {
 
 const deteleStory =  async (req, res) =>{
     try {
-        const { storyId } = req.params; 
-         const result = await db.query('DELETE FROM stories WHERE story_id = $1', [storyId])
+        const { story_id } = req.params; 
+         const result = await db.query('DELETE FROM stories WHERE story_id = $1', [story_id])
          if(result.rowCount === 1) {
             res.status(200).json({message:'Story Deleted'})
          }else {

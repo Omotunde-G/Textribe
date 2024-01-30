@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  // Function to fetch stories by the logged-in user
-
   async function fetchStoriesByUser() {
     console.log(localStorage.getItem("userId"));
     const user_id = localStorage.getItem("userId");
@@ -13,14 +11,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         throw new Error("Failed to fetch stories");
       }
       const stories = await response.json();
-      displayStories(stories.stories);
+      const extractedStoryIds = stories.stories.map((story) => story.story_id);
+      displayStories(stories.stories, extractedStoryIds);
       return stories;
     } catch (error) {
       console.error("Error fetching stories:", error);
     }
   }
 
-  function displayStories(stories) {
+  function displayStories(stories, extractedStoryIds) {
     const storiesTableBody = document.getElementById("storiesTableBody");
 
     if (!Array.isArray(stories) || stories.length === 0) {
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     storiesTableBody.innerHTML = "";
 
     // Iterate through each story and create a table row for it
-    stories.forEach((story) => {
+    stories.forEach((story, index) => {
       const row = document.createElement("tr");
 
       const dateCell = document.createElement("td");
@@ -64,12 +63,25 @@ function getFirst50Words(text) {
     return preview;
 }
 
-      const emptyCell = document.createElement("td");
-      row.appendChild(emptyCell);
-
       const statusCell = document.createElement("td");
       statusCell.textContent = "Published";
       row.appendChild(statusCell);
+
+      const actionCell = document.createElement("td");
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.style.color="red"
+      const storyId = extractedStoryIds[index];
+
+      deleteButton.addEventListener("click", () => {
+  
+        deleteStory(storyId, row);
+      });
+
+      actionCell.appendChild(deleteButton);
+      row.appendChild(actionCell);
+
+
 
       storiesTableBody.appendChild(row);
     });
@@ -78,6 +90,27 @@ function getFirst50Words(text) {
     console.log("Received stories:", stories);
   }
 
+
+  async function deleteStory(storyId, row) {
+    try {
+      const response = await fetch(`http://localhost:3005/stories/${storyId}`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      if (response.ok) {
+        row.remove();
+        alert('Story Deleted')
+      } else {
+        const errorData = await response.json();
+        console.error("Error:", errorData.message);
+      }
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+  }
   // Fetch and display stories on page load
   const loggedInUsername = localStorage.getItem("loggedInUsername");
   if (loggedInUsername) {
@@ -91,7 +124,7 @@ function getFirst50Words(text) {
   if (logoutButton) {
     logoutButton.addEventListener("click", logoutUser);
   }
-
+  
   // Function to logout user
   function logoutUser() {
     console.log("log out function called");
@@ -153,4 +186,7 @@ function getFirst50Words(text) {
 
   // Display logged-in username on page load
   displayLoggedInUsername();
+
+ 
+
 });
