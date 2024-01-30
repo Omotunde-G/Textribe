@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const reqData = JSON.stringify({ username, password });
   
       try {
-        const response = await fetch('http://localhost:3005/auth/login', {
+        const response = await fetch('https://textribe.onrender.com/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = { user_id, title, author, content: story }
     const useridentity = localStorage.userId
     try {
-        const response = await fetch(`http://localhost:3005/stories/create/${useridentity}`, {
+        const response = await fetch(`https://textribe.onrender.com/stories/create/${useridentity}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -165,17 +165,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
          
   }
-  
-  
-  
-  
- 
+
   
     document.addEventListener('DOMContentLoaded', () => {
       const loggedInUsername = localStorage.getItem('loggedInUsername');
       if (loggedInUsername) {
         const stories = fetchStoriesByUser(loggedInUsername);
-        console.log('Fetched stories:', stories); // Logging the fetched stories
+        console.log('Fetched stories:', stories); 
       } else {
         console.error('No logged-in user found');
       }
