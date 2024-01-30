@@ -11,7 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveStory = document.getElementById('savestory')
     const postStory = document.getElementById('submitpost')
      
-
+    const storyTextarea = document.getElementById('story');
+    const editorOptions = {
+      heightMin: 100, 
+    };
+    new FroalaEditor(storyTextarea, editorOptions);
+  
 
   
      createStory.style.display='none'
