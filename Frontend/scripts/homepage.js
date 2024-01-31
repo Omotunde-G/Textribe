@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const storyCard = document.createElement("div");
         storyCard.classList.add("card");
         storyCard.innerHTML = `
-        <img src="https://unsplash.com/photos/a-brown-leather-couch-sitting-in-front-of-a-white-wall-6nsGg3Iw37c" alt="Story Image">
+        <img src="/Frontend/images/my-life-through-a-lens-bq31L0jQAjU-unsplash.jpeg" alt="Story Image">
         <div class="card-content">
           <h3>${story.title}</h3>
           <p>Author: ${story.author}</p>
