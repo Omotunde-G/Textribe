@@ -1,72 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Popup Example</title>
-  <style>
-    .popup {
-      position: absolute;
-      background-color: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(5px);
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      visibility: hidden;
-    }
-    
-    .container {
-      border-radius: 4px;
-      text-align: center;
-      width: 200px;
-      height: 200px;
-      background-color: rgb(195, 113, 195);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .container p {
-      color: white;
-      font-size: 25px;
-      font-weight: bolder;
-      font-family: 'Courier New', Courier, monospace;
-    }
-    
-    .popup.show {
-      visibility: visible;
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+      rel="shortcut icon"
+      href="../views/android-chrome-512x512.png"
+      type="image/x-icon"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"
+    ></script>
+    <link rel="stylesheet" href="../styles/homepage.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"
+    ></script>
+    <title>Textribe</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo-container">
+        <a href="homepage.html" class="logo-text">Textribe</a>
+      </div>
 
-  <h1>Testing</h1>
-  <p>Click this button to get a pop-up notification</p>
-  <button onclick="showPopup('You have successfully clicked the button')">Click me</button>
+      <div class="nav-links" id="nav-links">
+        <div class="nav-link-container" id="profi" onclick="profile()">
+          <a href="userdashboard.html" class="nav-link">Profile</a>
+        </div>
+        <div class="nav-btns">
+          <button class="logout nav-btn" onclick="logoutUser()">
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu-icon" id="mobile-menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </nav>
 
-  <div id="errorPopup" class="popup">
-    <div class="container">
-      <p id="popupMessage"></p>
-    </div>
-  </div>
+    <main>
+      <div class="hero">
+        <h1>Textribe Originals</h1>
+        <p>Check out the latest and greatest stories hand-picked by our team</p>
+      </div>
 
-  <script>
-    function showPopup(message) {
-      const popup = document.getElementById('errorPopup');
-      const popupMessage = document.getElementById('popupMessage');
+      <div class="container">
+        <h2>Featured Stories</h2>
+        <div class="container" id="bookContainer">
+          <!-- books will go here -->
+        </div>
+      </div>
+      <div class="card-container" id="card-container"></div>
+      <div class="modal" id="modal">
+        <div class="modal-content" id="modalContent"></div>
+        <span class="close" id="closeBtn">&times;</span>
+        <button class="editButton" id="editBtn">Contribute</button>
+        <div id="textareaContainer"></div>
+        <button class="editSubmit">Submit</button>
 
-      popupMessage.textContent = message;
-      popup.classList.add('show');
+        <button class="saveBtn" id="saveBtn">Save</button>
+        <button class="exitBtn" id="exitBtn" onclick="closeEditor()">
+          Exit
+        </button>
+        <button class="clearBtn" id="clearBtn">Clear</button>
+      </div>
+    </main>
 
-      setTimeout(() => {
-        popup.classList.remove('show');
-      }, 3000); // Close popup after 3 seconds
-    }
-  </script>
+    <footer class="footer">
+      <div class="footer-left">
+        <p id="dontshow">
+          Join us on TexTribe to revolutionize collaborative storytelling,
+          <br />
+          providing a seamless and engaging space for writers from all <br />
+          over the globe to co-create captivating narratives.
+        </p>
+        <p>Reach us at <a href="#"> INSTAGRAM, X, FACEBOOK</a></p>
+        <p>&copy; 2023, Textribe, All Right Reserved</p>
+      </div>
 
-</body>
+      <div class="footer-center">
+        <h3>NEWSLETTER</h3>
+        <form class="footer-form">
+          <input type="email" placeholder="Enter Your Email" required /> <br />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="footer-right">
+        <h3>Legal</h3>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Subscribe</a>
+      </div>
+    </footer>
+
+    <script src="./test.js"></script>
+    <script>
+      const mobileMenuIcon = document.getElementById("mobile-menu-icon");
+      const navLinks = document.getElementById("nav-links");
+
+      mobileMenuIcon.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
+    </script>
+  </body>
 </html>

@@ -5,10 +5,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const editBtn = document.getElementById("editBtn");
   const exitBtn = document.getElementById("exitBtn");
   const modal = document.getElementById("modal");
-  const saveBtn = document.getElementById("saveBtn");
   const textareaContainer = document.getElementById("textareaContainer");
   const cardContainer = document.getElementById("card-container");
-  const clearBtn = document.getElementById('clearBtn')
+
 
   let editorInstance = null;
 
@@ -28,20 +27,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // Event listener for "Contribute" button
-  editBtn.addEventListener("click", () => {
-    if (!editorInstance) {
-        const textarea = document.createElement("textarea");
-        textarea.value = ''; 
-        textarea.style.width = '100%'; // Adjust the width as needed
-        textarea.style.height = '200px'; // Adjust the height as needed
-        textareaContainer.appendChild(textarea);
-
-        // Initialize Froala Editor on the created textarea
-        editorInstance = new FroalaEditor(textarea);
-
-        modal.style.display = "block";
-    }
-});
 
   // Event listener for Clear button
 clearBtn.addEventListener('click', () => {
@@ -57,10 +42,6 @@ clearBtn.addEventListener('click', () => {
 
   // Event listener for "Exit" button
   exitBtn.addEventListener("click", () => {
-    // if (editorInstance) {
-    //   editorInstance.destroy();
-    //   editorInstance = null;
-    // }
     const textarea = textareaContainer.querySelector("textarea");
     if (textarea) {
    

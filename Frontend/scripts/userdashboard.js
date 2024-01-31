@@ -99,6 +99,7 @@ function getFirst50Words(text) {
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
         },
       });
+      console.log(storyId);
 
       if (response.ok) {
         row.remove();
