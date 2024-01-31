@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3005/stories/${user_id}`
+        `https://textribe.onrender.com/stories/${user_id}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch stories");
@@ -93,13 +93,12 @@ function getFirst50Words(text) {
 
   async function deleteStory(storyId, row) {
     try {
-      const response = await fetch(`http://localhost:3005/stories/${storyId}`, {
+      const response = await fetch(`https://textribe.onrender.com/stories/${storyId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      console.log(storyId);
 
       if (response.ok) {
         row.remove();
@@ -159,7 +158,7 @@ function getFirst50Words(text) {
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch("http://localhost:3005/auth/login", {
+      const response = await fetch("https://textribe.onrender.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
