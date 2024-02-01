@@ -8,7 +8,7 @@ async function loginUser(e) {
   const reqData = JSON.stringify({ username, password });
 
   try {
-    const response = await fetch("http://localhost:3005/auth/login", {
+    const response = await fetch("http://localhost:3005gin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,28 +97,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (!userProfile) {
         // If user profile doesn't exist, create a new one
-        response = await fetch(
-          `http://localhost:3005/users/updateProfile/${userId}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-          }
-        );
+        response = await fetch(`http://localhost:3005pdateProfile/${userId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        });
       } else {
         // If user profile exists, update it using PUT request
-        response = await fetch(
-          `http://localhost:3005/users/updateProfile/${userId}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-          }
-        );
+        response = await fetch(`http://localhost:3005pdateProfile/${userId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        });
       }
       if (response.ok) {
         const updatedProfile = await fetchUserProfile(loggedInUsername);
@@ -132,7 +126,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function fetchUserProfile(username) {
     try {
       const response = await fetch(
-        `http://localhost:3005/users/userProfile/${username}`
+        `http://localhost:3005serProfile/${username}`
       );
       if (response.ok) {
         const userProfile = await response.json();
