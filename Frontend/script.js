@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("profileImageUrl", profileImageUrl);
         console.log(localStorage)
 
-        window.location.href = "/Frontend/pages/login.html";
+        window.location.href = "/pages/login.html";
       } else {
         const errorData = await response.json();
         console.error("Error:", errorData.message);
