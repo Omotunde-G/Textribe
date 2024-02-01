@@ -35,7 +35,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Send the data to the backend
       try {
-        const response = await fetch(`http://localhost:3005/contribute`, {
+        const response = await fetch(
+          `https://textribe.onrender.com/contribute`,
+          {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -122,7 +124,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   try {
-    const response = await fetch("http://localhost:3005/stories/all");
+    const response = await fetch("https://textribe.onrender.com/stories/all");
     if (response.ok) {
       const data = await response.json();
       if (data && data.stories && Array.isArray(data.stories)) {

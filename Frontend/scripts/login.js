@@ -1,26 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginform");
-  const popup = document.getElementById('popup');
+  const popup = document.getElementById("popup");
 
   function showPopup() {
-    popup.classList.toggle('show');
+    popup.classList.toggle("show");
 
     setTimeout(() => {
-      popup.classList.remove('show')
+      popup.classList.remove("show");
     }, 1000);
   }
   async function loginUser(e) {
     e.preventDefault();
 
     const username = document.getElementById("username").value;
-    const passwordInput = document.getElementById("password"); 
+    const passwordInput = document.getElementById("password");
 
     const password = passwordInput.value;
 
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch("http://localhost:3005/auth/login", {
+      const response = await fetch("https://textribe.onrender.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         window.location = "userdashboard.html";
       } else {
-       showPopup()  
-        passwordInput.value = '';
+        showPopup();
+        passwordInput.value = "";
       }
     } catch (error) {
       console.error("Error:", error);

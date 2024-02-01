@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const textareaContainer = document.getElementById("textareaContainer");
   const cardContainer = document.getElementById("card-container");
 
-
   let editorInstance = null;
 
   // Close modal event listener
@@ -29,30 +28,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Event listener for "Contribute" button
 
   // Event listener for Clear button
-clearBtn.addEventListener('click', () => {
-  if (editorInstance) {
-      editorInstance.html.set('');
+  clearBtn.addEventListener("click", () => {
+    if (editorInstance) {
+      editorInstance.html.set("");
       const textarea = textareaContainer.querySelector("textarea");
       if (textarea) {
-          textarea.value = "";
+        textarea.value = "";
       }
-  }
-});
-
+    }
+  });
 
   // Event listener for "Exit" button
   exitBtn.addEventListener("click", () => {
     const textarea = textareaContainer.querySelector("textarea");
     if (textarea) {
-   
-      modal.style.display = "none"
+      modal.style.display = "none";
     }
-    
+
     modal.style.display = "none";
   });
 
   try {
-    const response = await fetch("http://localhost:3005/stories/all");
+    const response = await fetch("https://textribe.onrender.com/stories/all");
     if (response.ok) {
       const data = await response.json();
       if (data && data.stories && Array.isArray(data.stories)) {

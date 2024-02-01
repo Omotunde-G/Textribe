@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch("http://localhost:3005/auth/login", {
+      const response = await fetch("https://textribe.onrender.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const useridentity = localStorage.userId;
     try {
       const response = await fetch(
-        `http://localhost:3005/stories/create/${useridentity}`,
+        `https://textribe.onrender.com/stories/create/${useridentity}`,
         {
           method: "POST",
           body: formData,

@@ -2,17 +2,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginform");
   const logoutButton = document.querySelector(".logout");
 
-
   async function loginUser(e) {
     e.preventDefault();
- 
+
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch("http://localhost:3005/auth/login", {
+      const response = await fetch("https://textribe.onrender.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,10 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function displayLoggedInUsername() {
     const loggedInUsername = localStorage.getItem("loggedInUsername");
-  
+
     const usernameDisplayElements =
       document.querySelectorAll("#usernameDisplay");
-  
 
     usernameDisplayElements.forEach((element) => {
       element.textContent = loggedInUsername || "Guest";
@@ -72,8 +70,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (loggedInUsername) {
     try {
-      const response =  await fetch(
-        `http://localhost:3005/users/userProfile/${loggedInUsername}`
+      const response = await fetch(
+        `https://textribe.onrender.com/users/userProfile/${loggedInUsername}`
       );
       if (response.ok) {
         const userData = await response.json();
@@ -92,8 +90,7 @@ function displayUserProfile(userData) {
   const numOfStoriesElem = document.getElementById("number_of_stories");
   const usernameElem = document.getElementById("usernameDisplay");
   const loggedInUsername = localStorage.getItem("loggedInUsername");
-  const profileImageElem = document.querySelector('.profileImage')
-  
+  const profileImageElem = document.querySelector(".profileImage");
 
   fullnameElem.innerHTML = userData.fullname || "No Data";
   bioElem.innerHTML = userData.bio || "No Data";
@@ -105,7 +102,7 @@ function displayUserProfile(userData) {
   } Stories Written`;
   usernameElem.textContent = loggedInUsername || "Guest";
   if (profileImageElem && userData.images) {
-    profileImageElem.src = userData.images; 
+    profileImageElem.src = userData.images;
     profileImageElem.alt = "Profile Picture";
   }
 }
