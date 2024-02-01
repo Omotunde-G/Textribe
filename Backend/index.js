@@ -3,7 +3,10 @@ const app = express();
 const morgan = require('morgan')
 const cors = require("cors")
 // Middleware
-app.use(cors())
+app.use(cors({
+   origin: "*"
+}
+))
 app.use(morgan('tiny'))
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
@@ -21,8 +24,8 @@ const collaboRoutes = require ('./routes/collabo')
 
 //use the route
 app.use('/auth', cors(), authRoutes)
-app.use('/users',cors(), userRoutes)
-app.use('/stories',cors(), storiesRoutes);
+app.use('/users', cors(), userRoutes)
+app.use('/stories', cors(), storiesRoutes);
 app.use('/contribute', cors(), collaboRoutes )
 
 
