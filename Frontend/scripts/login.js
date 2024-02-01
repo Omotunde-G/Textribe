@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "Content-Type": "application/json",
         },
         body: reqData,
+        mode: "cors",
       });
 
       if (response.ok) {
