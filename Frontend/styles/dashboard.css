@@ -62,6 +62,12 @@ body {
 .active {
   background: #e0e0e058;
 }
+.profile-edit{
+  font-size: 20px;
+  color: green;
+  text-decoration: none;
+  float: right;
+}
 .menu a {
   color: white;
   font-size: 17px;
