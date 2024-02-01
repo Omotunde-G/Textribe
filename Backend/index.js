@@ -6,7 +6,7 @@ const cors = require("cors")
 app.use(cors({
     origin: [
         "https://textribe.vercel.app",
-        "https://www.textribe.com.ng"
+        "https://textribe.com.ng"
     ],
     credentials: true,
 }
