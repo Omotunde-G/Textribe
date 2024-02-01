@@ -1,38 +1,35 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const morgan = require('morgan')
-const cors = require("cors")
+const morgan = require("morgan");
+const cors = require("cors");
 // Middleware
-app.use(cors({
-    origin: [
-        "https://textribe.vercel.app",
-        "https://textribe.com.ng"
-    ],
-    credentials: true,
-}
-))
-app.use(morgan('tiny'))
+app.options("*", cors());
+app.use(
+  cors({
+    origin: ["https://textribe.vercel.app", "https://textribe.com.ng"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  })
+);
+app.use(morgan("tiny"));
 app.use(express.json());
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) =>{
-    res.send("Welcome")
-})
+app.get("/", (req, res) => {
+  res.send("Welcome");
+});
 
-//routes 
-const authRoutes = require ('./routes/auths');
-const userRoutes = require ('./routes/users');
-const storiesRoutes = require ('./routes/stories')
-const collaboRoutes = require ('./routes/collabo')
-
+//routes
+const authRoutes = require("./routes/auths");
+const userRoutes = require("./routes/users");
+const storiesRoutes = require("./routes/stories");
+const collaboRoutes = require("./routes/collabo");
 
 //use the route
-app.use('/auth', cors(), authRoutes)
-app.use('/users', cors(), userRoutes)
-app.use('/stories', cors(), storiesRoutes);
-app.use('/contribute', cors(), collaboRoutes )
+app.use("/auth", cors(), authRoutes);
+app.use("/users", cors(), userRoutes);
+app.use("/stories", cors(), storiesRoutes);
+app.use("/contribute", cors(), collaboRoutes);
 
-
-app.listen(3005, ()=>{
-    console.log('server is running on port 3005')
-})
+app.listen(3005, () => {
+  console.log("server is running on port 3005");
+});
