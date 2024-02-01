@@ -6,7 +6,7 @@ const cors = require("cors");
 app.options("*", cors());
 app.use(
   cors({
-    origin: ["https://textribe.vercel.app", "https://textribe.com.ng"],
+    origin: ["https://textribe.onrender.com/", "https://textribe.com.ng"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   })
 );
