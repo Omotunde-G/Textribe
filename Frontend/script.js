@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.querySelector("form");
+  
 
   async function registerUser(e) {
     e.preventDefault();
@@ -7,27 +8,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const fullname = document.getElementById("fullname").value;
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
+    const email = document.getElementById("email")
     const userRole = document.getElementById("userRole");
+    const profileImage = document.getElementById("profile_image")
+    const formData = new FormData();
+    formData.append("fullname", fullname)
+    formData.append("username", username)
+    formData.append("email", email)
+    formData.append("password", password)
+    formData.append("image", profileImage.files[0]);
 
     const role = userRole; // Assuming you're properly getting the role
-    const reqData = JSON.stringify({ fullname, username, password, role });
+  
 
     try {
       const response = await fetch("http://localhost:3005/auth/register", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: reqData,
+        body: formData,
       });
-
+      console.log(response)
+  
       if (response.ok) {
-        const data = await response.json();
-        const { user_id } = data; // Capture the user_id from the response
+        const reqData = await response.json();
+        const { user_id,  profile_image: profileImageUrl } = reqData; // Capture the user_id from the response
 
         // Save both username and user_id in local storage
         localStorage.setItem("loggedInUsername", username);
         localStorage.setItem("userId", user_id);
+        localStorage.setItem("profileImageUrl", profileImageUrl);
+        console.log(localStorage)
 
         window.location.href = "/Frontend/pages/login.html"; // Redirect to profile settings
       } else {

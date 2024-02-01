@@ -2,9 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginform");
   const logoutButton = document.querySelector(".logout");
 
+
   async function loginUser(e) {
     e.preventDefault();
-
+ 
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
@@ -39,8 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function displayLoggedInUsername() {
     const loggedInUsername = localStorage.getItem("loggedInUsername");
+  
     const usernameDisplayElements =
       document.querySelectorAll("#usernameDisplay");
+  
 
     usernameDisplayElements.forEach((element) => {
       element.textContent = loggedInUsername || "Guest";
@@ -89,6 +92,8 @@ function displayUserProfile(userData) {
   const numOfStoriesElem = document.getElementById("number_of_stories");
   const usernameElem = document.getElementById("usernameDisplay");
   const loggedInUsername = localStorage.getItem("loggedInUsername");
+  const profileImageElem = document.querySelector('.profileImage')
+  
 
   fullnameElem.innerHTML = userData.fullname || "No Data";
   bioElem.innerHTML = userData.bio || "No Data";
@@ -99,4 +104,8 @@ function displayUserProfile(userData) {
     userData.number_of_stories || 0
   } Stories Written`;
   usernameElem.textContent = loggedInUsername || "Guest";
+  if (profileImageElem && userData.images) {
+    profileImageElem.src = userData.images; 
+    profileImageElem.alt = "Profile Picture";
+  }
 }

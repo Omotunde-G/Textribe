@@ -113,6 +113,8 @@ function getFirst50Words(text) {
   }
   // Fetch and display stories on page load
   const loggedInUsername = localStorage.getItem("loggedInUsername");
+  
+
   if (loggedInUsername) {
     await fetchStoriesByUser(loggedInUsername);
   } else {

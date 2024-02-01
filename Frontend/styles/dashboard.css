@@ -29,6 +29,11 @@ body {
   width: 300px;
   transition: width 0.5s;
 }
+.image{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
 .logo {
   height: 80px;
   padding: 16px;

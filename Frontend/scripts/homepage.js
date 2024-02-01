@@ -75,7 +75,7 @@ clearBtn.addEventListener('click', () => {
         const storyCard = document.createElement("div");
         storyCard.classList.add("card");
         storyCard.innerHTML = `
-        <img src="/Frontend/images/story.jpeg" alt="Story Image">
+        <img src=${story.images} alt="Story Image">
         <div class="card-content">
           <h3>${story.title}</h3>
           <p>Author: ${story.author}</p>
