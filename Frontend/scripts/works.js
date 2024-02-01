@@ -128,26 +128,29 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("author", author);
     formData.append("content", story);
     formData.append("image", storyImage.files[0]);
-    const useridentity = localStorage.userId
+    const useridentity = localStorage.userId;
     try {
-        const response = await fetch(`http://localhost:3005/stories/create/${useridentity}`, {
-            method: 'POST',
-            body: formData,
-        });
-        const apiData = await response.json()
-        console.log(apiData)
-        if (response.ok) {
-          alert('Story Succesfully Posted');
-            console.log('Story created successfully');
-            document.getElementById('title').value = '';
-            document.getElementById('author').value = '';
-            document.getElementById('story').value = '';
-        } else {
-            alert('failed')
-            console.error('Failed to create story');
+      const response = await fetch(
+        `http://localhost:3005/stories/create/${useridentity}`,
+        {
+          method: "POST",
+          body: formData,
         }
+      );
+      const apiData = await response.json();
+      console.log(apiData);
+      if (response.ok) {
+        alert("Story Succesfully Posted");
+        console.log("Story created successfully");
+        document.getElementById("title").value = "";
+        document.getElementById("author").value = "";
+        document.getElementById("story").value = "";
+      } else {
+        alert("failed");
+        console.error("Failed to create story");
+      }
     } catch (error) {
-        console.error('Error submitting post:', error);
+      console.error("Error submitting post:", error);
     }
   }
 

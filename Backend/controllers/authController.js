@@ -27,7 +27,7 @@ const registerUser = async (req, res) => {
     return res.status(400).json({ message: "Username already exists" });
   }
 
-  try {
+  try {  
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Insert into 'users' table
