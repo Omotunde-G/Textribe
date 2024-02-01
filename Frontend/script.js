@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const fullname = document.getElementById("fullname").value;
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-    const email = document.getElementById("email");
+    const email = document.getElementById("email").value;
     const userRole = document.getElementById("userRole");
     const profileImage = document.getElementById("profile_image");
     const formData = new FormData();
@@ -31,9 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         const reqData = await response.json();
-        const { user_id, profile_image: profileImageUrl } = reqData; // Capture the user_id from the response
+        const { user_id, profile_image: profileImageUrl } = reqData; 
 
-        // Save both username and user_id in local storage
+       
         localStorage.setItem("loggedInUsername", username);
         localStorage.setItem("userId", user_id);
         localStorage.setItem("profileImageUrl", profileImageUrl);
