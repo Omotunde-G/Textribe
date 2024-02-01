@@ -4,9 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const user_id = localStorage.getItem("userId");
 
     try {
-      const response = await fetch(
-        `https://textribe.onrender.com/stories/${user_id}`
-      );
+      const response = await fetch(`http://localhost:3005/stories/${user_id}`);
       if (!response.ok) {
         throw new Error("Failed to fetch stories");
       }
@@ -51,17 +49,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       row.appendChild(titleCell);
 
       const storyCell = document.createElement("td");
-const contentPreview = getFirst50Words(story.content);
-storyCell.textContent = contentPreview;
-row.appendChild(storyCell);
+      const contentPreview = getFirst50Words(story.content);
+      storyCell.textContent = contentPreview;
+      row.appendChild(storyCell);
 
-function getFirst50Words(text) {
+      function getFirst50Words(text) {
+        const words = text.split(/\s+/);
+        const preview = words.slice(0, 50).join(" ");
 
-    const words = text.split(/\s+/);
-    const preview = words.slice(0, 50).join(" ");
-
-    return preview;
-}
+        return preview;
+      }
 
       const statusCell = document.createElement("td");
       statusCell.textContent = "Published";
@@ -70,18 +67,15 @@ function getFirst50Words(text) {
       const actionCell = document.createElement("td");
       const deleteButton = document.createElement("button");
       deleteButton.textContent = "Delete";
-      deleteButton.style.color="red"
+      deleteButton.style.color = "red";
       const storyId = extractedStoryIds[index];
 
       deleteButton.addEventListener("click", () => {
-  
         deleteStory(storyId, row);
       });
 
       actionCell.appendChild(deleteButton);
       row.appendChild(actionCell);
-
-
 
       storiesTableBody.appendChild(row);
     });
@@ -90,19 +84,18 @@ function getFirst50Words(text) {
     console.log("Received stories:", stories);
   }
 
-
   async function deleteStory(storyId, row) {
     try {
-      const response = await fetch(`https://textribe.onrender.com/stories/${storyId}`, {
+      const response = await fetch(`http://localhost:3005/stories/${storyId}`, {
         method: "DELETE",
         headers: {
-          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
 
       if (response.ok) {
         row.remove();
-        alert('Story Deleted')
+        alert("Story Deleted");
       } else {
         const errorData = await response.json();
         console.error("Error:", errorData.message);
@@ -113,7 +106,6 @@ function getFirst50Words(text) {
   }
   // Fetch and display stories on page load
   const loggedInUsername = localStorage.getItem("loggedInUsername");
-  
 
   if (loggedInUsername) {
     await fetchStoriesByUser(loggedInUsername);
@@ -126,7 +118,7 @@ function getFirst50Words(text) {
   if (logoutButton) {
     logoutButton.addEventListener("click", logoutUser);
   }
-  
+
   // Function to logout user
   function logoutUser() {
     console.log("log out function called");
@@ -160,7 +152,7 @@ function getFirst50Words(text) {
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch("https://textribe.onrender.com/auth/login", {
+      const response = await fetch("http://localhost:3005/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -188,7 +180,4 @@ function getFirst50Words(text) {
 
   // Display logged-in username on page load
   displayLoggedInUsername();
-
- 
-
 });
