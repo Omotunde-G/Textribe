@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("loggedInUsername", loggedInUsername);
         localStorage.setItem("userId", user_id);
 
-        window.location = "userdashboard.html";
+        window.location = "homepage.html";
       } else {
         showPopup();
         passwordInput.value = "";
