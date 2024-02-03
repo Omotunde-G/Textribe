@@ -420,6 +420,9 @@ main {
     display: block;
     cursor: pointer;
   }
+  #dontshow{
+    display: none;
+  }
 
   .footer-right a:hover {
     color: #333;
