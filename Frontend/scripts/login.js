@@ -1,19 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginform");
-  const popup = document.getElementById('popup');
+  const popup = document.getElementById("popup");
 
   function showPopup() {
-    popup.classList.toggle('show');
+    popup.classList.toggle("show");
 
     setTimeout(() => {
-      popup.classList.remove('show')
+      popup.classList.remove("show");
     }, 1000);
   }
   async function loginUser(e) {
     e.preventDefault();
 
     const username = document.getElementById("username").value;
-    const passwordInput = document.getElementById("password"); 
+    const passwordInput = document.getElementById("password");
 
     const password = passwordInput.value;
 
@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         window.location = "homepage.html";
       } else {
-       showPopup()  
-        passwordInput.value = '';
+        showPopup();
+        passwordInput.value = "";
       }
     } catch (error) {
       console.error("Error:", error);

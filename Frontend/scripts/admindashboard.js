@@ -39,7 +39,7 @@ function displayStories(stories) {
 fetchStoriesByUsers();
 async function fetchStoriesByUsers() {
   try {
-    const response = await fetch(`http://localhost:3005 /stories/all`);
+    const response = await fetch(`http://localhost:3005/stories/all`);
     if (!response.ok) {
       throw new Error("Failed to fetch stories");
     }
@@ -53,12 +53,13 @@ async function fetchStoriesByUsers() {
 //    fix
 async function fetchUsers() {
   try {
-    const response = await fetch("http://localhost:3005 /users");
+    const response = await fetch("http://localhost:3005/users");
     if (!response.ok) {
       console.error("Failed to fetch users. Response status:", response.status);
       throw new Error("Failed to fetch users");
     }
     const users = await response.json();
+    console.log(users);
     displayUsers(users);
   } catch (error) {
     console.error("Error Fetching users", error);
@@ -66,30 +67,30 @@ async function fetchUsers() {
 }
 
 function displayUsers(users) {
-  const tableBody = document.querySelector(".table--container tbody");
+  const tableBody = document.querySelector(".table--container1 tbody");
   tableBody.innerHTML = "";
 
   users.forEach((user) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-        <td> ${user.id}</td>
+        <td> ${user.user_id}</td>
         <td> ${user.fullname} </td>
-        <td> ${user.role} </td>
         <td> ${user.username} </td>
-         <td>
-         <div class="dropdown">
-         <button class="dropbtn">Action</button>
-         <div class="dropdown-content">
-         <a href="#" class="delete">Deactivate</a>
-         <a href="#" class="edit">Activate</a>
-        </div>
-        </div>
+        <td>
+            <div class="dropdown">
+                <button class="dropbtn">Action</button>
+                <div class="dropdown-content">
+                    <a href="#" class="delete">Deactivate</a>
+                    <a href="#" class="edit">Activate</a>
+                </div>
+            </div>
         </td>
- `;
+    `;
     tableBody.appendChild(row);
-  });
-  const totalUserCount = document.querySelector("#Total");
-  totalUserCount.textContent = `Total Users: ${users.length}`;
+});
+const totalUserCount = document.querySelector("#Total");
+totalUserCount.textContent = `Total Users: ${users.length}`;
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
