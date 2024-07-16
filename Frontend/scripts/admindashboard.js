@@ -1,3 +1,16 @@
+async function fetchStoriesByUsers() {
+  try {
+    const response = await fetch("http://localhost:3005/stories/all");
+    if (!response.ok) {
+      throw new Error("Failed to fetch stories");
+    }
+    const stories = await response.json();
+    displayStories(stories.stories);
+  } catch (error) {
+    console.error("Error fetching stories:", error);
+  }
+}
+
 function displayStories(stories) {
   if (!Array.isArray(stories)) {
     console.error("Invalid data format- Expect an array");
@@ -36,21 +49,6 @@ function displayStories(stories) {
   totalCompleted.textContent = `Total Stories: ${stories.length} `;
 }
 
-fetchStoriesByUsers();
-async function fetchStoriesByUsers() {
-  try {
-    const response = await fetch(`http://localhost:3005/stories/all`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch stories");
-    }
-    const stories = await response.json();
-    displayStories(stories.stories);
-  } catch (error) {
-    console.error("Error fetching stories:", error);
-  }
-}
-
-//    fix
 async function fetchUsers() {
   try {
     const response = await fetch("http://localhost:3005/users");
@@ -87,10 +85,9 @@ function displayUsers(users) {
         </td>
     `;
     tableBody.appendChild(row);
-});
-const totalUserCount = document.querySelector("#Total");
-totalUserCount.textContent = `Total Users: ${users.length}`;
-
+  });
+  const totalUserCount = document.querySelector("#Total");
+  totalUserCount.textContent = `Total Users: ${users.length}`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
