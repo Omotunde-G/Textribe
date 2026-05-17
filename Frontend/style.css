@@ -83,6 +83,8 @@ body {
   border: 1px solid rgb(103, 33, 103);
   box-shadow: 1px 1px 1px 1px rgb(103, 33, 103);
   transition: .5s;
+  transform: translateY(-2px); /* Slightly move the button up on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
 
 
 }

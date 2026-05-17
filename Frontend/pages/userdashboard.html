@@ -107,9 +107,70 @@
               </table>
             </div>
           </div>
+      
+        <!-- contributorDashboard.html -->
+<div id="feedbackSection">
+  <h3 class="main--title">My Feedback</h3>
+  <table id="feedbackTable">
+      <thead>
+          <tr>
+              <th>Story Title</th>
+              <th>Feedback</th>
+          </tr>
+      </thead>
+      <tbody id="feedbackTableBody"></tbody>
+  </table>
+</div>
+</div>
+
+     <!-- New Collaborated Stories Section -->
+    <h3 class="main--title">Collaborated Stories</h3>
+    <div class="tabular--wrapper">
+      <div class="table--container">
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Contributor Name</th>
+                <th>Contribution</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="contributionsTableBody">
+              <!-- Contribution rows will be dynamically added here -->
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3"></td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="contributionModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <h2 class="review">Review Contribution </h2>
+    <span id="closeModal" class="close">&times;</span>
+    <h2 id="modalContributorName"></h2>
+    <p id="modalContributionContent"></p>
+    <div class="modal-buttons">
+      <button id="modalAcceptBtn" class="accept-btn">Accept</button>
+      <button id="modalDeclineBtn" class="decline-btn">Decline</button>
+      <button id="modalFeedbackBtn" class="feedback-btn">Send Feedback</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
     <script src="../scripts/userdashboard.js"></script>
   </body>

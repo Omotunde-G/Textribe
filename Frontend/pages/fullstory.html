@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/fullstory.css">
+    
+    <!-- Include Froala Editor CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.0/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.0/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+    <title>Full Story</title>
+</head>
+<body>
+    <div class="full-story-content" id="fullStoryContent"></div>
+
+    <div class="story-actions">
+        <button class="like-btn">Like Story</button>
+        <button class="comment-btn">Comment</button>
+        <button class="contribute-btn">Contribute</button>
+        <button class="exit-btn" onclick="window.location.href='homepage.html'">Exit</button>
+
+        <!-- Full Story Contribution Modal -->
+        <div class="contribute-modal" id="contributeModal" style="display: none;">
+          <div class="modal-content">
+            <h3>Contribute to the Story</h3>
+            <input type="text" id="contributorName" placeholder="Your Name" required />
+            <textarea id="contributionText" placeholder="Your Contribution..." required></textarea>
+            <div class="modal-actions">
+              <button id="saveContributionBtn">Save</button>
+              <button id="submitContributionBtn">Submit</button>
+              <button id="exitContributionBtn">Exit</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Comment Section -->
+    <div class="comment-section" id="commentSection" style="display: none;">
+        <textarea id="commentText" placeholder="Write your comment..."></textarea>
+        <button id="submitComment" class="submit-btn">Submit Comment</button>
+    </div>
+
+    <div class="comments-container" id="commentsContainer">
+        <!-- Comments will be appended here -->
+    </div>
+
+    <!-- Include Froala Editor JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.0/js/froala_editor.min.js"></script>
+
+    <script src="../scripts/fullstory.js"></script>
+</body>
+</html>

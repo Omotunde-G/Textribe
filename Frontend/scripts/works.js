@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const postStory = document.getElementById("submitpost");
 
   const storyTextarea = document.getElementById("story");
-  // const editorOptions = {
-  //   heightMin: 100,
-  // };
-  // new FroalaEditor(storyTextarea, editorOptions);
+  const editorOptions = {
+    heightMin: 100,
+  };
+  new FroalaEditor(storyTextarea, editorOptions);
 
   createStory.style.display = "none";
   newProjectButton.addEventListener("click", () => {

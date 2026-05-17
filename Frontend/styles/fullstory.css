@@ -1,0 +1,279 @@
+body {
+  font-family: "Kanit", sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.full-story-content {
+  max-width: 80%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow-y: auto;
+}
+
+.story-actions {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.story-actions button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  line-height: 2;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+h2 {
+  color: rgb(156, 88, 156);
+  text-align: center;
+  font-size: 35px;
+  margin-top: 5px;
+}
+h4 {
+  font-size: 20px;
+}
+.like-btn {
+  background-color: #4caf50;
+  color: white;
+}
+.comment-btn {
+  background-color: #2196f3;
+  color: white;
+}
+.contribute-btn {
+  background-color: #ff9800;
+  color: white;
+}
+.exit-btn {
+  background-color: #f44336;
+  color: white;
+}
+.comment-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.comment-section textarea {
+  width: 100%;
+  max-width: 80%;
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.submit-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.comments-container {
+  margin-top: 20px;
+}
+
+.comment {
+  background-color: #f4f4f4;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.comment p {
+  margin: 0;
+}
+
+.comment strong {
+  color: #2196f3;
+}
+/* Styles for the contribution modal */
+.contribute-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Background overlay */
+  padding-top: 50px;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Set the width of the modal */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  font-family: 'Kanit', sans-serif;
+  text-align: center;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Kanit', sans-serif;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+  font-family: 'Kanit', sans-serif;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#saveContributionBtn {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+#saveContributionBtn:hover {
+  background-color: #45a049;
+}
+
+#submitContributionBtn {
+  background-color: #008CBA; /* Blue */
+  color: white;
+}
+
+#submitContributionBtn:hover {
+  background-color: #007bb5;
+}
+
+#exitContributionBtn {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+#exitContributionBtn:hover {
+  background-color: #da190b;
+}
+/* Style for the contributor header */
+.contributor-header {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Default style for contributor content */
+.contributor-content {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-left: 4px solid #ccc;
+}
+
+/* Different colors for each contributor's content */
+.contributor-1 {
+  background-color: #f0f8ff;
+  border-left-color: #007bff;
+}
+
+.contributor-2 {
+  background-color: #e0f7fa;
+  border-left-color: #00acc1;
+}
+
+.contributor-3 {
+  background-color: #fff3e0;
+  border-left-color: #fb8c00;
+}
+
+/* Add more styles as needed */
+.contributor-header {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 20px;
+  color: #333; /* Customize as needed */
+}
+
+.contributor-content {
+  background-color: #f0f0f0; /* Default background color */
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+
+
+/* Responsive styling for mobile devices */
+@media screen and (max-width: 768px) {
+  .modal-content {
+      width: 90%;
+  }
+}
+
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  .full-story-content {
+    max-width: 95%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
+  .story-actions button {
+    padding: 8px 15px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 480px) {
+  .full-story-content {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+
+  .story-actions button {
+    padding: 6px 10px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}

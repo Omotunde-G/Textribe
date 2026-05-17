@@ -11,6 +11,7 @@ router.post('/userProfile/:user_id', usersController.UserProfile)
 router.route('/updateProfile/:user_id')
     .post(usersController.CreateOrUpdateUserProfile)
     .put(usersController.CreateOrUpdateUserProfile);
+router.get('/users/:user_id', usersController.getUserProfileById);
 // router.post('/updateProfile/:username', usersController.createUserProfileByUsername)
 
 module.exports = router;

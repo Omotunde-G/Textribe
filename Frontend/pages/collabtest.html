@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/collabtest.css"> <!-- Link to the new styling page -->
+    <title>Full Story</title>
+</head>
+<body>
+    <div class="full-story-container">
+        <div class="full-story-content">
+            <h2 id="story-title">Story Title</h2>
+            <p id="story-author">Author: John Doe</p>
+            <p id="story-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
+        </div>
+        <div class="story-actions">
+            <button class="like-btn">Like Story</button>
+            <button class="comment-btn">Comment</button>
+            <button class="contribute-btn">Contribute</button>
+            <button class="exit-btn" onclick="window.location.href='homepage.html'">Exit</button>
+        </div>
+
+        <!-- Contribute Section (initially hidden) -->
+        <div class="contribute-section" id="contributeSection" style="display: none;">
+            <textarea id="contributeTextarea" placeholder="Write your contribution..."></textarea>
+            <div class="contribute-actions">
+                <button class="cancel-btn" id="cancelBtn">Cancel</button>
+                <button class="submit-btn" id="submitBtn">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/collabtest.js"></script> <!-- Link to the script file -->
+</body>
+</html>

@@ -147,6 +147,46 @@ body{
     color: #1c1c1c;
     padding: 5%;
   }
+/* Style the story title links */
+#storiesTableBody a {
+  color: Blue;
+  text-decoration: none;
+}
+
+#storiesTableBody a:hover {
+  text-decoration: underline;
+}
+
+  /* Existing styles remain the same */
+
+.main--title {
+  margin-bottom: 1rem;
+}
+
+/* New styles for collaborated stories section */
+.tabular--wrapper {
+  margin-bottom: 2rem;
+}
+
+.table--container {
+  width: 100%;
+}
+
+.table--container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table--container th, .table--container td {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.table--container th {
+  background-color: #f4f4f4;
+  text-align: left;
+}
+
   /* Input field styles */
   .form-control {
     position: relative;

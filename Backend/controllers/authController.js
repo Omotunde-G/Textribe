@@ -27,7 +27,7 @@ const registerUser = async (req, res) => {
     return res.status(400).json({ message: "Username already exists" });
   }
 
-  try {  
+  try {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Insert into 'users' table
@@ -38,7 +38,7 @@ const registerUser = async (req, res) => {
       username,
       email,
       hashedPassword,
-      url
+      url,
     ]);
     const user_id = userResult.rows[0].user_id;
 
@@ -50,10 +50,10 @@ const registerUser = async (req, res) => {
       username,
       email,
       fullname,
-      url
+      url,
     ]);
 
-    const token = jwt.sign({ username }, secretKey, {
+    const token = jwt.sign({ user_id }, secretKey, {
       expiresIn: 60 * 60,
     });
 
@@ -66,8 +66,8 @@ const registerUser = async (req, res) => {
   }
 };
 
-// Login
 
+// Login
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -76,7 +76,7 @@ const loginUser = async (req, res) => {
     const user = result.rows[0];
 
     if (!user) {
-      return res.status(404).json({ message: "user not found" });
+      return res.status(404).json({ message: "User not found" });
     }
 
     // Compare the entered password with the hashed password using bcrypt
@@ -85,7 +85,7 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid Credentials" });
     }
 
-    const token = jwt.sign({ username }, secretKey, {
+    const token = jwt.sign({ user_id: user.user_id }, secretKey, {
       expiresIn: 60 * 60,
     });
 
@@ -96,9 +96,10 @@ const loginUser = async (req, res) => {
       user_id: user.user_id,
     });
   } catch (error) {
-    console.error("Error registering user:", error);
-    res.status(500).json({ message: "Error registering user" });
+    console.error("Error logging in user:", error);
+    res.status(500).json({ message: "Error logging in user" });
   }
 };
+
 
 module.exports = { registerUser, loginUser };

@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
   padding: 0;
   margin: 0;
@@ -6,13 +7,14 @@
 
 body {
   color: rgb(156, 88, 156);
-  font-family: 'Kanit','montserrat', 'Times New Roman', Times, serif;
-
-}
-p{
-  font-family:  'Kanit' ;
+  font-family: "Kanit", "montserrat", "Times New Roman", Times, serif;
 }
 
+p {
+  font-family: "Kanit";
+}
+
+/* Navbar */
 .navbar {
   width: 100%;
   padding: 0 3%;
@@ -25,7 +27,6 @@ p{
 }
 
 .logo-container {
-  width: max-content;
   display: flex;
   align-items: center;
 }
@@ -33,7 +34,6 @@ p{
 .logo-text {
   color: rgb(103, 33, 103);
   font-size: 3rem;
-  width: 100%;
   text-decoration: none;
 }
 
@@ -43,17 +43,10 @@ p{
   margin-left: auto;
 }
 
-.nav-links-container {
-  position: relative;
-  margin: auto;
-}
-
 .nav-link {
-  position: relative;
   display: inline-block;
   padding: 10px 10px;
   text-decoration: none;
-  overflow: hidden;
   transition: 0.5s;
   letter-spacing: 3px;
 }
@@ -66,10 +59,8 @@ p{
 
 .nav-btns {
   display: flex;
-  width: max-content;
   align-items: center;
   gap: 5%;
-
 }
 
 .nav-btn {
@@ -85,7 +76,7 @@ p{
   cursor: pointer;
   border: 1px solid rgb(103, 33, 103);
   box-shadow: 1px 1px 1px 1px rgb(103, 33, 103);
-  transition: .5s;
+  transition: 0.5s;
 }
 
 main {
@@ -93,27 +84,29 @@ main {
   margin: 40px;
 }
 
-
 .hero h1 {
   padding: 10px;
   color: black;
   font-size: 35px;
   font-weight: 800;
-
 }
 
 .hero {
   color: rgb(16, 13, 13);
   font-size: 17px;
-  padding: 15px;
+  padding: 20px;
   font-weight: 500;
   text-align: center;
-  border-bottom: 0.1px solid #ccc;
+  background-color: rgb(209, 126, 209);
+  border-radius: 5px;
   margin-top: 10px;
   padding-bottom: 40px;
-  background-color: rgb(209, 126, 209);
+  border-bottom: 0.1px solid #ccc;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  border-radius: 5px;
 }
 
 .container h2 {
@@ -127,8 +120,6 @@ main {
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 10px;
-
-
 }
 
 .card {
@@ -199,7 +190,6 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
 }
 
 /* Adjust width to display 4 columns */
@@ -281,14 +271,14 @@ main {
   font-size: 20px;
   line-height: 1.5;
   color: #000000;
-  font-family:  'serif' ;
+  font-family: "serif";
 }
-.modal-content h2{
+.modal-content h2 {
   text-align: center;
   color: rgb(156, 88, 156);
   font-size: 30px;
 }
-.modal-content h4{
+.modal-content h4 {
   margin-top: 5px;
   margin-bottom: 5px;
   text-align: center;
@@ -303,9 +293,9 @@ main {
   font-size: 34px;
 }
 
-.saveBtn,
+.contributeBtn,
 .editSubmit,
-.clearBtn,
+.likeBtn,
 .exitBtn {
   padding: 14px;
   border: none;
@@ -313,6 +303,10 @@ main {
   margin: 10px;
   float: right;
   font-size: 15px;
+}
+.like-count {
+  font-weight: bold;
+  color: #ff0000;
 }
 
 #editBtn {
@@ -420,10 +414,445 @@ main {
     display: block;
     cursor: pointer;
   }
-  #dontshow{
+  #dontshow {
     display: none;
   }
   .footer-right a:hover {
     color: #333;
+  }
+}
+
+/* Global Styles */
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* Card Styles */
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.card {
+  width: 325px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.card-content h3 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.card-content p {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.card-content .btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 16px;
+  color: #fff;
+}
+
+/* Featured Stories */
+.books {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.book-card {
+  width: calc(25% - 20px);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.story-card {
+  border: 1px solid #ccc;
+  width: 300px;
+  margin: 0 10px;
+  padding: 20px;
+  height: 160px;
+  text-align: center;
+  border-radius: 2px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.story-card h3 {
+  font-size: 20px;
+}
+
+.story-card h4 {
+  font-size: 14px;
+  padding-top: 7px;
+}
+
+.read-more {
+  margin-top: 20px;
+  background-color: rgb(156, 88, 156);
+  padding: 7px;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.read-more:hover {
+  font-size: 15px;
+}
+
+.book-card h3 {
+  margin-top: 0;
+}
+
+.book-card h4 {
+  margin-bottom: 10px;
+}
+
+.book-card p {
+  margin-bottom: 15px;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.modal-content p {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #000000;
+  font-family: "serif";
+}
+
+.modal-content h2 {
+  text-align: center;
+  color: rgb(156, 88, 156);
+  font-size: 30px;
+}
+
+.modal-content h4 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 23px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 34px;
+}
+
+.contributeBtn,
+.editSubmit,
+.likeBtn,
+.exitBtn {
+  padding: 14px;
+  border: none;
+  outline: none;
+  margin: 10px;
+  float: right;
+  font-size: 15px;
+}
+
+.like-count {
+  font-weight: bold;
+  color: rgb(18, 158, 214);
+}
+
+#editBtn {
+  margin: 10px;
+  padding: 14px;
+  background-color: rgb(156, 88, 156);
+  outline: none;
+  border: none;
+  color: white;
+  font-size: 15px;
+}
+
+/* Footer Styles */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: #f5f5f5;
+  color: black;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1;
+  margin: 8px;
+}
+
+.footer a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  margin: 5px 0;
+}
+
+.footer-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-form input {
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.footer-form button {
+  padding: 10px;
+  background-color: #ccc;
+  color: black;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .card-container {
+    flex-direction: column;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav-link {
+    padding: 10px 0;
+  }
+
+  .logo-text {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .logo-text {
+    font-size: 2rem;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    z-index: 1;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-link-container {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .nav-btns {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-btn {
+    margin-top: 10px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero {
+    margin: 15px 0;
+    padding: 15px;
+  }
+
+  .card {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .story-card {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .book-card {
+    width: 100%;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Styling for My Stories section */
+.my-stories-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.my-stories-section h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.story-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.story-container .card {
+  width: 300px;
+  margin: 15px;
+  background-color: #f8f8f8;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.story-container .card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.story-container .card .card-content {
+  padding: 15px;
+}
+
+.story-container .card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.story-container .card p {
+  font-size: 16px;
+  color: #666;
+}
+
+.story-container .card .read-more {
+  display: inline-block;
+  margin-top: 10px;
+  color: white;
+  background-color: rgb(156, 88, 156);
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  .navbar {
+    padding: 10px;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+  }
+
+  .nav-btn {
+    padding: 10px;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero {
+    padding: 10px;
+  }
+
+  .card-content h3 {
+    font-size: 24px;
+  }
+
+  .card-content p {
+    font-size: 14px;
+  }
+
+  .read-more {
+    padding: 5px 10px;
+    font-size: 14px;
   }
 }

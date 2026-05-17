@@ -1,31 +1,34 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const morgan = require('morgan')
-const cors = require("cors")
+const morgan = require("morgan");
+const cors = require("cors");
 // Middleware
-app.use(cors())
-app.use(morgan('tiny'))
+app.use(cors());
+app.use(morgan("tiny"));
 app.use(express.json());
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) =>{
-    res.send("Welcome")
-})
+app.get("/", (req, res) => {
+  res.send("Welcome");
+});
 
-//routes 
-const authRoutes = require ('./routes/auths');
-const userRoutes = require ('./routes/users');
-const storiesRoutes = require ('./routes/stories')
-const collaboRoutes = require ('./routes/collabo')
+//routes
+const authRoutes = require("./routes/auths");
+const userRoutes = require("./routes/users");
+const storiesRoutes = require("./routes/stories");
+const collaboRoutes = require("./routes/collabo");
+const commentsRoutes = require('./routes/comments');
+const collaborationRoutes = require('./routes/collaboration');
 
 
 //use the route
-app.use('/auth', cors(), authRoutes)
-app.use('/users',cors(), userRoutes)
-app.use('/stories',cors(), storiesRoutes);
-app.use('/contribute', cors(), collaboRoutes )
+app.use("/auth", cors(), authRoutes);
+app.use("/users", cors(), userRoutes);
+app.use("/stories", cors(), storiesRoutes);
+app.use("/contribute", cors(), collaboRoutes);
+app.use('/stories', commentsRoutes);
+app.use('/collaboration', collaborationRoutes); 
 
-
-app.listen(3005, ()=>{
-    console.log('server is running on port 3005')
-})
+app.listen(3005, () => {
+  console.log("server is running on port 3005");
+});

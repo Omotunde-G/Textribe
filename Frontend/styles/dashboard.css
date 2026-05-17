@@ -29,7 +29,7 @@ body {
   width: 300px;
   transition: width 0.5s;
 }
-.image{
+.image {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -62,7 +62,7 @@ body {
 .active {
   background: #e0e0e058;
 }
-.profile-edit{
+.profile-edit {
   font-size: 20px;
   color: green;
   text-decoration: none;
@@ -118,6 +118,111 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+/* modal */ /* Modal styling */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #888;
+  width: 50%;
+  text-align: center;
+}
+.review {
+  color: rgb(156, 88, 156);
+  padding: 10px;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Buttons styling inside the modal */
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Accept button */
+.accept-btn {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.accept-btn:hover {
+  background-color: #45a049;
+}
+
+/* Decline button */
+.decline-btn {
+  background-color: #f44336; /* Red */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.decline-btn:hover {
+  background-color: #da190b;
+}
+
+/* Feedback button */
+.feedback-btn {
+  background-color: #008cba; /* Blue */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.feedback-btn:hover {
+  background-color: #007bb5;
 }
 
 /* *** card container *** */
@@ -180,6 +285,7 @@ body {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 0;
   -webkit-box-orient: vertical;
   max-height: 4.3em;
 }
@@ -381,7 +487,7 @@ table td {
 }
 
 @media screen and (max-width: 768px) {
-  .logo a{
+  .logo a {
     font-size: 15px;
   }
   table td {
@@ -401,5 +507,4 @@ table td {
   .dropdown-content a {
     display: none;
   }
-
 }
