@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.append("image", profileImage.files[0]);
 
     try {
-      const response = await fetch("http://localhost:3005/auth/register", {
+      const response = await fetch("https://textribe.onrender.com/auth/register", {
         method: "POST",
         body: formData,
       });

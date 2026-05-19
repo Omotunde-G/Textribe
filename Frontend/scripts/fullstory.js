@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (contributorName && contributionText) {
         try {
-            const response = await fetch(`http://localhost:3005/collaboration/${storyId}/contribute/save`, {
+            const response = await fetch(`https://textribe.onrender.com/collaboration/${storyId}/contribute/save`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (contributorName && contributionText) {
         try {
-            const response = await fetch(`http://localhost:3005/collaboration/${storyId}/contribute`, {
+            const response = await fetch(`https://textribe.onrender.com/collaboration/${storyId}/contribute`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         // Make the POST request to add a comment
         const response = await fetch(
-          `http://localhost:3005/stories/${storyId}/comment`,
+          `https://textribe.onrender.com/stories/${storyId}/comment`,
           {
             method: "POST",
             headers: {
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fetch and display existing comments
   async function loadComments() {
     try {
-        const response = await fetch(`http://localhost:3005/stories/${storyId}/comments`);
+        const response = await fetch(`https://textribe.onrender.com/stories/${storyId}/comments`);
         if (response.ok) {
             const data = await response.json();
             data.comments.forEach((comment) => {

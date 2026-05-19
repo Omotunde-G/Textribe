@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function fetchStoriesByUser() {
     try {
       const response = await fetch(
-        `http://localhost:3005/stories/${authorId}`,
+        `https://textribe.onrender.com/stories/${authorId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function fetchContributions() {
     try {
       const response = await fetch(
-        `http://localhost:3005/collaboration/author/${authorId}/contributions`,
+        `https://textribe.onrender.com/collaboration/author/${authorId}/contributions`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       // Step 1: Accept the contribution and merge it into the original story
       const response = await fetch(
-        `http://localhost:3005/collaboration/contributions/${contributionId}/accept`,
+        `https://textribe.onrender.com/collaboration/contributions/${contributionId}/accept`,
         {
           method: "POST",
           headers: {
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const storyId = data.story_id; // Make sure story_id is included in the backend response
         if (storyId) {
           const updatedStoryResponse = await fetch(
-            `http://localhost:3005/stories/${storyId}`,
+            `https://textribe.onrender.com/stories/${storyId}`,
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   window.declineContribution = async function (contributionId) {
     try {
       const response = await fetch(
-        `http://localhost:3005/collaboration/contributions/${contributionId}/decline`,
+        `https://textribe.onrender.com/collaboration/contributions/${contributionId}/decline`,
         {
           method: "POST",
           headers: {
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (feedbackText) {
       try {
         const response = await fetch(
-          `http://localhost:3005/collaboration/contributions/${contributionId}/feedback`,
+          `https://textribe.onrender.com/collaboration/contributions/${contributionId}/feedback`,
           {
             method: "POST",
             headers: {
@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:3005/stories/${storyId}`, {
+      const response = await fetch(`https://textribe.onrender.com/stories/${storyId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -1,6 +1,6 @@
 async function fetchStoriesByUsers() {
   try {
-    const response = await fetch("http://localhost:3005/stories/all");
+    const response = await fetch("https://textribe.onrender.com/stories/all");
     if (!response.ok) {
       throw new Error("Failed to fetch stories");
     }
@@ -51,7 +51,7 @@ function displayStories(stories) {
 
 async function fetchUsers() {
   try {
-    const response = await fetch("http://localhost:3005/users");
+    const response = await fetch("https://textribe.onrender.com/users");
     if (!response.ok) {
       console.error("Failed to fetch users. Response status:", response.status);
       throw new Error("Failed to fetch users");

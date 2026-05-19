@@ -8,7 +8,7 @@ async function loginUser(e) {
   const reqData = JSON.stringify({ username, password });
 
   try {
-    const response = await fetch("http://localhost:3005gin", {
+    const response = await fetch("https://textribe.onrender.com/gin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (!userProfile) {
         // If user profile doesn't exist, create a new one
-        response = await fetch(`http://localhost:3005pdateProfile/${userId}`, {
+        response = await fetch(`https://textribe.onrender.com/updateProfile/${userId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
       } else {
         // If user profile exists, update it using PUT request
-        response = await fetch(`http://localhost:3005pdateProfile/${userId}`, {
+        response = await fetch(`https://textribe.onrender.com/updateProfile/${userId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   async function fetchUserProfile(username) {
     try {
       const response = await fetch(
-        `http://localhost:3005serProfile/${username}`
+        `https://textribe.onrender.com/userProfile/${username}`
       );
       if (response.ok) {
         const userProfile = await response.json();

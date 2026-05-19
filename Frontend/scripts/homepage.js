@@ -61,7 +61,7 @@ if (likeBtn) {
 
         try {
             const response = await fetch(
-                `http://localhost:3005/stories/${storyId}/like`,
+                `https://textribe.onrender.com/stories/${storyId}/like`,
                 {
                     method: "POST",
                     headers: {
@@ -129,7 +129,7 @@ if (likeBtn) {
 
   // Fetch and display stories
   try {
-    const response = await fetch("http://localhost:3005/stories/all");
+    const response = await fetch("https://textribe.onrender.com/stories/all");
     if (response.ok) {
       const data = await response.json();
       if (data && data.stories && Array.isArray(data.stories)) {
@@ -180,7 +180,7 @@ if (logoutButton) {
   async function fetchMyStories() {
     try {
       const response = await fetch(
-        `http://localhost:3005/stories/${authorId}`,
+        `https://textribe.onrender.com/stories/${authorId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

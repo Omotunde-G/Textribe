@@ -20,14 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const reqData = JSON.stringify({ username, password });
 
     try {
-      const response = await fetch("http://localhost:3005/auth/login", {
+      const response = await fetch("https://textribe.onrender.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: reqData,
       });
-
       if (response.ok) {
         const data = await response.json();
         const { token, username: loggedInUsername, user_id } = data;

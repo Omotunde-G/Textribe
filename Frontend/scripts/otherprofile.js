@@ -16,7 +16,7 @@ if (userId) {
 }
 
         try {
-            const response = await fetch(`http://localhost:3005/users/${userId}`);
+            const response = await fetch(`https://textribe.onrender.com/users/${userId}`);
             if (response.ok) {
                 const userData = await response.json();
                 // Display the user data on the page
